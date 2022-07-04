@@ -3,8 +3,8 @@
     <style name="customNavigationBar" parent="Widget.MaterialComponents.BottomNavigationView">
         <item name="itemIconTint">@color/bottom_navigation_item_color</item>
         <item name="itemTextColor">@color/bottom_navigation_item_color</item>
-        <item name="itemRippleColor">@color/bottom_navigation_item_ripple_color</item>
         <item name="itemTextAppearanceActive">@style/bottomNavigationTextAppearanceItem</item>
+        <item name="itemRippleColor">@color/bottom_navigation_item_ripple_color</item>
     </style>
 
     <style name="bottomNavigationTextAppearanceItem" parent="TextAppearance.ECommerceNikeStore.Caption">

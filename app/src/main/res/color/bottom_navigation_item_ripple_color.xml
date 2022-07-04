@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <selector xmlns:android="http://schemas.android.com/apk/res/android">
-
         <!-- Selected. -->
 
         <item android:alpha="0.08" android:color="?attr/colorPrimary" android:state_pressed="true" android:state_selected="true"/>
@@ -17,7 +15,4 @@
         <item android:alpha="0.12" android:color="?attr/colorOnSurface" android:state_focused="true"/>
         <item android:alpha="0.04" android:color="?attr/colorOnSurface" android:state_hovered="true"/>
         <item android:alpha="0.00" android:color="?attr/colorOnSurface"/>
-
-    </selector>
-
 </selector>
