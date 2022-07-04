@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="customNavigationBar" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemIconTint">@color/bottom_navigation_item_color</item>
+        <item name="itemTextColor">@color/bottom_navigation_item_color</item>
+        <item name="itemRippleColor">@color/bottom_navigation_item_ripple_color</item>
+        <item name="itemTextAppearanceActive">@style/bottomNavigationTextAppearanceItem</item>
+    </style>
+
+    <style name="bottomNavigationTextAppearanceItem" parent="TextAppearance.ECommerceNikeStore.Caption">
+        <item name="fontFamily">@font/primary_bold</item>
+    </style>
+
+</resources>

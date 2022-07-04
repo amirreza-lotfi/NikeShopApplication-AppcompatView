@@ -3,8 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/TGr.h/AndroidStudioProjects/ECommerceNikeStore/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Users/TGr.h/AndroidStudioProjects/ECommerceNikeStore/app/src/main/res/drawable/ic_back.xml" value="0.1" />
+        <entry key="..\:/Users/TGr.h/AndroidStudioProjects/ECommerceNikeStore/app/src/main/res/drawable/ic_cart.xml" value="0.1" />
+        <entry key="..\:/Users/TGr.h/AndroidStudioProjects/ECommerceNikeStore/app/src/main/res/drawable/ic_eye.xml" value="0.1" />
+        <entry key="..\:/Users/TGr.h/AndroidStudioProjects/ECommerceNikeStore/app/src/main/res/drawable/ic_eye_off.xml" value="0.1" />
+        <entry key="..\:/Users/TGr.h/AndroidStudioProjects/ECommerceNikeStore/app/src/main/res/drawable/ic_favorites.xml" value="0.1" />
+        <entry key="..\:/Users/TGr.h/AndroidStudioProjects/ECommerceNikeStore/app/src/main/res/drawable/ic_grid.xml" value="0.1" />
+        <entry key="..\:/Users/TGr.h/AndroidStudioProjects/ECommerceNikeStore/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/TGr.h/AndroidStudioProjects/ECommerceNikeStore/app/src/main/res/drawable/ic_nike_logo.xml" value="0.1" />
+        <entry key="..\:/Users/TGr.h/AndroidStudioProjects/ECommerceNikeStore/app/src/main/res/drawable/ic_plus_square.xml" value="0.1" />
+        <entry key="..\:/Users/TGr.h/AndroidStudioProjects/ECommerceNikeStore/app/src/main/res/drawable/ic_search.xml" value="0.1" />
+        <entry key="..\:/Users/TGr.h/AndroidStudioProjects/ECommerceNikeStore/app/src/main/res/drawable/ic_sort.xml" value="0.1" />
         <entry key="..\:/Users/TGr.h/AndroidStudioProjects/ECommerceNikeStore/app/src/main/res/drawable/ic_user.xml" value="0.1" />
-        <entry key="..\:/Users/TGr.h/AndroidStudioProjects/ECommerceNikeStore/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/TGr.h/AndroidStudioProjects/ECommerceNikeStore/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/TGr.h/AndroidStudioProjects/ECommerceNikeStore/app/src/main/res/menu/main_navigation.xml" value="0.126171875" />
       </map>
     </option>
