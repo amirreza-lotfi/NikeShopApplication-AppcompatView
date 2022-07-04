@@ -1,5 +1,7 @@
 package com.example.nikeshop.feature_shop.domain.entity
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
 
 @Parcelize
@@ -13,7 +15,7 @@ data class Product(
     val title: String
 ): Parcelable {
 
-    companion object : Parcelable {
+    companion object {
         fun getPriceWithSeparator(price:String): String {
             var counter = 0
             val priceToString = price
