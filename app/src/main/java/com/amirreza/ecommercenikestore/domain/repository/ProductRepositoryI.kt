@@ -1,4 +1,4 @@
-package com.example.nikeshop.feature_shop.domain.repository
+package com.amirreza.ecommercenikestore.domain.repository
 
 import com.example.nikeshop.feature_shop.domain.entity.Product
 import io.reactivex.Completable
@@ -12,5 +12,5 @@ interface ProductRepositoryI {
 
     fun addProductToFavorites(): Completable
 
-    fun deleteProductFromFavorites(): Completable
+    fun deleteProductFromFavorites(product:Product): Completable
 }

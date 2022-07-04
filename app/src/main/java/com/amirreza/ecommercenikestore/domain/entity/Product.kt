@@ -1,6 +1,6 @@
 package com.example.nikeshop.feature_shop.domain.entity
 
-import android.os.Parcelable
+
 
 @Parcelize
 data class Product(
@@ -11,7 +11,7 @@ data class Product(
     val price: Int,
     val status: Int,
     val title: String
-):Parcelable{
+): Parcelable {
 
     companion object : Parcelable {
         fun getPriceWithSeparator(price:String): String {
