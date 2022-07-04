@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/TGr.h/AndroidStudioProjects/ECommerceNikeStore/app/src/main/res/layout/activity_main.xml" value="0.1546875" />
+        <entry key="..\:/Users/TGr.h/AndroidStudioProjects/ECommerceNikeStore/app/src/main/res/drawable/ic_user.xml" value="0.1" />
+        <entry key="..\:/Users/TGr.h/AndroidStudioProjects/ECommerceNikeStore/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/TGr.h/AndroidStudioProjects/ECommerceNikeStore/app/src/main/res/menu/main_navigation.xml" value="0.126171875" />
       </map>
     </option>
   </component>
