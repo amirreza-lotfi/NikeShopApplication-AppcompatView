@@ -4,17 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.amirreza.ecommercenikestore.R
+import com.amirreza.ecommercenikestore.base.EXTRA_PRODUCT_FROM_HOME_TO_DETAIL
 import com.amirreza.ecommercenikestore.base.NikeFragment
 import com.amirreza.ecommercenikestore.databinding.FragmentHomeBinding
 import com.amirreza.ecommercenikestore.presebtation.home_fragment.banner_util.BannerSliderHomeFragmentAdapter
+import com.amirreza.ecommercenikestore.presebtation.home_fragment.product_list_util.ItemClickListener
 import com.amirreza.ecommercenikestore.presebtation.home_fragment.product_list_util.ProductListAdapter
+import com.example.nikeshop.feature_shop.domain.entity.Product
 import com.sevenlearn.nikestore.common.convertDpToPixel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomeFragment:NikeFragment() {
+class HomeFragment:NikeFragment(), ItemClickListener {
 
     lateinit var binding: FragmentHomeBinding
 
@@ -67,7 +72,7 @@ class HomeFragment:NikeFragment() {
         latestRecyclerView.layoutManager = layoutManager
 
         homeFragmentViewModel.latestProductsLiveData.observe(viewLifecycleOwner){
-            productListAdapter.products = it
+            productListAdapter.products = it as ArrayList<Product> /* = java.util.ArrayList<com.example.nikeshop.feature_shop.domain.entity.Product> */
             latestRecyclerView.adapter = productListAdapter
         }
     }
@@ -78,8 +83,14 @@ class HomeFragment:NikeFragment() {
         popularRecyclerView.layoutManager = layoutManager
 
         homeFragmentViewModel.popularProductsLiveData.observe(viewLifecycleOwner){
-            popularListAdapter.products = it
+            popularListAdapter.products = it as ArrayList<Product> /* = java.util.ArrayList<com.example.nikeshop.feature_shop.domain.entity.Product> */
             popularRecyclerView.adapter = popularListAdapter
         }
+    }
+
+    override fun onClick(product: Product) {
+        val bundle = Bundle()
+        bundle.putParcelable(EXTRA_PRODUCT_FROM_HOME_TO_DETAIL,product)
+        findNavController().navigate(R.id.action_navigation_home_to_productDetailFragment,bundle)
     }
 }

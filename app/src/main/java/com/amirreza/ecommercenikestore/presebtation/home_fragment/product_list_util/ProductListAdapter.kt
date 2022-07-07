@@ -4,6 +4,7 @@ import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -14,9 +15,12 @@ import com.amirreza.ecommercenikestore.domain.repository.ImageLoaderI
 import com.example.nikeshop.feature_shop.domain.entity.Product
 import com.facebook.drawee.view.SimpleDraweeView
 import com.sevenlearn.nikestore.common.formatPrice
+import com.sevenlearn.nikestore.common.implementSpringAnimationTrait
 
 class ProductListAdapter(val imageLoaderI: ImageLoaderI): RecyclerView.Adapter<ProductListAdapter.ItemHolder>() {
-    var products: List<Product> = listOf()
+    var itemClickListener: ItemClickListener? = null
+
+    var products: ArrayList<Product> = arrayListOf()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -31,11 +35,11 @@ class ProductListAdapter(val imageLoaderI: ImageLoaderI): RecyclerView.Adapter<P
         holder.onBind(products[position])
     }
 
-    inner class  ItemHolder(item: View):RecyclerView.ViewHolder(item){
+    inner class  ItemHolder(val item: View):RecyclerView.ViewHolder(item){
         private val productIv: SimpleDraweeView = item.findViewById(R.id.item_product_image)
-        private val titleTv: AppCompatTextView = item.findViewById(R.id.productTitleTv)
-        private val currentPriceTv: AppCompatTextView = item.findViewById(R.id.currentPriceTv)
-        private val previousPriceTv: AppCompatTextView = item.findViewById(R.id.previousPriceTv)
+        private val titleTv: TextView = item.findViewById(R.id.productTitleTv)
+        private val currentPriceTv: TextView = item.findViewById(R.id.currentPriceTv)
+        private val previousPriceTv: TextView = item.findViewById(R.id.previousPriceTv)
 
         fun onBind(product: Product){
             imageLoaderI.load(productIv,product.image)
@@ -43,6 +47,10 @@ class ProductListAdapter(val imageLoaderI: ImageLoaderI): RecyclerView.Adapter<P
             currentPriceTv.text = formatPrice(product.price)
             previousPriceTv.text = formatPrice(product.previous_price)
             previousPriceTv.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+            item.implementSpringAnimationTrait()
+            itemView.setOnClickListener {
+                itemClickListener?.onClick(product)
+            }
         }
     }
 

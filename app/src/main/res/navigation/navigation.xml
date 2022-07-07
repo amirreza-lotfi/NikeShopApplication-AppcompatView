@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
     app:startDestination="@id/navigation_home">
 
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.amirreza.ecommercenikestore.presebtation.home_fragment.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_navigation_home_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_cart"
         android:name="com.amirreza.ecommercenikestore.presebtation.card_fragment.CardFragment"
@@ -16,4 +21,9 @@
         android:id="@+id/navigation_profile"
         android:name="com.amirreza.ecommercenikestore.presebtation.profile_fragment.ProfileFragment"
         android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="com.amirreza.ecommercenikestore.presebtation.product_detail_fragment.ProductDetailFragment"
+        android:label="fragment_product_detail"
+        tools:layout="@layout/fragment_product_detail" />
 </navigation>
