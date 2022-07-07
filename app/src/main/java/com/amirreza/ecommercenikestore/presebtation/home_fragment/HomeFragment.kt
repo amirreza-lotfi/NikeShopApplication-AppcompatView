@@ -20,6 +20,7 @@ class HomeFragment:NikeFragment() {
 
     private val homeFragmentViewModel:HomeFragmentViewModel by viewModel()
     private val productListAdapter:ProductListAdapter by inject()
+    private val popularListAdapter:ProductListAdapter by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,6 +35,7 @@ class HomeFragment:NikeFragment() {
         progressBarSetUp()
         bannerSliderSetUp()
         latestProductsRecyclerViewSetUp()
+        popularProductRecyclerViewSetUp()
     }
 
 
@@ -60,12 +62,24 @@ class HomeFragment:NikeFragment() {
     }
 
     private fun latestProductsRecyclerViewSetUp(){
+        val layoutManager = LinearLayoutManager(requireContext(),RecyclerView.HORIZONTAL,false)
         val latestRecyclerView = binding.latestProductsRv
-        latestRecyclerView.layoutManager = LinearLayoutManager(requireContext(),RecyclerView.HORIZONTAL,false)
+        latestRecyclerView.layoutManager = layoutManager
 
         homeFragmentViewModel.latestProductsLiveData.observe(viewLifecycleOwner){
             productListAdapter.products = it
             latestRecyclerView.adapter = productListAdapter
+        }
+    }
+
+    private fun popularProductRecyclerViewSetUp(){
+        val popularRecyclerView = binding.popularProductsRv
+        val layoutManager = LinearLayoutManager(requireContext(),RecyclerView.HORIZONTAL,false)
+        popularRecyclerView.layoutManager = layoutManager
+
+        homeFragmentViewModel.popularProductsLiveData.observe(viewLifecycleOwner){
+            popularListAdapter.products = it
+            popularRecyclerView.adapter = popularListAdapter
         }
     }
 }

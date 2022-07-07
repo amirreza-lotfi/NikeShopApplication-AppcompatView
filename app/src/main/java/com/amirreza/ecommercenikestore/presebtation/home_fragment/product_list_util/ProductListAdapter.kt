@@ -15,10 +15,11 @@ import com.example.nikeshop.feature_shop.domain.entity.Product
 import com.facebook.drawee.view.SimpleDraweeView
 import com.sevenlearn.nikestore.common.formatPrice
 
-class ProductListAdapter(val imageLoaderI: ImageLoaderI):ListAdapter<Product, ProductListAdapter.ItemHolder>(ProductDifferCallBack()) {
+class ProductListAdapter(val imageLoaderI: ImageLoaderI): RecyclerView.Adapter<ProductListAdapter.ItemHolder>() {
     var products: List<Product> = listOf()
         set(value) {
             field = value
+            notifyDataSetChanged()
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
@@ -27,14 +28,14 @@ class ProductListAdapter(val imageLoaderI: ImageLoaderI):ListAdapter<Product, Pr
     }
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
-
+        holder.onBind(products[position])
     }
 
     inner class  ItemHolder(item: View):RecyclerView.ViewHolder(item){
-        val productIv: SimpleDraweeView = item.findViewById(R.id.item_product_image)
-        val titleTv: AppCompatTextView = item.findViewById(R.id.productTitleTv)
-        val currentPriceTv: AppCompatTextView = item.findViewById(R.id.currentPriceTv)
-        val previousPriceTv: AppCompatTextView = item.findViewById(R.id.previousPriceTv)
+        private val productIv: SimpleDraweeView = item.findViewById(R.id.item_product_image)
+        private val titleTv: AppCompatTextView = item.findViewById(R.id.productTitleTv)
+        private val currentPriceTv: AppCompatTextView = item.findViewById(R.id.currentPriceTv)
+        private val previousPriceTv: AppCompatTextView = item.findViewById(R.id.previousPriceTv)
 
         fun onBind(product: Product){
             imageLoaderI.load(productIv,product.image)
@@ -45,14 +46,7 @@ class ProductListAdapter(val imageLoaderI: ImageLoaderI):ListAdapter<Product, Pr
         }
     }
 
-    class ProductDifferCallBack: DiffUtil.ItemCallback<Product>(){
-        override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
-            return oldItem == newItem
-        }
-        override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
-            return oldItem.id == newItem.id
-        }
+    override fun getItemCount(): Int {
+        return products.size
     }
-
-
 }
