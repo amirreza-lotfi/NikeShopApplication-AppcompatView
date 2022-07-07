@@ -1,7 +1,10 @@
 package com.example.nikeshop.feature_shop.domain.entity
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Banner(
     val id:Int,
 
@@ -13,4 +16,4 @@ data class Banner(
 
     @SerializedName("link_value")
     val linkValue:String
-)
+):Parcelable

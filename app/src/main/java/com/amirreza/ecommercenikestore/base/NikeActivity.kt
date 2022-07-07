@@ -1,4 +1,5 @@
 package com.amirreza.ecommercenikestore.base
 
-class NikeActivity {
-}
+import androidx.appcompat.app.AppCompatActivity
+
+abstract class NikeActivity: AppCompatActivity(),NikeView{}

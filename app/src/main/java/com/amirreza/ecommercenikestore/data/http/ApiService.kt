@@ -12,9 +12,7 @@ import retrofit2.http.Query
 interface ApiService {
 
     @GET("product/list")
-    fun getProducts(
-        @Query("sort") sort:String
-    ): Single<List<Product>>
+    fun getProducts(@Query("sort") sort: String): Single<List<Product>>
 
     @GET("banner/slider")
     fun getBanner():Single<List<Banner>>

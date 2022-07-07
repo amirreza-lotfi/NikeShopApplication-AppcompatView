@@ -82,7 +82,7 @@ dependencies {
     implementation "androidx.viewpager2:viewpager2:1.0.0"
 
     //fresco for load image
-    //implementation 'com.facebook.fresco:fresco:2.6.0'
+    implementation 'com.facebook.fresco:fresco:2.6.0'
 
     //indicator viewPager2
    // implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'

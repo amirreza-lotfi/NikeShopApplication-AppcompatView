@@ -2,10 +2,12 @@ package com.amirreza.ecommercenikestore.di
 
 import android.app.Application
 import com.amirreza.ecommercenikestore.data.http.createInstanceOfApiService
+import com.amirreza.ecommercenikestore.data.repository.FrescoImageLoadingService
 import com.example.nikeshop.feature_shop.data.repository.BannerRepositoryImpl
 import com.example.nikeshop.feature_shop.data.repository.ProductRepositoryImpl
 import com.amirreza.ecommercenikestore.data.source.banner_data_source.BannerRemoteDataSource
 import com.amirreza.ecommercenikestore.data.source.product_data_spurce.ProductLocalDataSource
+import com.amirreza.ecommercenikestore.domain.repository.ImageLoaderI
 import com.example.nikeshop.feature_shop.data.source.product_data_spurce.ProductRemoteDataSource
 import com.example.nikeshop.feature_shop.domain.repository.BannerRepositoryI
 import com.amirreza.ecommercenikestore.domain.repository.ProductRepositoryI
@@ -16,15 +18,22 @@ import com.amirreza.ecommercenikestore.domain.useCases.product_usecases.AddProdu
 import com.amirreza.ecommercenikestore.domain.useCases.product_usecases.DeleteProductFromFavoritesUC
 import com.amirreza.ecommercenikestore.domain.useCases.product_usecases.GetFavoriteProductsUC
 import com.amirreza.ecommercenikestore.domain.useCases.product_usecases.GetProductsUC
+import com.amirreza.ecommercenikestore.presebtation.home_fragment.HomeFragmentViewModel
+import com.amirreza.ecommercenikestore.presebtation.home_fragment.product_list_util.ProductListAdapter
+import com.facebook.drawee.backends.pipeline.Fresco
 import org.koin.android.ext.koin.androidContext
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.GlobalContext.startKoin
 import org.koin.dsl.module
 
-class NikeShopApplication:Application() {
+class NikeShopApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+        Fresco.initialize(this)
+
         val module = module {
-            single{ createInstanceOfApiService() }
+            single { createInstanceOfApiService() }
+
 
             factory<ProductRepositoryI> {
                 ProductRepositoryImpl(
@@ -39,7 +48,15 @@ class NikeShopApplication:Application() {
                 )
             }
 
-            single{
+            factory<ImageLoaderI> {
+                FrescoImageLoadingService()
+            }
+
+            factory<ProductListAdapter> {
+                ProductListAdapter(get())
+            }
+
+            single {
                 ProductUseCases(
                     GetProductsUC(get()),
                     GetFavoriteProductsUC(get()),
@@ -55,18 +72,14 @@ class NikeShopApplication:Application() {
 
 
         }
-//        val viewModelsModule = module{
-//            viewModel {
-//                HomeScreenViewModel(get(),get())
-//            }
-//
-//            viewModel {
-//                ProductDetailViewModel(state = handle,productRepository = get())
-//            }
-//        }
-        startKoin{
+        val viewModelsModule = module {
+            viewModel {
+                HomeFragmentViewModel(get(), get())
+            }
+        }
+        startKoin {
             androidContext(this@NikeShopApplication)
-            modules(listOf(module))
+            modules(listOf(module, viewModelsModule))
         }
     }
 }
