@@ -2,8 +2,8 @@ package com.amirreza.ecommercenikestore.presebtation.home_fragment
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.amirreza.ecommercenikestore.base.NikeSingleObserver
-import com.amirreza.ecommercenikestore.base.NikeViewModel
+import com.amirreza.ecommercenikestore.common.base.NikeSingleObserver
+import com.amirreza.ecommercenikestore.common.base.NikeViewModel
 import com.amirreza.ecommercenikestore.domain.useCases.BannerUseCases
 import com.amirreza.ecommercenikestore.domain.useCases.ProductUseCases
 import com.example.nikeshop.feature_shop.domain.entity.Banner

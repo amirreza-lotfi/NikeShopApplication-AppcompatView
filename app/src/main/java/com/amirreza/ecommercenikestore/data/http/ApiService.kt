@@ -1,5 +1,6 @@
 package com.amirreza.ecommercenikestore.data.http
 
+import com.amirreza.ecommercenikestore.domain.entity.Comment
 import com.example.nikeshop.feature_shop.domain.entity.Banner
 import com.example.nikeshop.feature_shop.domain.entity.Product
 import io.reactivex.Single
@@ -16,6 +17,10 @@ interface ApiService {
 
     @GET("banner/slider")
     fun getBanner():Single<List<Banner>>
+
+    @GET("comment/list")
+    fun getComments(@Query("product_id") productId:Int):Single<List<Comment>>
+
 }
 
 fun createInstanceOfApiService(): ApiService {

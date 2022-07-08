@@ -1,20 +1,25 @@
-package com.amirreza.ecommercenikestore.di
+package com.amirreza.ecommercenikestore.common.di
 
 import android.app.Application
 import android.os.Bundle
 import com.amirreza.ecommercenikestore.data.http.createInstanceOfApiService
+import com.amirreza.ecommercenikestore.data.repository.CommentRepositoryImpl
 import com.amirreza.ecommercenikestore.data.repository.FrescoImageLoadingService
 import com.example.nikeshop.feature_shop.data.repository.BannerRepositoryImpl
 import com.example.nikeshop.feature_shop.data.repository.ProductRepositoryImpl
 import com.amirreza.ecommercenikestore.data.source.banner_data_source.BannerRemoteDataSource
+import com.amirreza.ecommercenikestore.data.source.comment_data_source.RemoteCommentDataSource
 import com.amirreza.ecommercenikestore.data.source.product_data_spurce.ProductLocalDataSource
+import com.amirreza.ecommercenikestore.domain.repository.CommentRepositoryI
 import com.amirreza.ecommercenikestore.domain.repository.ImageLoaderI
 import com.example.nikeshop.feature_shop.data.source.product_data_spurce.ProductRemoteDataSource
 import com.example.nikeshop.feature_shop.domain.repository.BannerRepositoryI
 import com.amirreza.ecommercenikestore.domain.repository.ProductRepositoryI
 import com.amirreza.ecommercenikestore.domain.useCases.BannerUseCases
+import com.amirreza.ecommercenikestore.domain.useCases.CommentUseCase
 import com.amirreza.ecommercenikestore.domain.useCases.ProductUseCases
 import com.amirreza.ecommercenikestore.domain.useCases.banner_usecase.GetBannerUC
+import com.amirreza.ecommercenikestore.domain.useCases.comment_usecases.GetComments
 import com.amirreza.ecommercenikestore.domain.useCases.product_usecases.AddProductToFavoritesUC
 import com.amirreza.ecommercenikestore.domain.useCases.product_usecases.DeleteProductFromFavoritesUC
 import com.amirreza.ecommercenikestore.domain.useCases.product_usecases.GetFavoriteProductsUC
@@ -44,6 +49,12 @@ class NikeShopApplication : Application() {
                 )
             }
 
+            factory<CommentRepositoryI>{
+                CommentRepositoryImpl(
+                    RemoteCommentDataSource(get())
+                )
+            }
+
             factory<BannerRepositoryI> {
                 BannerRepositoryImpl(
                     BannerRemoteDataSource(get())
@@ -54,7 +65,7 @@ class NikeShopApplication : Application() {
                 FrescoImageLoadingService()
             }
 
-            factory<ProductListAdapter> {
+            factory {
                 ProductListAdapter(get())
             }
 
@@ -71,6 +82,11 @@ class NikeShopApplication : Application() {
                     GetBannerUC(get())
                 )
             }
+            single {
+                CommentUseCase(
+                    GetComments(get())
+                )
+            }
 
 
         }
@@ -79,7 +95,7 @@ class NikeShopApplication : Application() {
                 HomeFragmentViewModel(get(), get())
             }
             viewModel { (bundle: Bundle)->
-                ProductDetailViewModel(bundle)
+                ProductDetailViewModel(bundle,get())
             }
         }
         startKoin {

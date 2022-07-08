@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.amirreza.ecommercenikestore.R
-import com.amirreza.ecommercenikestore.base.EXTRA_KEY_DATA
+import com.amirreza.ecommercenikestore.common.base.EXTRA_KEY_DATA
 import com.amirreza.ecommercenikestore.domain.repository.ImageLoaderI
 import com.example.nikeshop.feature_shop.domain.entity.Banner
 import com.facebook.drawee.view.SimpleDraweeView

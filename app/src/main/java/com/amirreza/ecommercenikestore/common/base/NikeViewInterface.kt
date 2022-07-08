@@ -1,4 +1,4 @@
-package com.amirreza.ecommercenikestore.base
+package com.amirreza.ecommercenikestore.common.base
 
 import android.content.Context
 import android.view.LayoutInflater

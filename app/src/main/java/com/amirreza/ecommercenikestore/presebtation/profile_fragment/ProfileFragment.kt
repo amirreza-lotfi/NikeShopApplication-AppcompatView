@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.amirreza.ecommercenikestore.R
-import com.amirreza.ecommercenikestore.base.NikeFragment
+import com.amirreza.ecommercenikestore.common.base.NikeFragment
 
 class ProfileFragment:NikeFragment() {
     override fun onCreateView(
