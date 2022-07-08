@@ -24,7 +24,7 @@ class HomeFragment:NikeFragment(), ItemClickListener {
     lateinit var binding: FragmentHomeBinding
 
     private val homeFragmentViewModel:HomeFragmentViewModel by viewModel()
-    private val productListAdapter:ProductListAdapter by inject()
+    private val latestProductAdapter:ProductListAdapter by inject()
     private val popularListAdapter:ProductListAdapter by inject()
 
     override fun onCreateView(
@@ -67,17 +67,19 @@ class HomeFragment:NikeFragment(), ItemClickListener {
     }
 
     private fun latestProductsRecyclerViewSetUp(){
+        latestProductAdapter.itemClickListener = this
         val layoutManager = LinearLayoutManager(requireContext(),RecyclerView.HORIZONTAL,false)
         val latestRecyclerView = binding.latestProductsRv
         latestRecyclerView.layoutManager = layoutManager
 
         homeFragmentViewModel.latestProductsLiveData.observe(viewLifecycleOwner){
-            productListAdapter.products = it as ArrayList<Product> /* = java.util.ArrayList<com.example.nikeshop.feature_shop.domain.entity.Product> */
-            latestRecyclerView.adapter = productListAdapter
+            latestProductAdapter.products = it as ArrayList<Product> /* = java.util.ArrayList<com.example.nikeshop.feature_shop.domain.entity.Product> */
+            latestRecyclerView.adapter = latestProductAdapter
         }
     }
 
     private fun popularProductRecyclerViewSetUp(){
+        popularListAdapter.itemClickListener = this
         val popularRecyclerView = binding.popularProductsRv
         val layoutManager = LinearLayoutManager(requireContext(),RecyclerView.HORIZONTAL,false)
         popularRecyclerView.layoutManager = layoutManager

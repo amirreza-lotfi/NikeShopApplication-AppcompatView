@@ -19,6 +19,9 @@ import com.sevenlearn.nikestore.common.implementSpringAnimationTrait
 
 class ProductListAdapter(val imageLoaderI: ImageLoaderI): RecyclerView.Adapter<ProductListAdapter.ItemHolder>() {
     var itemClickListener: ItemClickListener? = null
+        set(value) {
+            field = value
+        }
 
     var products: ArrayList<Product> = arrayListOf()
         set(value) {

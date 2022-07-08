@@ -1,6 +1,7 @@
 package com.amirreza.ecommercenikestore.di
 
 import android.app.Application
+import android.os.Bundle
 import com.amirreza.ecommercenikestore.data.http.createInstanceOfApiService
 import com.amirreza.ecommercenikestore.data.repository.FrescoImageLoadingService
 import com.example.nikeshop.feature_shop.data.repository.BannerRepositoryImpl
@@ -20,6 +21,7 @@ import com.amirreza.ecommercenikestore.domain.useCases.product_usecases.GetFavor
 import com.amirreza.ecommercenikestore.domain.useCases.product_usecases.GetProductsUC
 import com.amirreza.ecommercenikestore.presebtation.home_fragment.HomeFragmentViewModel
 import com.amirreza.ecommercenikestore.presebtation.home_fragment.product_list_util.ProductListAdapter
+import com.amirreza.ecommercenikestore.presebtation.product_detail_fragment.ProductDetailViewModel
 import com.facebook.drawee.backends.pipeline.Fresco
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -75,6 +77,9 @@ class NikeShopApplication : Application() {
         val viewModelsModule = module {
             viewModel {
                 HomeFragmentViewModel(get(), get())
+            }
+            viewModel { (bundle: Bundle)->
+                ProductDetailViewModel(bundle)
             }
         }
         startKoin {
