@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layoutDirection="rtl"
+    android:padding="16dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/commentTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="@{comment.title}"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintEnd_toStartOf="@+id/commentTime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="متن ساختگی" />
+
+    <TextView
+        android:id="@+id/authorComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:gravity="right"
+        android:text="@{comment.author.email }"
+        android:textAppearance="?textAppearanceBody2"
+        android:textColor="?android:textColorSecondary"
+        app:layout_constraintStart_toStartOf="@+id/commentTitle"
+        app:layout_constraintTop_toBottomOf="@+id/commentTitle"
+        tools:text="amirreza.lotfi79@gmail.com" />
+
+    <TextView
+        android:id="@+id/commentTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{comment.date}"
+        android:textAppearance="?textAppearanceBody2"
+        android:textColor="?android:textColorSecondary"
+        app:layout_constraintBottom_toBottomOf="@+id/commentTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="جمعه 20 اردیبهشت 1400" />
+
+    <TextView
+        android:id="@+id/contentComment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="right"
+        android:text="@{comment.content}"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        app:layout_constraintEnd_toEndOf="@+id/commentTime"
+        app:layout_constraintStart_toStartOf="@+id/authorComment"
+        app:layout_constraintTop_toBottomOf="@+id/authorComment"
+        tools:text="خیلی خوبه خیلی خوبه خیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبه" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="?dividerColor"
+        app:layout_constraintTop_toBottomOf="@id/contentComment" />
+</androidx.constraintlayout.widget.ConstraintLayout>
