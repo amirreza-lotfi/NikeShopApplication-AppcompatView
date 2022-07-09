@@ -10,10 +10,12 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.amirreza.ecommercenikestore.R
+import com.amirreza.ecommercenikestore.common.base.EXTRA_ALL_COMMENTS
 import com.amirreza.ecommercenikestore.databinding.FragmentProductDetailBinding
 import com.amirreza.ecommercenikestore.domain.entity.Comment
 import com.amirreza.ecommercenikestore.domain.repository.ImageLoaderI
 import com.amirreza.ecommercenikestore.presebtation.product_detail_fragment.comment_recyclerView.CommentAdapter
+import com.amirreza.ecommercenikestore.presebtation.product_detail_fragment.comment_recyclerView.ItemClickEvent
 import com.amirreza.ecommercenikestore.presebtation.product_detail_fragment.scroll.ObservableScrollView
 import com.amirreza.ecommercenikestore.presebtation.product_detail_fragment.scroll.ObservableScrollViewCallbacks
 import com.amirreza.ecommercenikestore.presebtation.product_detail_fragment.scroll.ScrollState
@@ -29,6 +31,7 @@ class ProductDetailFragment : Fragment() {
         parametersOf(this.arguments)
     }
     private val imageLoaderI:ImageLoaderI by inject()
+    private val commentAdapter = CommentAdapter(false)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,7 +44,10 @@ class ProductDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         setUpCommentsRecyclerView()
+        setUpAllCommentButtonVisibility()
 
         productDetailViewModel.productLiveData.observe(viewLifecycleOwner){
             imageLoaderI.load(binding.productImage,it.image)
@@ -55,7 +61,7 @@ class ProductDetailFragment : Fragment() {
             val heightOfImage = binding.productImage.height
             binding.observableScrollView.addScrollViewCallbacks(object: ObservableScrollViewCallbacks{
                 override fun onScrollChanged(scrollY: Int, firstScroll: Boolean, dragging: Boolean) {
-                    binding.toolbarTitleTv.alpha = (scrollY.toFloat() / heightOfImage.toFloat())
+                    binding.toolbarView.alpha = (scrollY.toFloat() / heightOfImage.toFloat())
                     binding.productImage.translationY = scrollY.toFloat()/2
                 }
                 override fun onDownMotionEvent() {}
@@ -68,14 +74,23 @@ class ProductDetailFragment : Fragment() {
     private fun setUpCommentsRecyclerView(){
         val commentRecyclerView = binding.commentsRv
         commentRecyclerView.layoutManager = LinearLayoutManager(requireContext(),RecyclerView.VERTICAL,false)
-        val adapter = CommentAdapter()
-        commentRecyclerView.adapter = adapter
+        commentRecyclerView.isNestedScrollingEnabled = false
+        commentRecyclerView.adapter = commentAdapter
 
         productDetailViewModel.commentsLiveData.observe(viewLifecycleOwner){ comments->
-            adapter.comments = comments as ArrayList<Comment> /* = java.util.ArrayList<com.amirreza.ecommercenikestore.domain.entity.Comment> */
-
+            commentAdapter.comments = comments as ArrayList<Comment>
+            onSeeAllCommentsClick()
         }
 
     }
-
+    private fun setUpAllCommentButtonVisibility(){
+        binding.viewAllComment.visibility = if(!commentAdapter.mustAllCommentShow()) View.VISIBLE else View.GONE
+    }
+    private fun onSeeAllCommentsClick(){
+        binding.viewAllComment.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putInt(EXTRA_ALL_COMMENTS,productDetailViewModel.productLiveData.value!!.id)
+            findNavController().navigate(R.id.action_productDetailFragment_to_allCommentFragment3,bundle)
+        }
+    }
 }

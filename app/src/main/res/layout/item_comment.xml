@@ -4,12 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layoutDirection="rtl"
-    android:padding="16dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
         android:id="@+id/commentTitle"
         android:layout_width="0dp"
+        android:layout_margin="16dp"
         android:layout_height="wrap_content"
         android:gravity="right"
         android:text="@{comment.title}"
@@ -36,6 +36,8 @@
         android:id="@+id/commentTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+
         android:text="@{comment.date}"
         android:textAppearance="?textAppearanceBody2"
         android:textColor="?android:textColorSecondary"
@@ -50,7 +52,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:gravity="right"
-        android:text="@{comment.content}"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintEnd_toEndOf="@+id/commentTime"
         app:layout_constraintStart_toStartOf="@+id/authorComment"
@@ -58,11 +59,11 @@
         tools:text="خیلی خوبه خیلی خوبه خیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبهخیلی خوبه" />
 
     <View
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:background="?dividerColor"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/contentComment" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

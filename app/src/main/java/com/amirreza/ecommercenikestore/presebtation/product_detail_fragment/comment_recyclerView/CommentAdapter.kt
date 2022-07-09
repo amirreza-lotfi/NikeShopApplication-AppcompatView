@@ -8,16 +8,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.amirreza.ecommercenikestore.R
 import com.amirreza.ecommercenikestore.databinding.ItemCommentBinding
 import com.amirreza.ecommercenikestore.domain.entity.Comment
+import com.google.android.material.button.MaterialButton
 
-class CommentAdapter : RecyclerView.Adapter<CommentAdapter.CommentHolder>() {
+class CommentAdapter(val mustShowAll:Boolean) : RecyclerView.Adapter<CommentAdapter.CommentHolder>() {
     var comments:ArrayList<Comment> = arrayListOf()
         set(value)  {
             field = value
+            notifyDataSetChanged()
         }
     inner class CommentHolder(item: View) : RecyclerView.ViewHolder(item) {
         private val commentTitle: TextView = item.findViewById(R.id.commentTitle)
         private val time: TextView = item.findViewById(R.id.commentTime)
-        private val body: TextView = item.findViewById(R.id.commentTime)
+        private val body: TextView = item.findViewById(R.id.contentComment)
         private val writer:TextView = item.findViewById(R.id.authorComment)
 
         fun onBind(comment: Comment) {
@@ -37,6 +39,10 @@ class CommentAdapter : RecyclerView.Adapter<CommentAdapter.CommentHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return 3
+        return if(comments.size>=3 && !mustShowAll) 3 else comments.size
+    }
+
+    fun mustAllCommentShow(): Boolean {
+        return mustShowAll
     }
 }

@@ -2,13 +2,14 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layoutDirection="rtl"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presebtation.product_detail_fragment.ProductDetailFragment">
     <com.amirreza.ecommercenikestore.presebtation.product_detail_fragment.scroll.ObservableScrollView
         android:id="@+id/observableScrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,6 +27,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
+                android:layoutDirection="rtl"
+                android:layout_marginTop="8dp"
                 android:layout_height="wrap_content">
 
                 <TextView
@@ -68,7 +71,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:padding="8dp"
+                android:layout_marginTop="24dp"
                 android:text="@string/product_information"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
@@ -83,6 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="8dp"
                     android:text="@string/comments"
                     android:textAppearance="?textAppearanceHeadline6"
                     android:textColor="?android:textColorSecondary" />
@@ -108,15 +113,16 @@
                 />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/viewAllCommentsBtn"
+                android:id="@+id/viewAllComment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
                 android:visibility="gone"
                 tools:visibility="visible"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="32dp"
-                android:text="مشاهده همه نظرات"
+                android:text="@string/seeAllComments"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
         </LinearLayout>
@@ -162,5 +168,4 @@
             android:textAppearance="@style/TextAppearance.ECommerceNikeStore.Headline6"
             tools:text="نام محصول" />
     </com.google.android.material.card.MaterialCardView>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

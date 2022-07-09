@@ -12,7 +12,7 @@
         <action
             android:id="@+id/action_navigation_home_to_productDetailFragment"
             app:destination="@id/productDetailFragment" />
-    </fragment>
+    </fragment>z
     <fragment
         android:id="@+id/navigation_cart"
         android:name="com.amirreza.ecommercenikestore.presebtation.card_fragment.CardFragment"
@@ -25,5 +25,14 @@
         android:id="@+id/productDetailFragment"
         android:name="com.amirreza.ecommercenikestore.presebtation.product_detail_fragment.ProductDetailFragment"
         android:label="fragment_product_detail"
-        tools:layout="@layout/fragment_product_detail" />
+        tools:layout="@layout/fragment_product_detail" >
+        <action
+            android:id="@+id/action_productDetailFragment_to_allCommentFragment3"
+            app:destination="@id/allCommentFragment3" />
+    </fragment>
+    <fragment
+        android:id="@+id/allCommentFragment3"
+        android:name="com.amirreza.ecommercenikestore.presebtation.all_comments_fragment.AllCommentFragment"
+        android:label="fragment_all_comment"
+        tools:layout="@layout/fragment_all_comment" />
 </navigation>

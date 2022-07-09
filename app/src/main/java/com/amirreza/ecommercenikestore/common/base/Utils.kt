@@ -11,6 +11,8 @@ import android.view.View
 import androidx.dynamicanimation.animation.DynamicAnimation
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -40,12 +42,6 @@ fun formatPrice(
         SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
     )
     return spannableString
-}
-
-fun <T> Single<T>.asyncNetworkRequest(): Single<T> {
-    return subscribeOn(Schedulers.io())
-        .observeOn(AndroidSchedulers.mainThread())
-
 }
 
 
@@ -86,4 +82,16 @@ fun View.implementSpringAnimationTrait() {
 
         false
     }
+}
+
+fun <T> Single<T>.asyncIoNetworkCall() : Single<T>{
+    return this.subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+}
+
+fun getVerticalLinearLayoutManager(context: Context?): RecyclerView.LayoutManager {
+    return LinearLayoutManager(context,RecyclerView.VERTICAL,false)
+}
+fun geHorizontalLinearLayoutManager(context: Context?): RecyclerView.LayoutManager {
+    return LinearLayoutManager(context,RecyclerView.HORIZONTAL,false)
 }
