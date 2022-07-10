@@ -3,7 +3,6 @@ package com.amirreza.ecommercenikestore.presebtation.product_detail_fragment
 import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.amirreza.ecommercenikestore.common.base.EXTRA_PRODUCT_FROM_HOME_TO_DETAIL
 import com.amirreza.ecommercenikestore.common.base.NikeSingleObserver
 import com.amirreza.ecommercenikestore.common.base.NikeViewModel
@@ -22,15 +21,19 @@ class ProductDetailViewModel(bundle: Bundle, private val commentUseCase: Comment
 
     init {
         _productLiveData.value = bundle.getParcelable(EXTRA_PRODUCT_FROM_HOME_TO_DETAIL)
+        showPrograssBar(true)
         commentUseCase.getAll(_productLiveData.value!!.id)
             .subscribeOn(Schedulers.io())
+            .doFinally { showPrograssBar(false) }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : NikeSingleObserver<List<Comment>>(compositeDisposable){
                 override fun onSuccess(t: List<Comment>) {
                     _commentsLiveData.value = t
                 }
             })
+    }
 
-
+    private fun showPrograssBar(b: Boolean) {
+        progressBarIndicatorLiveData.value = b
     }
 }

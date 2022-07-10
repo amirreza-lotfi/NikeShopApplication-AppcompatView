@@ -10,25 +10,10 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <FrameLayout
+        <com.amirreza.ecommercenikestore.common.custom_view.NikeToolbar
             android:layout_width="match_parent"
-            android:layout_height="56dp">
-            <ImageView
-                android:id="@+id/backButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat = "@drawable/ic_back"
-                android:layout_marginStart="16dp"
-                android:layout_gravity="start|center_vertical"
-                android:contentDescription="back" />
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="48dp"
-                style="@style/TextAppearance.ECommerceNikeStore.Headline6"
-                android:layout_gravity="start|center_vertical"
-                android:text="مشاهده همه نظرات"/>
-        </FrameLayout>
+            android:layout_height="56dp"
+            app:NikeToolbarTitle="@string/comments"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView

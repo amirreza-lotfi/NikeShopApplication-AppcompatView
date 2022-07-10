@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="match_parent"
+    android:layout_height="56dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layoutDirection="rtl"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat = "@drawable/ic_back"
+        android:layout_marginStart="16dp"
+        android:layout_gravity="start|center_vertical"
+        android:contentDescription="back" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/toolbarTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        style="@style/TextAppearance.ECommerceNikeStore.Headline6"
+        android:layout_gravity="start|center_vertical"
+        android:text=""/>
+</FrameLayout>

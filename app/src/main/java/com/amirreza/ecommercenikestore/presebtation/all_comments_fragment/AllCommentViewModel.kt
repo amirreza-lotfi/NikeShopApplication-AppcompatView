@@ -19,12 +19,18 @@ class AllCommentViewModel(private val productId:Int, private val commentUseCase:
     }
 
     private fun getComments(){
+        showPrograssBar(true)
         commentUseCase.getAll(productId)
             .asyncIoNetworkCall()
+            .doFinally {showPrograssBar(false)}
             .subscribe(object : NikeSingleObserver<List<Comment>>(compositeDisposable){
                 override fun onSuccess(t: List<Comment>) {
                     _commentsLiveData.value = t
                 }
             })
+    }
+
+    private fun showPrograssBar(b: Boolean) {
+        progressBarIndicatorLiveData.value = b
     }
 }

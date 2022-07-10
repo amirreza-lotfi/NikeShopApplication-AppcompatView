@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.amirreza.ecommercenikestore.R
 import com.amirreza.ecommercenikestore.common.base.EXTRA_ALL_COMMENTS
+import com.amirreza.ecommercenikestore.common.base.NikeFragment
 import com.amirreza.ecommercenikestore.databinding.FragmentProductDetailBinding
 import com.amirreza.ecommercenikestore.domain.entity.Comment
 import com.amirreza.ecommercenikestore.domain.repository.ImageLoaderI
@@ -25,11 +26,9 @@ import kotlinx.android.synthetic.main.fragment_product_detail.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
-class ProductDetailFragment : Fragment() {
+class ProductDetailFragment : NikeFragment() {
     lateinit var binding:FragmentProductDetailBinding
-    private val productDetailViewModel:ProductDetailViewModel by inject {
-        parametersOf(this.arguments)
-    }
+    private val productDetailViewModel:ProductDetailViewModel by inject {parametersOf(this.arguments)}
     private val imageLoaderI:ImageLoaderI by inject()
     private val commentAdapter = CommentAdapter(false)
 
@@ -44,8 +43,7 @@ class ProductDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
+        setUpPrograssBar()
         setUpCommentsRecyclerView()
         setUpAllCommentButtonVisibility()
 
@@ -93,4 +91,11 @@ class ProductDetailFragment : Fragment() {
             findNavController().navigate(R.id.action_productDetailFragment_to_allCommentFragment3,bundle)
         }
     }
+
+    private fun setUpPrograssBar(){
+        productDetailViewModel.progressBarIndicatorLiveData.observe(viewLifecycleOwner){
+            setProgressBarIndicator(it)
+        }
+    }
+
 }
