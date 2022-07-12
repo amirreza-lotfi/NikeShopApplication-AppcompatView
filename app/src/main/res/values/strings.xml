@@ -3,9 +3,15 @@
     <string name="home">خانه</string>
     <string name="cart">سبد خرید</string>
     <string name="profile">پروفایل</string>
-
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="comments">کامنت ها</string>
     <string name="seeAllComments">مشاهده همه نظرات</string>
     <string name="product_information">کفش واژه‌ای پارسی است که در پارسی میانه نیز به همین صورت «کفش» بوده‌است. به سازنده و تعمیرکنندهٔ کفش، کفش‌گر یا کَفّاش گفته می‌شود. کفاش به قیاس کلمه‌های عربی ساخته شده‌است و در منابع کهن‌تر فارسی نظیر شاهنامه لفظ کفش‌گر به کار رفته‌است. کَفش یا موزه (رایج در فارسی افغانستان) پاافزاری است برای محافظت و راحتی پای آدم به هنگام انجام کارهای گوناگون. پای آدم دارای استخوان‌های بیشتری نسبت به هر اندام دیگری از بدن می‌باشد و در برابر خطرهای محیطی همچون سنگ‌های تیز و زمین داغ آسیب‌پذیر است که کفش در برابر این آسیب‌ها از پا محافظت می‌کند. طراحی کفش‌ها در طول زمان تغییرات بسیاری پیدا کرده، که ظاهر آن در اصل با کارکرد آن بستگی داشته‌است. کفش‌های امروزی در شیوه، پیچیدگی و هزینه تفاوت گسترده‌ای دارند. امروزه در طراحی کفش‌ها جنبهٔ آراستگی آن نیز در نظر گرفته می‌شود.</string>
+    <string name="sort">مرتب سازی</string>
+    <string name="productList">لیست محصولات</string>
+    <string name="latest">جدید ترین</string>
+    <string name="popular">محبوب ترین</string>
+    <string name="lessCost">ارزان ترین</string>
+    <string name="mustCost">گران ترین</string>
+    <string name="grid">grid</string>
 </resources>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="12dp"
+    android:layout_marginStart="4dp"
+    android:layout_marginEnd="4dp"
+    android:layoutDirection="rtl"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/item_product_image"
+        android:layout_width="match_parent"
+        app:viewAspectRatio="0.8"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:roundedCornerRadius="4dp"/>
+
+    <TextView
+        android:id="@+id/productTitleTv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:minLines="2"
+        android:gravity="center"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintEnd_toEndOf="@+id/item_product_image"
+        app:layout_constraintStart_toStartOf="@+id/item_product_image"
+        app:layout_constraintTop_toBottomOf="@id/item_product_image"
+        tools:text="TextView" />
+
+    <TextView
+        android:id="@+id/previousPriceTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textAppearance="?textAppearanceBody2"
+        android:textColor="?android:textColorSecondary"
+        app:layout_constraintEnd_toEndOf="@+id/item_product_image"
+        app:layout_constraintStart_toStartOf="@+id/item_product_image"
+        app:layout_constraintTop_toBottomOf="@id/productTitleTv"
+        tools:text="TextView" />
+
+    <TextView
+        android:id="@+id/currentPriceTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintEnd_toEndOf="@+id/item_product_image"
+        app:layout_constraintStart_toStartOf="@+id/item_product_image"
+        app:layout_constraintTop_toBottomOf="@+id/previousPriceTv" />
+
+    <ImageView
+        android:id="@+id/favoriteBtn"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@drawable/background_favorite"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:padding="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_favorites"
+        android:contentDescription="favorite" />
+</androidx.constraintlayout.widget.ConstraintLayout>

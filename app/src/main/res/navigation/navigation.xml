@@ -8,10 +8,14 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.amirreza.ecommercenikestore.presebtation.home_fragment.HomeFragment"
-        android:label="HomeFragment" >
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_navigation_home_to_productDetailFragment"
             app:destination="@id/productDetailFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_allProductFragment"
+            app:destination="@id/allProductFragment" />
     </fragment>z
     <fragment
         android:id="@+id/navigation_cart"
@@ -35,4 +39,9 @@
         android:name="com.amirreza.ecommercenikestore.presebtation.all_comments_fragment.AllCommentFragment"
         android:label="fragment_all_comment"
         tools:layout="@layout/fragment_all_comment" />
+    <fragment
+        android:id="@+id/allProductFragment"
+        android:name="com.amirreza.ecommercenikestore.presebtation.all_product_fragment.AllProductFragment"
+        android:label="fragment_all_product"
+        tools:layout="@layout/fragment_all_product" />
 </navigation>

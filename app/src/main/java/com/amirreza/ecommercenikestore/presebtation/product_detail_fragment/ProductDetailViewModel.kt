@@ -21,19 +21,15 @@ class ProductDetailViewModel(bundle: Bundle, private val commentUseCase: Comment
 
     init {
         _productLiveData.value = bundle.getParcelable(EXTRA_PRODUCT_FROM_HOME_TO_DETAIL)
-        showPrograssBar(true)
+        showProgressBar(true)
         commentUseCase.getAll(_productLiveData.value!!.id)
             .subscribeOn(Schedulers.io())
-            .doFinally { showPrograssBar(false) }
+            .doFinally { showProgressBar(false) }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : NikeSingleObserver<List<Comment>>(compositeDisposable){
                 override fun onSuccess(t: List<Comment>) {
                     _commentsLiveData.value = t
                 }
             })
-    }
-
-    private fun showPrograssBar(b: Boolean) {
-        progressBarIndicatorLiveData.value = b
     }
 }

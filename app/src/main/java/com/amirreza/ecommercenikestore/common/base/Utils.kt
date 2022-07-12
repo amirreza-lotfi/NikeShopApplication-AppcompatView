@@ -11,6 +11,7 @@ import android.view.View
 import androidx.dynamicanimation.animation.DynamicAnimation
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.reactivex.Single
@@ -94,4 +95,7 @@ fun getVerticalLinearLayoutManager(context: Context?): RecyclerView.LayoutManage
 }
 fun geHorizontalLinearLayoutManager(context: Context?): RecyclerView.LayoutManager {
     return LinearLayoutManager(context,RecyclerView.HORIZONTAL,false)
+}
+fun getGridLayoutManager(context: Context?): GridLayoutManager {
+    return GridLayoutManager(context, 2 )
 }

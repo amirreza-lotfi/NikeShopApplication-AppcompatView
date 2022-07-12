@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presebtation.all_product_fragment.AllProductFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.amirreza.ecommercenikestore.common.custom_view.NikeToolbar
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="?colorOnPrimary"
+            app:NikeToolbarTitle="@string/productList"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?dividerColor"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:background="?colorOnPrimary"
+            android:layout_height="56dp">
+
+            <ImageView
+                android:id="@+id/viewTypeChangerBtn"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="?selectableItemBackground"
+                android:contentDescription="@string/grid"
+                android:scaleType="centerInside"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <ImageView
+                android:id="@+id/sortIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:contentDescription="@string/sort"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_sort" />
+
+            <TextView
+                android:id="@+id/sortTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/sort"
+                android:textAppearance="?textAppearanceBody1"
+                app:layout_constraintBottom_toTopOf="@+id/sortTypeTv"
+                app:layout_constraintStart_toEndOf="@+id/sortIcon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <TextView
+                android:id="@+id/sortTypeTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:textAppearance="?textAppearanceBody2"
+                android:textColor="?android:textColorSecondary"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/sortIcon"
+                app:layout_constraintTop_toBottomOf="@+id/sortTv"
+                tools:text="@string/latest" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:background="?dividerColor"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/viewTypeChangerBtn"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/productRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        android:clipToPadding="false"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

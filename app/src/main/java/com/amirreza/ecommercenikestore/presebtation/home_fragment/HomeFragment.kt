@@ -9,12 +9,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.amirreza.ecommercenikestore.R
 import com.amirreza.ecommercenikestore.common.base.EXTRA_PRODUCT_FROM_HOME_TO_DETAIL
+import com.amirreza.ecommercenikestore.common.base.EXTRA_SORT_TYPE
+import com.amirreza.ecommercenikestore.common.base.EXTRA_VIEW_TYPE
 import com.amirreza.ecommercenikestore.common.base.NikeFragment
 import com.amirreza.ecommercenikestore.databinding.FragmentHomeBinding
+import com.amirreza.ecommercenikestore.presebtation.all_product_fragment.product_recycler_view.VIEW_TYPE_GRID
+import com.amirreza.ecommercenikestore.presebtation.all_product_fragment.product_recycler_view.VIEW_TYPE_LARG_VERTICAL
 import com.amirreza.ecommercenikestore.presebtation.home_fragment.banner_util.BannerSliderHomeFragmentAdapter
 import com.amirreza.ecommercenikestore.presebtation.home_fragment.product_list_util.ItemClickListener
 import com.amirreza.ecommercenikestore.presebtation.home_fragment.product_list_util.ProductListAdapter
 import com.example.nikeshop.feature_shop.domain.entity.Product
+import com.example.nikeshop.feature_shop.domain.entity.SORT_NEWEST
+import com.example.nikeshop.feature_shop.domain.entity.SORT_POPULAR
 import com.sevenlearn.nikestore.common.convertDpToPixel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -41,6 +47,8 @@ class HomeFragment:NikeFragment(), ItemClickListener {
         bannerSliderSetUp()
         latestProductsRecyclerViewSetUp()
         popularProductRecyclerViewSetUp()
+        onSeeAllLatestProductsClick()
+        onSeeAllPopularProductsClick()
     }
 
 
@@ -90,6 +98,22 @@ class HomeFragment:NikeFragment(), ItemClickListener {
         }
     }
 
+    private fun onSeeAllLatestProductsClick(){
+        binding.seeAllLatestProducts.setOnClickListener{
+            val bundle = Bundle()
+            bundle.putInt(EXTRA_SORT_TYPE, SORT_NEWEST)
+            bundle.putInt(EXTRA_VIEW_TYPE, VIEW_TYPE_GRID)
+            findNavController().navigate(R.id.action_navigation_home_to_allProductFragment,bundle)
+        }
+    }
+    private fun onSeeAllPopularProductsClick(){
+        binding.seeAllPopularProducts.setOnClickListener{
+            val bundle = Bundle()
+            bundle.putInt(EXTRA_SORT_TYPE, SORT_POPULAR)
+            bundle.putInt(EXTRA_VIEW_TYPE, VIEW_TYPE_LARG_VERTICAL)
+            findNavController().navigate(R.id.action_navigation_home_to_allProductFragment,bundle)
+        }
+    }
     override fun onClick(product: Product) {
         val bundle = Bundle()
         bundle.putParcelable(EXTRA_PRODUCT_FROM_HOME_TO_DETAIL,product)

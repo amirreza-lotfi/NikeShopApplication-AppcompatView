@@ -26,6 +26,8 @@ import com.amirreza.ecommercenikestore.domain.useCases.product_usecases.GetFavor
 import com.amirreza.ecommercenikestore.domain.useCases.product_usecases.GetProductsUC
 import com.amirreza.ecommercenikestore.presebtation.all_comments_fragment.AllCommentFragment
 import com.amirreza.ecommercenikestore.presebtation.all_comments_fragment.AllCommentViewModel
+import com.amirreza.ecommercenikestore.presebtation.all_product_fragment.AllProductViewModel
+import com.amirreza.ecommercenikestore.presebtation.all_product_fragment.product_recycler_view.AllProductListAdaper
 import com.amirreza.ecommercenikestore.presebtation.home_fragment.HomeFragmentViewModel
 import com.amirreza.ecommercenikestore.presebtation.home_fragment.product_list_util.ProductListAdapter
 import com.amirreza.ecommercenikestore.presebtation.product_detail_fragment.ProductDetailViewModel
@@ -71,6 +73,9 @@ class NikeShopApplication : Application() {
                 ProductListAdapter(get())
             }
 
+            factory { (viewType:Int)->
+                AllProductListAdaper(viewType,get())
+            }
             single {
                 ProductUseCases(
                     GetProductsUC(get()),
@@ -101,6 +106,9 @@ class NikeShopApplication : Application() {
             }
             viewModel { (int:Int)->
                 AllCommentViewModel(int,get())
+            }
+            viewModel { (sortType:Int)->
+                AllProductViewModel(sortType, get())
             }
         }
         startKoin {

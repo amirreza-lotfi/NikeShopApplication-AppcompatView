@@ -7,8 +7,6 @@ import com.amirreza.ecommercenikestore.common.base.NikeViewModel
 import com.amirreza.ecommercenikestore.domain.entity.Comment
 import com.amirreza.ecommercenikestore.domain.useCases.CommentUseCase
 import com.sevenlearn.nikestore.common.asyncIoNetworkCall
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 
 class AllCommentViewModel(private val productId:Int, private val commentUseCase: CommentUseCase) :NikeViewModel(){
     private val _commentsLiveData = MutableLiveData<List<Comment>>()
@@ -19,10 +17,10 @@ class AllCommentViewModel(private val productId:Int, private val commentUseCase:
     }
 
     private fun getComments(){
-        showPrograssBar(true)
+        showProgressBar(true)
         commentUseCase.getAll(productId)
             .asyncIoNetworkCall()
-            .doFinally {showPrograssBar(false)}
+            .doFinally {showProgressBar(false)}
             .subscribe(object : NikeSingleObserver<List<Comment>>(compositeDisposable){
                 override fun onSuccess(t: List<Comment>) {
                     _commentsLiveData.value = t
@@ -30,7 +28,5 @@ class AllCommentViewModel(private val productId:Int, private val commentUseCase:
             })
     }
 
-    private fun showPrograssBar(b: Boolean) {
-        progressBarIndicatorLiveData.value = b
-    }
+
 }
