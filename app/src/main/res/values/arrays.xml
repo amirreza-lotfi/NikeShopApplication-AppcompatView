@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sortType">
+        <item>"جدیدترین"</item>
+        <item>"پربازدیدترین"</item>
+        <item>"گران ترین"</item>
+        <item>"ارزان ترین"</item>
+    </string-array>
+</resources>
