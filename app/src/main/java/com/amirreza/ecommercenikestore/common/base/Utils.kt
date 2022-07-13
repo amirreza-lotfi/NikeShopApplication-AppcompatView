@@ -14,6 +14,7 @@ import androidx.dynamicanimation.animation.SpringForce
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -89,7 +90,10 @@ fun <T> Single<T>.asyncIoNetworkCall() : Single<T>{
     return this.subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
 }
-
+fun Completable.asyncIoNetworkCall():Completable{
+    return this.subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+}
 fun getVerticalLinearLayoutManager(context: Context?): RecyclerView.LayoutManager {
     return LinearLayoutManager(context,RecyclerView.VERTICAL,false)
 }

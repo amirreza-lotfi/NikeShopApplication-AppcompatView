@@ -1,28 +1,27 @@
 package com.amirreza.ecommercenikestore.presebtation.product_detail_fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.amirreza.ecommercenikestore.R
 import com.amirreza.ecommercenikestore.common.base.EXTRA_ALL_COMMENTS
+import com.amirreza.ecommercenikestore.common.base.NikeCompletable
 import com.amirreza.ecommercenikestore.common.base.NikeFragment
 import com.amirreza.ecommercenikestore.databinding.FragmentProductDetailBinding
 import com.amirreza.ecommercenikestore.domain.entity.Comment
 import com.amirreza.ecommercenikestore.domain.repository.ImageLoaderI
 import com.amirreza.ecommercenikestore.presebtation.product_detail_fragment.comment_recyclerView.CommentAdapter
-import com.amirreza.ecommercenikestore.presebtation.product_detail_fragment.comment_recyclerView.ItemClickEvent
-import com.amirreza.ecommercenikestore.presebtation.product_detail_fragment.scroll.ObservableScrollView
 import com.amirreza.ecommercenikestore.presebtation.product_detail_fragment.scroll.ObservableScrollViewCallbacks
 import com.amirreza.ecommercenikestore.presebtation.product_detail_fragment.scroll.ScrollState
-import com.example.nikeshop.feature_shop.domain.entity.Product
+import com.google.android.material.snackbar.Snackbar
+import com.sevenlearn.nikestore.common.asyncIoNetworkCall
 import com.sevenlearn.nikestore.common.formatPrice
-import kotlinx.android.synthetic.main.fragment_product_detail.*
+import io.reactivex.disposables.CompositeDisposable
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
@@ -31,6 +30,7 @@ class ProductDetailFragment : NikeFragment() {
     private val productDetailViewModel:ProductDetailViewModel by inject {parametersOf(this.arguments)}
     private val imageLoaderI:ImageLoaderI by inject()
     private val commentAdapter = CommentAdapter(false)
+    private val compositeDisposable = CompositeDisposable()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,9 +43,10 @@ class ProductDetailFragment : NikeFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setUpPrograssBar()
+        setUpProgressBar()
         setUpCommentsRecyclerView()
         setUpAllCommentButtonVisibility()
+        setOnClickAddToCartButton()
 
         productDetailViewModel.productLiveData.observe(viewLifecycleOwner){
             imageLoaderI.load(binding.productImage,it.image)
@@ -92,10 +93,21 @@ class ProductDetailFragment : NikeFragment() {
         }
     }
 
-    private fun setUpPrograssBar(){
+    private fun setUpProgressBar(){
         productDetailViewModel.progressBarIndicatorLiveData.observe(viewLifecycleOwner){
             setProgressBarIndicator(it)
         }
+    }
+    private fun setOnClickAddToCartButton(){
+        productDetailViewModel.addProductToShoppingCart()
+            .asyncIoNetworkCall()
+            .subscribe(object : NikeCompletable(compositeDisposable){
+                override fun onComplete() {
+                    Snackbar
+                        .make(rootView as CoordinatorLayout,"به سبد خرید اضافه شد",Snackbar.LENGTH_SHORT)
+                        .show()
+                }
+            })
     }
 
 }

@@ -7,12 +7,18 @@ import com.amirreza.ecommercenikestore.common.base.EXTRA_PRODUCT_FROM_HOME_TO_DE
 import com.amirreza.ecommercenikestore.common.base.NikeSingleObserver
 import com.amirreza.ecommercenikestore.common.base.NikeViewModel
 import com.amirreza.ecommercenikestore.domain.entity.Comment
+import com.amirreza.ecommercenikestore.domain.useCases.CartUseCase
 import com.amirreza.ecommercenikestore.domain.useCases.CommentUseCase
 import com.example.nikeshop.feature_shop.domain.entity.Product
+import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class ProductDetailViewModel(bundle: Bundle, private val commentUseCase: CommentUseCase): NikeViewModel() {
+class ProductDetailViewModel(
+    bundle: Bundle,
+    private val commentUseCase: CommentUseCase,
+    private val cartUseCase:CartUseCase
+): NikeViewModel() {
     private val _productLiveData = MutableLiveData<Product>()
     val productLiveData:LiveData<Product> = _productLiveData
 
@@ -31,5 +37,9 @@ class ProductDetailViewModel(bundle: Bundle, private val commentUseCase: Comment
                     _commentsLiveData.value = t
                 }
             })
+    }
+
+    fun addProductToShoppingCart():Completable{
+        return cartUseCase.addToCart(_productLiveData.value!!.id).ignoreElement()
     }
 }

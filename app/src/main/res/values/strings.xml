@@ -14,4 +14,5 @@
     <string name="lessCost">ارزان ترین</string>
     <string name="mustCost">گران ترین</string>
     <string name="grid">grid</string>
+    <string name="addToCart">افزودن به سبد خرید</string>
 </resources>
