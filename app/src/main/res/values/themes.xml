@@ -31,4 +31,13 @@
         <item name="dividerColor">@color/gray</item>
         <item name="bottomNavigationStyle">@style/customNavigationBar</item>
     </style>
+
+    <style name="ECommerceNikeStore.AuthActivity" parent="Theme.ECommerceNikeStore">
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/black</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:windowBackground">@color/black</item>
+        <item name="colorOnBackground">@color/white</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="materialButtonStyle">@style/ECommerceNikeStore.AuthActivity.ButtonTheme</item>
+    </style>
 </resources>

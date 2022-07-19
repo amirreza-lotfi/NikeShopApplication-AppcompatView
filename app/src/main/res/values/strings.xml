@@ -15,4 +15,14 @@
     <string name="mustCost">گران ترین</string>
     <string name="grid">grid</string>
     <string name="addToCart">افزودن به سبد خرید</string>
+    <string name="haveNotAccount">حساب کاربری ندارید؟</string>
+    <string name="signUp">ثبت نام</string>
+    <string name="nike">nike</string>
+    <string name="loginHint">قبلا ثبت نام کردید؟</string>
+    <string name="enterEmailAndPassword">ایمیل و رمزعبور خود را وارد کنید</string>
+    <string name="email">ایمیل</string>
+    <string name="password">رمز عبور</string>
+    <string name="loginTitleBtn">ورود</string>
+    <string name="createAccount">ایجاد حساب کاربری</string>
+    <string name="loginToAccount">ورود به حساب کاربری</string>
 </resources>
