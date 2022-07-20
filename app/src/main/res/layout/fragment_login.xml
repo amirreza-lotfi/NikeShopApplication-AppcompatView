@@ -98,7 +98,7 @@
             android:textAppearance="?textAppearanceBody1" />
 
         <Button
-            android:id="@+id/registerLinkBtn"
+            android:id="@+id/signUpBtn"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

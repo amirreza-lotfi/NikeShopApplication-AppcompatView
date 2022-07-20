@@ -1,8 +1,14 @@
-package com.amirreza.ecommercenikestore.feature_store.common.di
+package com.amirreza.ecommercenikestore.di
 
 import android.app.Application
+import android.content.SharedPreferences
 import android.os.Bundle
-import com.amirreza.ecommercenikestore.feature_store.data.http.createInstanceOfApiService
+import com.amirreza.ecommercenikestore.feature_auth.data.repository.AuthRepositoryImpl
+import com.amirreza.ecommercenikestore.feature_auth.data.source.local.AuthLocalDataSourceImp
+import com.amirreza.ecommercenikestore.feature_auth.data.source.remote.AuthRemoteDataSourceImpl
+import com.amirreza.ecommercenikestore.feature_auth.domain.repository.AuthRepository
+import com.amirreza.ecommercenikestore.feature_auth.presentation.AuthViewModel
+import com.amirreza.ecommercenikestore.http.createInstanceOfApiService
 import com.amirreza.ecommercenikestore.feature_store.data.repository.CartRepositoryImpl
 import com.amirreza.ecommercenikestore.feature_store.data.repository.CommentRepositoryImpl
 import com.amirreza.ecommercenikestore.feature_store.data.repository.FrescoImageLoadingService
@@ -36,6 +42,7 @@ import com.amirreza.ecommercenikestore.feature_store.presebtation.home_fragment.
 import com.amirreza.ecommercenikestore.feature_store.presebtation.home_fragment.product_list_util.ProductListAdapter
 import com.amirreza.ecommercenikestore.feature_store.presebtation.product_detail_fragment.ProductDetailViewModel
 import com.facebook.drawee.backends.pipeline.Fresco
+import org.koin.android.ext.android.get
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.GlobalContext.startKoin
@@ -86,6 +93,16 @@ class NikeShopApplication : Application() {
                 )
             }
 
+            single<SharedPreferences>{
+                this@NikeShopApplication.getSharedPreferences("appAuth", MODE_PRIVATE)
+            }
+
+            single<AuthRepository>{
+                AuthRepositoryImpl(
+                    AuthLocalDataSourceImp(get()),
+                    AuthRemoteDataSourceImpl(get())
+                )
+            }
             single {
                 CartUseCase(
                     AddToCartUC(get()),
@@ -121,10 +138,16 @@ class NikeShopApplication : Application() {
             viewModel { (sortType:Int)->
                 AllProductViewModel(sortType, get())
             }
+            viewModel {
+                AuthViewModel(get())
+            }
         }
         startKoin {
             androidContext(this@NikeShopApplication)
             modules(listOf(module, viewModelsModule))
         }
+
+        val authRepository:AuthRepository = get()
+        authRepository.loadToken()
     }
 }

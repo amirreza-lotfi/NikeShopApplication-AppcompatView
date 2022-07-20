@@ -1,6 +1,6 @@
 package com.example.nikeshop.feature_shop.data.source.product_data_spurce
 
-import com.amirreza.ecommercenikestore.feature_store.data.http.ApiService
+import com.amirreza.ecommercenikestore.http.ApiService
 import com.example.nikeshop.feature_shop.domain.entity.Product
 import io.reactivex.Completable
 import io.reactivex.Single

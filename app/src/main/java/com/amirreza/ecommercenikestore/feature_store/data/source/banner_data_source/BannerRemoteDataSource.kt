@@ -1,6 +1,6 @@
 package com.amirreza.ecommercenikestore.feature_store.data.source.banner_data_source
 
-import com.amirreza.ecommercenikestore.feature_store.data.http.ApiService
+import com.amirreza.ecommercenikestore.http.ApiService
 import com.example.nikeshop.feature_shop.data.source.banner_data_source.BannerDataSource
 import com.example.nikeshop.feature_shop.domain.entity.Banner
 import io.reactivex.Single

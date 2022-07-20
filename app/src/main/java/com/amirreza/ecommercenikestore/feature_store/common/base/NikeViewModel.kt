@@ -11,6 +11,9 @@ abstract class NikeViewModel: ViewModel(){
     protected fun showProgressBar(b: Boolean) {
         progressBarIndicatorLiveData.value = b
     }
+    protected fun showProgressBarWhenInBackgroundThread(b:Boolean){
+        progressBarIndicatorLiveData.postValue(b)
+    }
 
     override fun onCleared() {
         super.onCleared()

@@ -1,6 +1,6 @@
 package com.amirreza.ecommercenikestore.feature_store.data.source.comment_data_source
 
-import com.amirreza.ecommercenikestore.feature_store.data.http.ApiService
+import com.amirreza.ecommercenikestore.http.ApiService
 import com.amirreza.ecommercenikestore.feature_store.domain.entity.Comment
 import io.reactivex.Completable
 import io.reactivex.Single
