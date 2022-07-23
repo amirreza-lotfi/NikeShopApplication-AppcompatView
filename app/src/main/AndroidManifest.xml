@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.amirreza.ecommercenikestore.di.NikeShopApplication"
+        android:name=".di.NikeShopApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -22,7 +22,7 @@
             android:theme="@style/ECommerceNikeStore.AuthActivity"
             android:exported="false" />
         <activity
-            android:name="com.amirreza.ecommercenikestore.feature_store.presebtation.MainActivity"
+            android:name="com.amirreza.ecommercenikestore.feature_store.presentation.MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

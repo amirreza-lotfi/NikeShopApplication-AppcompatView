@@ -1,6 +1,6 @@
 package com.amirreza.ecommercenikestore.http
 
-import com.amirreza.ecommercenikestore.feature_auth.data.source.Tokens
+import com.amirreza.ecommercenikestore.feature_auth.domain.model.Tokens
 import com.amirreza.ecommercenikestore.feature_auth.domain.model.TokenResponse
 import com.amirreza.ecommercenikestore.feature_store.domain.entity.Comment
 import com.amirreza.ecommercenikestore.feature_store.domain.entity.cart.AddToCartResponse
@@ -10,6 +10,8 @@ import com.example.nikeshop.feature_shop.domain.entity.Product
 import com.google.gson.JsonObject
 import io.reactivex.Single
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -35,8 +37,11 @@ interface ApiService {
     @POST("auth/token")
     fun login(@Body jsonObject: JsonObject):Single<TokenResponse>
 
-    @POST("auth/register")
+    @POST("user/register")
     fun signUp(@Body jsonObject: JsonObject):Single<MessageResponse>
+
+    @POST("auth/token")
+    fun refreshToken(@Body jsonObject: JsonObject):Call<TokenResponse>
 
 }
 
@@ -50,7 +55,11 @@ fun createInstanceOfApiService(): ApiService {
             newRequest.addHeader("Accept","application/json")
             newRequest.method(previousRequest.method, previousRequest.body)
             return@addInterceptor it.proceed(newRequest.build())
-        }.build()
+        }
+        .addInterceptor(HttpLoggingInterceptor().apply {
+            setLevel(HttpLoggingInterceptor.Level.BODY)
+        })
+        .build()
 
     val retrofit =  Retrofit.Builder()
         .baseUrl("http://expertdevelopers.ir/api/v1/")

@@ -1,7 +1,7 @@
 package com.amirreza.ecommercenikestore.feature_auth.data.source.local
 
 import android.content.SharedPreferences
-import com.amirreza.ecommercenikestore.feature_auth.data.source.Tokens
+import com.amirreza.ecommercenikestore.feature_auth.domain.model.Tokens
 
 class AuthLocalDataSourceImp(private val sharedPreferences: SharedPreferences):
     AuthLocalDataSourceI {

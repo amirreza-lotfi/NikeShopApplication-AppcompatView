@@ -1,15 +1,21 @@
 package com.amirreza.ecommercenikestore.feature_auth.presentation.login_screen
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.amirreza.ecommercenikestore.R
 import com.amirreza.ecommercenikestore.databinding.FragmentLoginBinding
 import com.amirreza.ecommercenikestore.feature_auth.presentation.AuthViewModel
+import com.amirreza.ecommercenikestore.feature_auth.presentation.signup_screen.SignUpFragment
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeCompletable
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeFragment
 import com.sevenlearn.nikestore.common.asyncIoNetworkCall
+import io.reactivex.Completable
+import io.reactivex.CompletableObserver
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.fragment_login.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -37,16 +43,27 @@ class LoginFragment:NikeFragment() {
 
             authViewModel.login(username,password)
                 .asyncIoNetworkCall()
-                .subscribe(object : NikeCompletable(compositeDisposable){
+                .subscribe(object : CompletableObserver{
+                    override fun onSubscribe(d: Disposable) {
+                        Log.i("","")
+                    }
+
                     override fun onComplete() {
                         requireActivity().finish()
+                        showToast("ورود با موفقیت انجام شد.")
                     }
-                })
 
+                    override fun onError(e: Throwable) {
+                        showToast("اطلاعات وارده وجود ندارد. لطفا ثبت نام کنید.")
+                    }
+
+                })
         }
 
         binding.signUpBtn.setOnClickListener {
-
+            requireActivity().supportFragmentManager.beginTransaction().replace(
+                R.id.auth_container,SignUpFragment()
+            ).commit()
         }
     }
 }

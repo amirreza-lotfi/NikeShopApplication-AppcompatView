@@ -9,7 +9,7 @@ abstract class NikeViewModel: ViewModel(){
     val progressBarIndicatorLiveData = MutableLiveData<Boolean>()
 
     protected fun showProgressBar(b: Boolean) {
-        progressBarIndicatorLiveData.value = b
+        progressBarIndicatorLiveData.postValue(b)
     }
     protected fun showProgressBarWhenInBackgroundThread(b:Boolean){
         progressBarIndicatorLiveData.postValue(b)

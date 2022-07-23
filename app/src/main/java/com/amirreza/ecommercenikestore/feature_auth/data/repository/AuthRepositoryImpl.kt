@@ -1,6 +1,6 @@
 package com.amirreza.ecommercenikestore.feature_auth.data.repository
 
-import com.amirreza.ecommercenikestore.feature_auth.data.source.Tokens
+import com.amirreza.ecommercenikestore.feature_auth.domain.model.Tokens
 import com.amirreza.ecommercenikestore.feature_auth.data.source.local.AuthLocalDataSourceI
 import com.amirreza.ecommercenikestore.feature_auth.data.source.remote.AuthRemoteDataSourceI
 import com.amirreza.ecommercenikestore.feature_auth.domain.model.TokenResponse

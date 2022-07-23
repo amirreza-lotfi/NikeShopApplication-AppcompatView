@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:layoutDirection="rtl"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".feature_store.presebtation.all_product_fragment.AllProductFragment">
+    tools:context=".feature_store.presentation.all_product_fragment.AllProductFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <com.google.android.material.appbar.AppBarLayout

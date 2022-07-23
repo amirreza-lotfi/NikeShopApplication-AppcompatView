@@ -15,7 +15,7 @@ class AuthViewModel(private val authRepository: AuthRepository): NikeViewModel()
     }
     fun signUp(email:String, password:String):Completable {
         showProgressBarWhenInBackgroundThread(true)
-        return authRepository.login(email, password).doFinally {
+        return authRepository.signUp(email, password).doFinally {
             showProgressBarWhenInBackgroundThread(false)
         }
     }

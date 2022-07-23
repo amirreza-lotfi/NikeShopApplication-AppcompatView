@@ -73,13 +73,13 @@
         </FrameLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/loginBtn"
+            android:id="@+id/signUpMaterialButton"
             android:layout_width="270dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16sp"
             android:gravity="center"
             android:minHeight="48dp"
-            android:text="@string/loginTitleBtn" />
+            android:text="@string/signUp" />
     </LinearLayout>
 
     <LinearLayout
@@ -98,7 +98,7 @@
             android:textAppearance="?textAppearanceBody1" />
 
         <Button
-            android:id="@+id/signUpBtn"
+            android:id="@+id/loginBtn"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

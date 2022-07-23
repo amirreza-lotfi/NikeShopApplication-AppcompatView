@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.amirreza.ecommercenikestore.R
 import com.amirreza.ecommercenikestore.feature_auth.presentation.AuthActivity
@@ -32,7 +33,7 @@ interface NikeView{
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    fun showError(nikeException: NikeException, path:Int){
+    fun showError(nikeException: NikeException){
         viewContext?.let { context->
             rootView?.let{
                 when(nikeException.typeOfError){
@@ -50,6 +51,14 @@ interface NikeView{
     fun showSnackbar(message:String, duration:Int = Snackbar.LENGTH_SHORT){
         rootView?.let {
             Snackbar.make(it,message, duration).show()
+        }
+    }
+
+    fun showToast(message:String, duration:Int = Snackbar.LENGTH_SHORT){
+        rootView?.let {
+            viewContext?.let {
+                Toast.makeText(viewContext,message,duration).show()
+            }
         }
     }
 }
