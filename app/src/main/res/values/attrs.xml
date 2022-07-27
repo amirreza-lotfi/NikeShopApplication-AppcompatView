@@ -3,4 +3,5 @@
     <declare-styleable name="NikeToolbar">
         <attr name="NikeToolbarTitle" format="string"/>
     </declare-styleable>
+    <attr name="backgroundWindow" format="string"/>
 </resources>

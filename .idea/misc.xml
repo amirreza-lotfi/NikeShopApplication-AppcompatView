@@ -40,9 +40,16 @@
         <entry key="..\:/Users/TGr.h/Desktop/Nikeeee/NikeShopApplication-AppcompatView/app/src/main/res/drawable/background_edit_text.xml" value="0.1035" />
         <entry key="..\:/Users/TGr.h/Desktop/Nikeeee/NikeShopApplication-AppcompatView/app/src/main/res/drawable/background_favorite.xml" value="0.1035" />
         <entry key="..\:/Users/TGr.h/Desktop/Nikeeee/NikeShopApplication-AppcompatView/app/src/main/res/drawable/background_search_et.xml" value="0.1035" />
+        <entry key="..\:/Users/TGr.h/Desktop/Nikeeee/NikeShopApplication-AppcompatView/app/src/main/res/drawable/ic_minus.xml" value="0.1465" />
+        <entry key="..\:/Users/TGr.h/Desktop/Nikeeee/NikeShopApplication-AppcompatView/app/src/main/res/drawable/ic_plus.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/TGr.h/Desktop/Nikeeee/NikeShopApplication-AppcompatView/app/src/main/res/drawable/ic_plus_square.xml" value="0.1465" />
+        <entry key="..\:/Users/TGr.h/Desktop/Nikeeee/NikeShopApplication-AppcompatView/app/src/main/res/layout-v21/fragment_cart.xml" value="0.17083333333333334" />
         <entry key="..\:/Users/TGr.h/Desktop/Nikeeee/NikeShopApplication-AppcompatView/app/src/main/res/layout/activity_auth.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/TGr.h/Desktop/Nikeeee/NikeShopApplication-AppcompatView/app/src/main/res/layout/fragment_cart.xml" value="0.17083333333333334" />
         <entry key="..\:/Users/TGr.h/Desktop/Nikeeee/NikeShopApplication-AppcompatView/app/src/main/res/layout/fragment_login.xml" value="0.22" />
         <entry key="..\:/Users/TGr.h/Desktop/Nikeeee/NikeShopApplication-AppcompatView/app/src/main/res/layout/fragment_signup.xml" value="0.22" />
+        <entry key="..\:/Users/TGr.h/Desktop/Nikeeee/NikeShopApplication-AppcompatView/app/src/main/res/layout/item_cart.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/TGr.h/Desktop/Nikeeee/NikeShopApplication-AppcompatView/app/src/main/res/layout/item_purches_detail.xml" value="0.4466666666666667" />
       </map>
     </option>
   </component>

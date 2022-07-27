@@ -19,8 +19,12 @@
     </fragment>z
     <fragment
         android:id="@+id/navigation_cart"
-        android:name="com.amirreza.ecommercenikestore.feature_store.presentation.card_fragment.CardFragment"
-        android:label="CardFragment" />
+        android:name="com.amirreza.ecommercenikestore.feature_cart.presentation.card_fragment.CartFragment"
+        android:label="CardFragment" >
+        <action
+            android:id="@+id/action_navigation_cart_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.amirreza.ecommercenikestore.feature_store.presentation.profile_fragment.ProfileFragment"

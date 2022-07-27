@@ -1,18 +1,19 @@
-package com.amirreza.ecommercenikestore.feature_store.data.repository
+package com.amirreza.ecommercenikestore.feature_cart.data.repository
 
-import com.amirreza.ecommercenikestore.feature_store.data.source.cart_data_source.CartDataSourceI
-import com.amirreza.ecommercenikestore.feature_store.domain.entity.cart.AddToCartResponse
-import com.amirreza.ecommercenikestore.feature_store.domain.entity.cart.CartItemCount
-import com.amirreza.ecommercenikestore.feature_store.domain.entity.cart.MessageResponse
-import com.sevenlearn.nikestore.data.CartInShoppingList
+import com.amirreza.ecommercenikestore.feature_cart.data.data_source.cart_data_source.CartDataSourceI
+import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.AddToCartResponse
+import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.ProductCountInShoppingCart
+import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.MessageResponse
+import com.amirreza.ecommercenikestore.feature_cart.domain.repository.CartShoppingRepository
+import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.CartResponse
 import io.reactivex.Single
 
-class CartRepositoryImpl(private val cartDataSourceI: CartDataSourceI):CartDataSourceI {
+class CartRepositoryImpl(private val cartDataSourceI: CartDataSourceI):CartShoppingRepository {
     override fun addToCart(productId: Int): Single<AddToCartResponse> {
         return cartDataSourceI.addToCart(productId)
     }
 
-    override fun getProductsInShoppingCart(): Single<CartInShoppingList> {
+    override fun getProductsInShoppingCart(): Single<CartResponse> {
         return cartDataSourceI.getProductsInShoppingCart()
     }
 
@@ -24,7 +25,8 @@ class CartRepositoryImpl(private val cartDataSourceI: CartDataSourceI):CartDataS
         return cartDataSourceI.changeCount(cartItemId,count)
     }
 
-    override fun getItemsInTheShoppingCart(): Single<CartItemCount> {
-        return cartDataSourceI.getItemsInTheShoppingCart()
+    override fun getItemsInTheShoppingCart(): Single<ProductCountInShoppingCart> {
+        return cartDataSourceI.getCountOfProductsInShoppingCart()
     }
+
 }

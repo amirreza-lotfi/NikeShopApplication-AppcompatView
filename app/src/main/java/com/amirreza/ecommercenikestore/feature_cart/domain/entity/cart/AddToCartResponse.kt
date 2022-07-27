@@ -1,4 +1,4 @@
-package com.amirreza.ecommercenikestore.feature_store.domain.entity.cart
+package com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,10 +1,18 @@
-package com.sevenlearn.nikestore.data
+package com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart
 
-import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.ProductInCart
+import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.CartItem
+import com.google.gson.annotations.SerializedName
 
-data class CartItem(
-    val cart_items: List<ProductInCart>,
-    val payable_price: Int,
-    val shipping_cost: Int,
-    val total_price: Int
+data class CartResponse(
+    @SerializedName("cart_items")
+    val cartItems: List<CartItem>,
+
+    @SerializedName("payable_price")
+    val payablePrice: Int,
+
+    @SerializedName("shipping_cost")
+    val shippingCost: Int,
+
+    @SerializedName("total_price")
+    val totalPrice: Int
 )

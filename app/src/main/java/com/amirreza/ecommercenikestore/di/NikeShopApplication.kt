@@ -9,14 +9,14 @@ import com.amirreza.ecommercenikestore.feature_auth.data.source.remote.AuthRemot
 import com.amirreza.ecommercenikestore.feature_auth.domain.repository.AuthRepository
 import com.amirreza.ecommercenikestore.feature_auth.presentation.AuthViewModel
 import com.amirreza.ecommercenikestore.http.createInstanceOfApiService
-import com.amirreza.ecommercenikestore.feature_store.data.repository.CartRepositoryImpl
+import com.amirreza.ecommercenikestore.feature_cart.data.repository.CartRepositoryImpl
 import com.amirreza.ecommercenikestore.feature_store.data.repository.CommentRepositoryImpl
 import com.amirreza.ecommercenikestore.feature_store.data.repository.FrescoImageLoadingService
 import com.example.nikeshop.feature_shop.data.repository.BannerRepositoryImpl
 import com.example.nikeshop.feature_shop.data.repository.ProductRepositoryImpl
 import com.amirreza.ecommercenikestore.feature_store.data.source.banner_data_source.BannerRemoteDataSource
-import com.amirreza.ecommercenikestore.feature_store.data.source.cart_data_source.CartDataSourceI
-import com.amirreza.ecommercenikestore.feature_store.data.source.cart_data_source.CartRemoteDataSource
+import com.amirreza.ecommercenikestore.feature_cart.data.data_source.cart_data_source.CartDataSourceI
+import com.amirreza.ecommercenikestore.feature_cart.data.data_source.cart_data_source.CartRemoteDataSource
 import com.amirreza.ecommercenikestore.feature_store.data.source.comment_data_source.RemoteCommentDataSource
 import com.amirreza.ecommercenikestore.feature_store.data.source.product_data_spurce.ProductLocalDataSource
 import com.amirreza.ecommercenikestore.feature_store.domain.repository.CommentRepositoryI
@@ -29,7 +29,9 @@ import com.amirreza.ecommercenikestore.feature_store.domain.useCases.CartUseCase
 import com.amirreza.ecommercenikestore.feature_store.domain.useCases.CommentUseCase
 import com.amirreza.ecommercenikestore.feature_store.domain.useCases.ProductUseCases
 import com.amirreza.ecommercenikestore.feature_store.domain.useCases.banner_usecase.GetBannerUC
-import com.amirreza.ecommercenikestore.feature_store.domain.useCases.cart_usecases.*
+import com.amirreza.ecommercenikestore.feature_cart.domain.useCases.cart_usecases.*
+import com.amirreza.ecommercenikestore.feature_cart.presentation.card_fragment.CartViewModel
+import com.amirreza.ecommercenikestore.feature_cart.presentation.card_fragment.cartItemAdapter.CartItemAdapter
 import com.amirreza.ecommercenikestore.feature_store.domain.useCases.comment_usecases.GetComments
 import com.amirreza.ecommercenikestore.feature_store.domain.useCases.product_usecases.AddProductToFavoritesUC
 import com.amirreza.ecommercenikestore.feature_store.domain.useCases.product_usecases.DeleteProductFromFavoritesUC
@@ -82,8 +84,9 @@ class NikeShopApplication : Application() {
             }
 
             factory<CartDataSourceI>{
-                CartRepositoryImpl(CartRemoteDataSource(get()))
+                CartRemoteDataSource(get())
             }
+
             single {
                 ProductUseCases(
                     GetProductsUC(get()),
@@ -123,7 +126,6 @@ class NikeShopApplication : Application() {
                 )
             }
 
-
         }
         val viewModelsModule = module {
             viewModel {
@@ -140,6 +142,9 @@ class NikeShopApplication : Application() {
             }
             viewModel {
                 AuthViewModel(get())
+            }
+            viewModel {
+                CartViewModel(get())
             }
         }
         startKoin {

@@ -1,13 +1,13 @@
-package com.amirreza.ecommercenikestore.feature_store.domain.useCases.cart_usecases
+package com.amirreza.ecommercenikestore.feature_cart.domain.useCases.cart_usecases
 
-import com.amirreza.ecommercenikestore.feature_store.data.source.cart_data_source.CartDataSourceI
-import com.sevenlearn.nikestore.data.CartInShoppingList
+import com.amirreza.ecommercenikestore.feature_cart.domain.repository.CartShoppingRepository
+import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.CartResponse
 import io.reactivex.Single
 
 class GetProductsInShoppingListUC (
-    private val repo: CartDataSourceI
+    private val repo: CartShoppingRepository
 ) {
-    operator fun invoke(): Single<CartInShoppingList> {
+    operator fun invoke(): Single<CartResponse> {
         return repo.getProductsInShoppingCart()
     }
 }

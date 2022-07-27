@@ -1,11 +1,11 @@
-package com.amirreza.ecommercenikestore.feature_store.domain.useCases.cart_usecases
+package com.amirreza.ecommercenikestore.feature_cart.domain.useCases.cart_usecases
 
-import com.amirreza.ecommercenikestore.feature_store.data.source.cart_data_source.CartDataSourceI
-import com.amirreza.ecommercenikestore.feature_store.domain.entity.cart.AddToCartResponse
+import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.AddToCartResponse
+import com.amirreza.ecommercenikestore.feature_cart.domain.repository.CartShoppingRepository
 import io.reactivex.Single
 
 class ChangeCountUC(
-    private val repo: CartDataSourceI
+    private val repo: CartShoppingRepository
 ) {
     operator fun invoke(cartItemId: Int, count:Int): Single<AddToCartResponse> {
         return repo.changeCount(cartItemId,count)

@@ -25,4 +25,11 @@
     <string name="loginTitleBtn">ورود</string>
     <string name="createAccount">ایجاد حساب کاربری</string>
     <string name="loginToAccount">ورود به حساب کاربری</string>
+    <string name="shopping_cart">سبدخرید</string>
+    <string name="payment">پرداخت</string>
+    <string name="count">تعداد</string>
+    <string name="purchaseDetail">جزئیات خرید</string>
+    <string name="totalPrice">قیمت کل</string>
+    <string name="shippingCost">هزینه ارسال</string>
+    <string name="payablePrice">مبلغ قابل پرداخت</string>
 </resources>

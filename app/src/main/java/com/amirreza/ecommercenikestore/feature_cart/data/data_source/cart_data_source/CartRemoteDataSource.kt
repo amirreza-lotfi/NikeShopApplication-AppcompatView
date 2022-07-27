@@ -1,11 +1,11 @@
-package com.amirreza.ecommercenikestore.feature_store.data.source.cart_data_source;
+package com.amirreza.ecommercenikestore.feature_cart.data.data_source.cart_data_source;
 
 import com.amirreza.ecommercenikestore.http.ApiService;
 import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.AddToCartResponse
-import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.CartItemCount
+import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.ProductCountInShoppingCart
 import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.MessageResponse
 import com.google.gson.JsonObject
-import com.sevenlearn.nikestore.data.CartInShoppingList
+import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.CartResponse
 import io.reactivex.Single
 
 class CartRemoteDataSource(private val apiService:ApiService):CartDataSourceI{
@@ -17,19 +17,25 @@ class CartRemoteDataSource(private val apiService:ApiService):CartDataSourceI{
         )
     }
 
-    override fun getProductsInShoppingCart(): Single<CartInShoppingList> {
-        TODO("Not yet implemented")
-    }
+    override fun getProductsInShoppingCart(): Single<CartResponse> = apiService.getProductsInShoppingCart()
 
     override fun remove(cartItemId: Int): Single<MessageResponse> {
-        TODO("Not yet implemented")
+        return apiService.remove(
+            JsonObject().apply {
+                addProperty("cart_item_id",cartItemId)
+            }
+        )
     }
 
     override fun changeCount(cartItemId: Int, count: Int): Single<AddToCartResponse> {
-        TODO("Not yet implemented")
+        return apiService.changeCountOfProductInShoppingCart(
+            JsonObject().apply {
+                addProperty("cart_item_id",cartItemId)
+                addProperty("count",count)
+            }
+        )
     }
 
-    override fun getItemsInTheShoppingCart(): Single<CartItemCount> {
-        TODO("Not yet implemented")
-    }
+    override fun getCountOfProductsInShoppingCart(): Single<ProductCountInShoppingCart> = apiService.getCountOfProductsInShoppingCart()
+
 }

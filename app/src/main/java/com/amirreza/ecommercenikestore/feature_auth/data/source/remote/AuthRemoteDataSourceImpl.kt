@@ -4,7 +4,7 @@ import com.amirreza.ecommercenikestore.feature_auth.domain.model.TokenResponse
 import com.amirreza.ecommercenikestore.feature_store.common.base.CLIENT_ID
 import com.amirreza.ecommercenikestore.feature_store.common.base.CLIENT_SECRET
 import com.amirreza.ecommercenikestore.http.ApiService
-import com.amirreza.ecommercenikestore.feature_store.domain.entity.cart.MessageResponse
+import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.MessageResponse
 import com.google.gson.JsonObject
 import io.reactivex.Single
 

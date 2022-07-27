@@ -1,15 +1,15 @@
-package com.amirreza.ecommercenikestore.feature_store.domain.repository
+package com.amirreza.ecommercenikestore.feature_cart.domain.repository
 
-import com.amirreza.ecommercenikestore.feature_store.domain.entity.cart.AddToCartResponse
-import com.amirreza.ecommercenikestore.feature_store.domain.entity.cart.CartItemCount
-import com.amirreza.ecommercenikestore.feature_store.domain.entity.cart.MessageResponse
-import com.sevenlearn.nikestore.data.CartInShoppingList
+import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.AddToCartResponse
+import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.ProductCountInShoppingCart
+import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.MessageResponse
+import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.CartResponse
 import io.reactivex.Single
 
 interface CartShoppingRepository {
     fun addToCart(productId:Int): Single<AddToCartResponse>
-    fun getProductsInShoppingCart():Single<CartInShoppingList>
+    fun getProductsInShoppingCart():Single<CartResponse>
     fun remove(cartItemId:Int): Single<MessageResponse>
     fun changeCount(cartItemId: Int, count:Int):Single<AddToCartResponse>
-    fun getItemsInTheShoppingCart():Single<CartItemCount>
+    fun getItemsInTheShoppingCart():Single<ProductCountInShoppingCart>
 }

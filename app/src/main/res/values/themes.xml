@@ -27,7 +27,7 @@
         <item name="textAppearanceCaption">@style/TextAppearance.ECommerceNikeStore.Caption</item>
         <item name="textAppearanceOverline">@style/TextAppearance.ECommerceNikeStore.Overline</item>
 
-
+        <item name="backgroundWindow">#f8f8f8</item>
         <item name="dividerColor">@color/gray</item>
         <item name="bottomNavigationStyle">@style/customNavigationBar</item>
     </style>
