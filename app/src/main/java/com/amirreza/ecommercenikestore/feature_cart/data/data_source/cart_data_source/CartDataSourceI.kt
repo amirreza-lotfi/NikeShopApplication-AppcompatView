@@ -1,8 +1,8 @@
 package com.amirreza.ecommercenikestore.feature_store.data.source.cart_data_source
 
-import com.amirreza.ecommercenikestore.feature_store.domain.entity.cart.AddToCartResponse
-import com.amirreza.ecommercenikestore.feature_store.domain.entity.cart.CartItemCount
-import com.amirreza.ecommercenikestore.feature_store.domain.entity.cart.MessageResponse
+import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.AddToCartResponse
+import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.CartItemCount
+import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.MessageResponse
 import com.sevenlearn.nikestore.data.CartInShoppingList
 import io.reactivex.Single
 
