@@ -3,24 +3,12 @@ package com.amirreza.ecommercenikestore.feature_cart.presentation.card_fragment.
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
-import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.amirreza.ecommercenikestore.R
 import com.amirreza.ecommercenikestore.databinding.ItemCartBinding
 import com.amirreza.ecommercenikestore.databinding.ItemPurchesDetailBinding
 import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.CartItem
 import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.PurchaseDetail
-import com.amirreza.ecommercenikestore.feature_cart.presentation.card_fragment.CartItemCallBack
-import com.amirreza.ecommercenikestore.feature_store.data.repository.FrescoImageLoadingService
 import com.amirreza.ecommercenikestore.feature_store.domain.repository.ImageLoaderI
-import com.example.nikeshop.feature_shop.domain.entity.Product
-import com.facebook.drawee.view.SimpleDraweeView
-import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.item_purches_detail.view.*
-import org.w3c.dom.Text
 
 const val VIEW_TYPE_CART = 0
 const val VIEW_TYPE_PURCHASE_DETAIL = 0

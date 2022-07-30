@@ -1,25 +1,32 @@
 package com.amirreza.ecommercenikestore.feature_cart.presentation.card_fragment
 
+import android.content.Intent
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
+import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.amirreza.ecommercenikestore.R
 import com.amirreza.ecommercenikestore.databinding.FragmentCartBinding
+import com.amirreza.ecommercenikestore.feature_auth.presentation.AuthActivity
 import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.CartItem
 import com.amirreza.ecommercenikestore.feature_cart.presentation.card_fragment.cartItemAdapter.CartItemAdapter
+import com.amirreza.ecommercenikestore.feature_cart.presentation.card_fragment.cartItemAdapter.CartItemCallBack
 import com.amirreza.ecommercenikestore.feature_store.common.base.EXTRA_PRODUCT_FROM_HOME_TO_DETAIL
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeFragment
 import com.amirreza.ecommercenikestore.feature_store.domain.repository.ImageLoaderI
+import com.google.android.material.button.MaterialButton
 import com.sevenlearn.nikestore.common.asyncIoNetworkCall
 import io.reactivex.CompletableObserver
 import io.reactivex.disposables.Disposable
 import org.koin.android.ext.android.inject
 
-class CartFragment:NikeFragment(),CartItemCallBack{
+class CartFragment:NikeFragment(), CartItemCallBack {
     private lateinit var binding: FragmentCartBinding
     private val cartViewModel:CartViewModel by inject()
     private val imageLoader:ImageLoaderI by inject()
@@ -51,6 +58,29 @@ class CartFragment:NikeFragment(),CartItemCallBack{
                 it.notifyItemChanged(cartAdapter.cartItemList.size)
             }
         }
+
+        cartViewModel.emptyCartState.observe(viewLifecycleOwner){ emptyState->
+            if(emptyState.mustShow){
+                val emptyView = getEmptyState(R.layout.view_emty_state_cart)
+                emptyView?.let { emptyStateView->
+                    emptyStateView.visibility = View.VISIBLE
+
+                    val message = emptyStateView.findViewById<TextView>(R.id.emptyStateMessageTv)
+                    val emptyStateCtaBtn = emptyStateView.findViewById<MaterialButton>(R.id.emptyStateCtaBtn)
+
+                    emptyStateCtaBtn.visibility = if(emptyState.mustShowActionButton) View.VISIBLE else View.GONE
+                    emptyStateCtaBtn.setOnClickListener {
+                        val intent = Intent(context,AuthActivity::class.java)
+                        startActivity(intent)
+                    }
+                    message.text = getString(emptyState.messageResId)
+                }
+            }
+            else{
+                view.findViewById<FrameLayout>(R.id.rootOfEmptyState)?.visibility = View.GONE
+            }
+        }
+
 
     }
 

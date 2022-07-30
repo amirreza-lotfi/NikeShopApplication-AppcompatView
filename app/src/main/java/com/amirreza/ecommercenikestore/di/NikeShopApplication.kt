@@ -9,7 +9,6 @@ import com.amirreza.ecommercenikestore.feature_auth.data.source.remote.AuthRemot
 import com.amirreza.ecommercenikestore.feature_auth.domain.repository.AuthRepository
 import com.amirreza.ecommercenikestore.feature_auth.presentation.AuthViewModel
 import com.amirreza.ecommercenikestore.http.createInstanceOfApiService
-import com.amirreza.ecommercenikestore.feature_cart.data.repository.CartRepositoryImpl
 import com.amirreza.ecommercenikestore.feature_store.data.repository.CommentRepositoryImpl
 import com.amirreza.ecommercenikestore.feature_store.data.repository.FrescoImageLoadingService
 import com.example.nikeshop.feature_shop.data.repository.BannerRepositoryImpl
@@ -25,13 +24,12 @@ import com.example.nikeshop.feature_shop.data.source.product_data_spurce.Product
 import com.example.nikeshop.feature_shop.domain.repository.BannerRepositoryI
 import com.amirreza.ecommercenikestore.feature_store.domain.repository.ProductRepositoryI
 import com.amirreza.ecommercenikestore.feature_store.domain.useCases.BannerUseCases
-import com.amirreza.ecommercenikestore.feature_store.domain.useCases.CartUseCase
+import com.amirreza.ecommercenikestore.feature_cart.domain.useCases.CartUseCase
 import com.amirreza.ecommercenikestore.feature_store.domain.useCases.CommentUseCase
 import com.amirreza.ecommercenikestore.feature_store.domain.useCases.ProductUseCases
 import com.amirreza.ecommercenikestore.feature_store.domain.useCases.banner_usecase.GetBannerUC
 import com.amirreza.ecommercenikestore.feature_cart.domain.useCases.cart_usecases.*
 import com.amirreza.ecommercenikestore.feature_cart.presentation.card_fragment.CartViewModel
-import com.amirreza.ecommercenikestore.feature_cart.presentation.card_fragment.cartItemAdapter.CartItemAdapter
 import com.amirreza.ecommercenikestore.feature_store.domain.useCases.comment_usecases.GetComments
 import com.amirreza.ecommercenikestore.feature_store.domain.useCases.product_usecases.AddProductToFavoritesUC
 import com.amirreza.ecommercenikestore.feature_store.domain.useCases.product_usecases.DeleteProductFromFavoritesUC

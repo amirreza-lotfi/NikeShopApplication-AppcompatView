@@ -2,15 +2,17 @@ package com.amirreza.ecommercenikestore.feature_cart.presentation.card_fragment
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.amirreza.ecommercenikestore.R
 import com.amirreza.ecommercenikestore.feature_auth.domain.model.Tokens
+import com.amirreza.ecommercenikestore.feature_cart.domain.entity.EmptyCartState
+import com.amirreza.ecommercenikestore.feature_cart.domain.entity.EmptyCartStateFactory
 import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.CartItem
 import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.PurchaseDetail
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeSingleObserver
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeViewModel
-import com.amirreza.ecommercenikestore.feature_store.domain.useCases.CartUseCase
+import com.amirreza.ecommercenikestore.feature_cart.domain.useCases.CartUseCase
 import com.sevenlearn.nikestore.common.asyncIoNetworkCall
 import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.CartResponse
-import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.MessageResponse
 import io.reactivex.Completable
 
 class CartViewModel(private val cartUseCase: CartUseCase) : NikeViewModel() {
@@ -20,9 +22,13 @@ class CartViewModel(private val cartUseCase: CartUseCase) : NikeViewModel() {
     private val _purchaseDetailOfCart = MutableLiveData<PurchaseDetail>()
     val purchaseDetailOfCart: LiveData<PurchaseDetail> = _purchaseDetailOfCart
 
+    private val _emptyCartState = MutableLiveData<EmptyCartState>()
+    val emptyCartState: LiveData<EmptyCartState> = _emptyCartState
+
     private fun getProductInCart() {
-        if (!Tokens.token.isNullOrBlank()) {
+        if (hasUserLoggedInAccount()) {
             showProgressBar(true)
+            _emptyCartState.value = EmptyCartStateFactory.userHasLoggedIn()
             cartUseCase.getProducts()
                 .asyncIoNetworkCall()
                 .doFinally { showProgressBar(false) }
@@ -33,22 +39,37 @@ class CartViewModel(private val cartUseCase: CartUseCase) : NikeViewModel() {
                             _purchaseDetailOfCart.value = PurchaseDetail(
                                 t.totalPrice, t.payablePrice, t.shippingCost
                             )
+                        } else {
+                            _emptyCartState.value = EmptyCartStateFactory.cartIsEmpty()
                         }
                     }
                 })
+        } else {
+            _emptyCartState.value = EmptyCartStateFactory.userHasNotLoggedIn()
         }
     }
 
     fun removeItemFromCart(cartItem: CartItem): Completable {
         return cartUseCase
             .remove(cartItem.cartItemId)
-            .doOnSuccess { calculatePurchaseDetail() }
-            .asyncIoNetworkCall().ignoreElement()
+            .doOnSuccess {
+                calculatePurchaseDetail()
+                _cartItem.value?.let {
+                    if (it.isEmpty()) {
+                        _emptyCartState.postValue(EmptyCartStateFactory.cartIsEmpty())
+                    }
+                }
+            }
+            .asyncIoNetworkCall()
+            .ignoreElement()
     }
 
     fun increaseCartItemCount(cartItem: CartItem): Completable {
         return cartUseCase.changeCount(cartItem.cartItemId, cartItem.count + 1)
-            .doOnSuccess { calculatePurchaseDetail() }
+            .doOnSuccess {
+                calculatePurchaseDetail()
+                _emptyCartState.postValue(EmptyCartStateFactory.cartIsNotEmpty())
+            }
             .ignoreElement()
     }
 
@@ -68,10 +89,10 @@ class CartViewModel(private val cartUseCase: CartUseCase) : NikeViewModel() {
                 val totalPrice = cartItems.sumOf { cart ->
                     cart.count * cart.product.previous_price
                 }
-                val payAblePrice = cartItems.sumOf { cart->
-                    cart.count*cart.product.price
+                val payAblePrice = cartItems.sumOf { cart ->
+                    cart.count * cart.product.price
                 }
-                val deliveryCost = if (payAblePrice>500000) 0 else payAblePrice/10
+                val deliveryCost = if (payAblePrice > 500000) 0 else payAblePrice / 10
 
                 purchase.deliveryCost = deliveryCost
                 purchase.totalPrice = totalPrice
@@ -80,5 +101,9 @@ class CartViewModel(private val cartUseCase: CartUseCase) : NikeViewModel() {
                 _purchaseDetailOfCart.postValue(purchase)
             }
         }
+    }
+
+    private fun hasUserLoggedInAccount(): Boolean {
+        return !Tokens.token.isNullOrBlank()
     }
 }

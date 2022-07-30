@@ -1,4 +1,4 @@
-package com.amirreza.ecommercenikestore.feature_cart.presentation.card_fragment
+package com.amirreza.ecommercenikestore.feature_cart.presentation.card_fragment.cartItemAdapter
 
 import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.CartItem
 

@@ -32,4 +32,7 @@
     <string name="totalPrice">قیمت کل</string>
     <string name="shippingCost">هزینه ارسال</string>
     <string name="payablePrice">مبلغ قابل پرداخت</string>
+    <string name="pleaseLogInAccount">لطفا وارد حساب کاربری شوید</string>
+    <string name="enterToAccount">ورود به حساب کاربری</string>
+    <string name="cartIsEmpty">سبد خرید خالی است</string>
 </resources>

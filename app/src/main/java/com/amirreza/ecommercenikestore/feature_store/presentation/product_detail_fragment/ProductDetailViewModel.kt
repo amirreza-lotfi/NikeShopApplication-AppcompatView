@@ -7,7 +7,7 @@ import com.amirreza.ecommercenikestore.feature_store.common.base.EXTRA_PRODUCT_F
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeSingleObserver
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeViewModel
 import com.amirreza.ecommercenikestore.feature_store.domain.entity.Comment
-import com.amirreza.ecommercenikestore.feature_store.domain.useCases.CartUseCase
+import com.amirreza.ecommercenikestore.feature_cart.domain.useCases.CartUseCase
 import com.amirreza.ecommercenikestore.feature_store.domain.useCases.CommentUseCase
 import com.example.nikeshop.feature_shop.domain.entity.Product
 import io.reactivex.Completable
@@ -17,7 +17,7 @@ import io.reactivex.schedulers.Schedulers
 class ProductDetailViewModel(
     bundle: Bundle,
     private val commentUseCase: CommentUseCase,
-    private val cartUseCase:CartUseCase
+    private val cartUseCase: CartUseCase
 ): NikeViewModel() {
     private val _productLiveData = MutableLiveData<Product>()
     val productLiveData:LiveData<Product> = _productLiveData

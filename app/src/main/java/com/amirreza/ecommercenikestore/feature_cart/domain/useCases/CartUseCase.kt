@@ -1,4 +1,4 @@
-package com.amirreza.ecommercenikestore.feature_store.domain.useCases
+package com.amirreza.ecommercenikestore.feature_cart.domain.useCases
 
 import com.amirreza.ecommercenikestore.feature_cart.domain.useCases.cart_usecases.*
 

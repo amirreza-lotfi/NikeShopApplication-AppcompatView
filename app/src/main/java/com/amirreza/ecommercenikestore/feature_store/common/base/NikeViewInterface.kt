@@ -14,29 +14,30 @@ import com.google.android.material.snackbar.Snackbar
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
-interface NikeView{
+interface NikeView {
     val rootView: CoordinatorLayout?
     val viewContext: Context?
 
-    fun setProgressBarIndicator(mustShow:Boolean){
-        rootView?.let{ root->
-            viewContext?.let { context->
+    fun setProgressBarIndicator(mustShow: Boolean) {
+        rootView?.let { root ->
+            viewContext?.let { context ->
                 var loadingView = root.findViewById<View>(R.id.viewLoading)
 
-                if(loadingView == null && mustShow){
-                    loadingView = LayoutInflater.from(context).inflate(R.layout.view_loading,root,false)
+                if (loadingView == null && mustShow) {
+                    loadingView =
+                        LayoutInflater.from(context).inflate(R.layout.view_loading, root, false)
                     root.addView(loadingView)
                 }
-                loadingView?.visibility = if(mustShow) View.VISIBLE else View.GONE
+                loadingView?.visibility = if (mustShow) View.VISIBLE else View.GONE
             }
         }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    fun showError(nikeException: NikeException){
-        viewContext?.let { context->
-            rootView?.let{
-                when(nikeException.typeOfError){
+    fun showError(nikeException: NikeException) {
+        viewContext?.let { context ->
+            rootView?.let {
+                when (nikeException.typeOfError) {
                     ErrorType.SIMPLE -> showSnackbar(nikeException.errorMessage)
                     ErrorType.AUTH -> {
                         val intent = Intent(context, AuthActivity::class.java)
@@ -47,18 +48,31 @@ interface NikeView{
         }
     }
 
-
-    fun showSnackbar(message:String, duration:Int = Snackbar.LENGTH_SHORT){
+    fun showSnackbar(message: String, duration: Int = Snackbar.LENGTH_SHORT) {
         rootView?.let {
-            Snackbar.make(it,message, duration).show()
+            Snackbar.make(it, message, duration).show()
         }
     }
 
-    fun showToast(message:String, duration:Int = Snackbar.LENGTH_SHORT){
+    fun showToast(message: String, duration: Int = Snackbar.LENGTH_SHORT) {
         rootView?.let {
             viewContext?.let {
-                Toast.makeText(viewContext,message,duration).show()
+                Toast.makeText(viewContext, message, duration).show()
             }
         }
+    }
+
+    fun getEmptyState(layoutResId: Int): View? {
+        rootView?.let { rootView ->
+            viewContext.let { context ->
+                var emptyState = rootView.findViewById<View>(R.id.rootOfEmptyState)
+                if(emptyState==null) {
+                    emptyState = LayoutInflater.from(context).inflate(layoutResId, rootView, false)
+                    rootView.addView(rootView)
+                }
+                return emptyState
+            }
+        }
+        return null
     }
 }
