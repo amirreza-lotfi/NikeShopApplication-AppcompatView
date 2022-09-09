@@ -1,5 +1,6 @@
 package com.amirreza.ecommercenikestore.feature_cart.presentation.card_fragment.cartItemAdapter
 
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,25 +11,20 @@ import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.CartItem
 import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.PurchaseDetail
 import com.amirreza.ecommercenikestore.feature_store.domain.repository.ImageLoaderI
 
-const val VIEW_TYPE_CART = 0
-const val VIEW_TYPE_PURCHASE_DETAIL = 0
-
 class CartItemAdapter(
-    val cartItemList:MutableList<CartItem> = mutableListOf(),
+    private val cartItemList:MutableList<CartItem> = mutableListOf(),
     private val imageLoadingService: ImageLoaderI,
     private val cartItemCallBack: CartItemCallBack,
-):RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    var purchaseDetail:PurchaseDetail?=null
-
+):RecyclerView.Adapter<CartItemAdapter.CartItemHolder>() {
 
     inner class CartItemHolder(private val binding: ItemCartBinding):RecyclerView.ViewHolder(binding.root){
-
         fun onBind(cartItem: CartItem){
             binding.productTitleTv.text = cartItem.product.title
             imageLoadingService.load(binding.productIV,cartItem.product.image)
             binding.cartItemCountTv.text = cartItem.count.toString()
-            binding.previousPriceProductTv.text = cartItem.product.previous_price.toString()
-            binding.priceProductTv.text = cartItem.product.price.toString()
+            binding.previousPriceProductTv.text = "${cartItem.product.getRealPrice()} تومان "
+            binding.priceProductTv.text = "${cartItem.product.getPayablePrice()} تومان "
+            binding.previousPriceProductTv.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
 
             binding.progressBarChangeCount.visibility = if (cartItem.progressBarVisibility) View.VISIBLE else View.GONE
             binding.cartItemCountTv.visibility = if (cartItem.progressBarVisibility) View.INVISIBLE else View.VISIBLE
@@ -58,44 +54,21 @@ class CartItemAdapter(
                     binding.progressBarChangeCount.visibility = View.VISIBLE
                     binding.cartItemCountTv.visibility = View.INVISIBLE
                     cartItemCallBack.onDecreaseItemCountClicked(cartItem)
+
+                }else{
+                    cartItemCallBack.onDeleteCartItemClicked(cartItem)
+                    removeItem(cartItem)
                 }
             }
         }
     }
 
-    inner class PurchaseDetailHolder(private val binding:ItemPurchesDetailBinding):RecyclerView.ViewHolder(binding.root){
-        fun bind(totalPrice:Int, shippingCost:Int, payablePrice:Int){
-            binding.totalPriceTV.text = totalPrice.toString()
-            binding.shippingCostTV.text = shippingCost.toString()
-            binding.payablePriceTV.text = payablePrice.toString()
-        }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartItemHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding = ItemCartBinding.inflate(layoutInflater,parent,false)
+        return CartItemHolder(binding)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)//.inflate(R.layout.item_purches_detail,parent,false)
-        if(viewType == VIEW_TYPE_CART){
-            val binding = ItemCartBinding.inflate(layoutInflater,parent,false)
-            return CartItemHolder(binding)
-        }
-        val binding = ItemPurchesDetailBinding.inflate(layoutInflater,parent,false)
-        return PurchaseDetailHolder(binding)
-    }
-
-    override fun getItemViewType(position: Int): Int {
-        if(position == cartItemList.size)
-            return VIEW_TYPE_PURCHASE_DETAIL
-        return VIEW_TYPE_CART
-    }
-
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if(holder is CartItemHolder){
-            holder.onBind(cartItemList[position])
-        }else if(holder is PurchaseDetailHolder){
-            purchaseDetail?.let {
-                holder.bind(it.totalPrice,it.deliveryCost,it.payAblePrice)
-            }
-        }
-    }
 
     fun removeItem(cartItem: CartItem){
         val indexOfCartItem = cartItemList.indexOf(cartItem)
@@ -115,9 +88,11 @@ class CartItemAdapter(
         }
     }
 
-
     override fun getItemCount(): Int {
-        return cartItemList.size+1
+        return cartItemList.size
     }
 
+    override fun onBindViewHolder(holder: CartItemHolder, position: Int) {
+        holder.onBind(cartItemList[position])
+    }
 }

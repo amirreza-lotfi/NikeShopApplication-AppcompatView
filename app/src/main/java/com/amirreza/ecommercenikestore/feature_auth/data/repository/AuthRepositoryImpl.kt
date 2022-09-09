@@ -34,8 +34,8 @@ class AuthRepositoryImpl(
         return localDataSourceI.saveToken(token,refreshToken)
     }
 
-    private fun onSuccessLogin(tokenResponce:TokenResponse){
-        Tokens.updateTokens(tokenResponce.accessToken,tokenResponce.refreshToken)
-        localDataSourceI.saveToken(tokenResponce.accessToken,tokenResponce.refreshToken)
+    private fun onSuccessLogin(tokenResponse:TokenResponse){
+        Tokens.updateTokens(tokenResponse.accessToken,tokenResponse.refreshToken)
+        localDataSourceI.saveToken(tokenResponse.accessToken,tokenResponse.refreshToken)
     }
 }

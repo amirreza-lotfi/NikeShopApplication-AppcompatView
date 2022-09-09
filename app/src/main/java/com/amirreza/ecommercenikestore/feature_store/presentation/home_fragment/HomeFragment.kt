@@ -1,6 +1,7 @@
 package com.amirreza.ecommercenikestore.feature_store.presentation.home_fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +25,7 @@ import com.example.nikeshop.feature_shop.domain.entity.SORT_POPULAR
 import com.sevenlearn.nikestore.common.convertDpToPixel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 class HomeFragment:NikeFragment(), ItemClickListener {
 
@@ -32,6 +34,7 @@ class HomeFragment:NikeFragment(), ItemClickListener {
     private val homeFragmentViewModel:HomeFragmentViewModel by viewModel()
     private val latestProductAdapter:ProductListAdapter by inject()
     private val popularListAdapter:ProductListAdapter by inject()
+    private var viewPagerHeight = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,6 +54,9 @@ class HomeFragment:NikeFragment(), ItemClickListener {
         onSeeAllPopularProductsClick()
     }
 
+    override fun onStart() {
+        super.onStart()
+    }
 
     private fun progressBarSetUp(){
         homeFragmentViewModel.progressBarIndicatorLiveData.observe(viewLifecycleOwner){ mustShow->
@@ -60,17 +66,22 @@ class HomeFragment:NikeFragment(), ItemClickListener {
     private fun bannerSliderSetUp(){
         homeFragmentViewModel.bannerLiveData.observe(viewLifecycleOwner){ bannerList->
             val bannerSliderHomeFragmentAdapter = BannerSliderHomeFragmentAdapter(this,bannerList)
-            val bannerSliderViewPager = binding.bannerSlider
-            bannerSliderViewPager.adapter = bannerSliderHomeFragmentAdapter
 
-            val viewPagerHeight = (((bannerSliderViewPager.measuredWidth - convertDpToPixel(
-                32f,
-                requireContext()
-            )) * 173) / 328).toInt()
+            binding.bannerSlider.post {
+                val bannerSliderViewPager = binding.bannerSlider
+                bannerSliderViewPager.adapter = bannerSliderHomeFragmentAdapter
 
-            val layoutParams = bannerSliderViewPager.layoutParams
-            layoutParams.height = viewPagerHeight
-            bannerSliderViewPager.layoutParams = layoutParams
+                viewPagerHeight = (((bannerSliderViewPager.measuredWidth - convertDpToPixel(
+                    32f,
+                    requireContext()
+                )) * 173) / 328).toInt()
+
+                val layoutParams = bannerSliderViewPager.layoutParams
+                layoutParams.height = viewPagerHeight
+                bannerSliderViewPager.layoutParams = layoutParams
+            }
+
+
         }
     }
 

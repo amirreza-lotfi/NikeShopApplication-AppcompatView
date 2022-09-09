@@ -68,7 +68,7 @@ interface NikeView {
                 var emptyState = rootView.findViewById<View>(R.id.rootOfEmptyState)
                 if(emptyState==null) {
                     emptyState = LayoutInflater.from(context).inflate(layoutResId, rootView, false)
-                    rootView.addView(rootView)
+                    rootView.addView(emptyState)
                 }
                 return emptyState
             }

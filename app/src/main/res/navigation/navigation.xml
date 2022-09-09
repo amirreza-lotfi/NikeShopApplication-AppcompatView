@@ -16,11 +16,12 @@
         <action
             android:id="@+id/action_navigation_home_to_allProductFragment"
             app:destination="@id/allProductFragment" />
-    </fragment>z
+    </fragment>
     <fragment
         android:id="@+id/navigation_cart"
         android:name="com.amirreza.ecommercenikestore.feature_cart.presentation.card_fragment.CartFragment"
-        android:label="CardFragment" >
+        android:label="CardFragment"
+        tools:layout="@layout/fragment_cart">
         <action
             android:id="@+id/action_navigation_cart_to_productDetailFragment"
             app:destination="@id/productDetailFragment" />

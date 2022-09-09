@@ -2,7 +2,8 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?backgroundWindow"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#f8f8f8"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -22,16 +23,6 @@
         </FrameLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/cartItemRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="4dp"
-        android:paddingBottom="100dp"
-        android:clipToPadding="false"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
-
-
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/payCartItems"
         android:layout_width="match_parent"
@@ -42,4 +33,139 @@
         android:gravity="center"
         android:fontFamily="@font/primary_bold"
         android:layout_marginHorizontal="32dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:orientation="vertical">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cartItemRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:clipToPadding="false"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layoutDirection="rtl"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="?android:textColorSecondary"
+                    android:paddingVertical="16dp"
+                    android:padding="8dp"
+                    android:textAppearance="@style/TextAppearance.ECommerceNikeStore.Headline6"
+                    android:text="@string/purchaseDetail"/>
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="2dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="150dp"
+                    android:layout_height="wrap_content">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingBottom="12dp">
+
+                        <TextView
+                            android:id="@+id/titleTotalText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="12dp"
+                            android:text="@string/totalPrice"
+                            android:textAppearance="?textAppearanceBody1"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/titleShippingCostTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="24dp"
+                            android:text="@string/shippingCost"
+                            android:textAppearance="?textAppearanceBody1"
+                            app:layout_constraintStart_toStartOf="@id/titleTotalText"
+                            app:layout_constraintTop_toBottomOf="@id/titleTotalText" />
+
+                        <TextView
+                            android:id="@+id/titlePayableTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="24dp"
+                            android:text="@string/payablePrice"
+                            android:textAppearance="?textAppearanceBody1"
+                            app:layout_constraintStart_toStartOf="@id/titleShippingCostTv"
+                            app:layout_constraintTop_toBottomOf="@id/titleShippingCostTv" />
+
+                        <TextView
+                            android:id="@+id/totalPriceTV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:fontFamily="@font/primary_bold"
+                            android:textAppearance="?textAppearanceBody1"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@id/titleTotalText"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/titleTotalText"
+                            tools:text="13212312" />
+
+                        <TextView
+                            android:id="@+id/shippingCostTV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/primary_bold"
+                            android:textAppearance="?textAppearanceBody1"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@id/titleShippingCostTv"
+                            app:layout_constraintEnd_toEndOf="@id/totalPriceTV"
+                            app:layout_constraintTop_toTopOf="@id/titleShippingCostTv"
+                            tools:text="13212312" />
+
+                        <TextView
+                            android:id="@+id/payablePriceTV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/primary_bold"
+                            android:textAppearance="?textAppearanceBody1"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@id/titlePayableTv"
+                            app:layout_constraintEnd_toEndOf="@id/shippingCostTV"
+                            app:layout_constraintTop_toTopOf="@id/titlePayableTv"
+                            tools:text="13212312" />
+                        <View
+                            android:id="@+id/view2"
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="12dp"
+                            android:background="?dividerColor"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/titleTotalText" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:background="?dividerColor"
+                            android:layout_marginTop="12dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/titleShippingCostTv" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -16,6 +16,8 @@ import com.example.nikeshop.feature_shop.data.repository.ProductRepositoryImpl
 import com.amirreza.ecommercenikestore.feature_store.data.source.banner_data_source.BannerRemoteDataSource
 import com.amirreza.ecommercenikestore.feature_cart.data.data_source.cart_data_source.CartDataSourceI
 import com.amirreza.ecommercenikestore.feature_cart.data.data_source.cart_data_source.CartRemoteDataSource
+import com.amirreza.ecommercenikestore.feature_cart.data.repository.CartRepositoryImpl
+import com.amirreza.ecommercenikestore.feature_cart.domain.repository.CartShoppingRepository
 import com.amirreza.ecommercenikestore.feature_store.data.source.comment_data_source.RemoteCommentDataSource
 import com.amirreza.ecommercenikestore.feature_store.data.source.product_data_spurce.ProductLocalDataSource
 import com.amirreza.ecommercenikestore.feature_store.domain.repository.CommentRepositoryI
@@ -85,15 +87,9 @@ class NikeShopApplication : Application() {
                 CartRemoteDataSource(get())
             }
 
-            single {
-                ProductUseCases(
-                    GetProductsUC(get()),
-                    GetFavoriteProductsUC(get()),
-                    AddProductToFavoritesUC(get()),
-                    DeleteProductFromFavoritesUC(get()),
-                )
+            single<CartShoppingRepository>{
+                CartRepositoryImpl(get())
             }
-
             single<SharedPreferences>{
                 this@NikeShopApplication.getSharedPreferences("appAuth", MODE_PRIVATE)
             }
@@ -104,6 +100,8 @@ class NikeShopApplication : Application() {
                     AuthRemoteDataSourceImpl(get())
                 )
             }
+
+            //use cases
             single {
                 CartUseCase(
                     AddToCartUC(get()),
@@ -121,6 +119,14 @@ class NikeShopApplication : Application() {
             single {
                 CommentUseCase(
                     GetComments(get())
+                )
+            }
+            single {
+                ProductUseCases(
+                    GetProductsUC(get()),
+                    GetFavoriteProductsUC(get()),
+                    AddProductToFavoritesUC(get()),
+                    DeleteProductFromFavoritesUC(get()),
                 )
             }
 

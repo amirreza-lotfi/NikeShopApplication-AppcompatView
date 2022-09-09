@@ -28,7 +28,6 @@ class CartViewModel(private val cartUseCase: CartUseCase) : NikeViewModel() {
     private fun getProductInCart() {
         if (hasUserLoggedInAccount()) {
             showProgressBar(true)
-            _emptyCartState.value = EmptyCartStateFactory.userHasLoggedIn()
             cartUseCase.getProducts()
                 .asyncIoNetworkCall()
                 .doFinally { showProgressBar(false) }
@@ -67,6 +66,8 @@ class CartViewModel(private val cartUseCase: CartUseCase) : NikeViewModel() {
     fun increaseCartItemCount(cartItem: CartItem): Completable {
         return cartUseCase.changeCount(cartItem.cartItemId, cartItem.count + 1)
             .doOnSuccess {
+                val indexOfCartItem = _cartItem.value?.indexOf(cartItem) ?: 0
+                _cartItem.value?.get(indexOfCartItem)?.count = cartItem.count +1
                 calculatePurchaseDetail()
                 _emptyCartState.postValue(EmptyCartStateFactory.cartIsNotEmpty())
             }
@@ -75,7 +76,11 @@ class CartViewModel(private val cartUseCase: CartUseCase) : NikeViewModel() {
 
     fun decreaseCartItemCount(cartItem: CartItem): Completable {
         return cartUseCase.changeCount(cartItem.cartItemId, cartItem.count - 1)
-            .doOnSuccess { calculatePurchaseDetail() }
+            .doOnSuccess {
+                val indexOfCartItem = _cartItem.value?.indexOf(cartItem) ?: 0
+                _cartItem.value?.get(indexOfCartItem)?.count = cartItem.count -1
+                calculatePurchaseDetail()
+            }
             .ignoreElement()
     }
 
@@ -87,7 +92,7 @@ class CartViewModel(private val cartUseCase: CartUseCase) : NikeViewModel() {
         _cartItem.value?.let { cartItems ->
             _purchaseDetailOfCart.value?.let { purchase ->
                 val totalPrice = cartItems.sumOf { cart ->
-                    cart.count * cart.product.previous_price
+                    cart.count * cart.product.getRealPrice()
                 }
                 val payAblePrice = cartItems.sumOf { cart ->
                     cart.count * cart.product.price

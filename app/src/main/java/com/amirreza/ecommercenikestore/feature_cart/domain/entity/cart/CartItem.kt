@@ -8,7 +8,7 @@ data class CartItem(
 
     @SerializedName("cart_item_id")
     val cartItemId: Int,
-    val count: Int,
+    var count: Int,
     val product: Product,
     var progressBarVisibility:Boolean
 )

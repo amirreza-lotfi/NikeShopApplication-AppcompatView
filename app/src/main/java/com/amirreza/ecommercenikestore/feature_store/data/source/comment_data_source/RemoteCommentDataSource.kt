@@ -5,12 +5,12 @@ import com.amirreza.ecommercenikestore.feature_store.domain.entity.Comment
 import io.reactivex.Completable
 import io.reactivex.Single
 
-class RemoteCommentDataSource(val apiService: ApiService):CommentDataSource {
+class RemoteCommentDataSource(private val apiService: ApiService):CommentDataSource {
     override fun getAll(productId:Int): Single<List<Comment>> {
         return apiService.getComments(productId)
     }
 
     override fun insertComment(comment: Comment): Completable {
-        TODO("Not yet implemented")
+        return Completable.complete()
     }
 }

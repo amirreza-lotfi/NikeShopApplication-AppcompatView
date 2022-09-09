@@ -18,74 +18,76 @@ import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.CartItem
 import com.amirreza.ecommercenikestore.feature_cart.presentation.card_fragment.cartItemAdapter.CartItemAdapter
 import com.amirreza.ecommercenikestore.feature_cart.presentation.card_fragment.cartItemAdapter.CartItemCallBack
 import com.amirreza.ecommercenikestore.feature_store.common.base.EXTRA_PRODUCT_FROM_HOME_TO_DETAIL
+import com.amirreza.ecommercenikestore.feature_store.common.base.NikeCompletable
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeFragment
 import com.amirreza.ecommercenikestore.feature_store.domain.repository.ImageLoaderI
 import com.google.android.material.button.MaterialButton
 import com.sevenlearn.nikestore.common.asyncIoNetworkCall
+import com.sevenlearn.nikestore.common.getVerticalLinearLayoutManager
 import io.reactivex.CompletableObserver
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import org.koin.android.ext.android.inject
 
-class CartFragment:NikeFragment(), CartItemCallBack {
+class CartFragment : NikeFragment(), CartItemCallBack {
     private lateinit var binding: FragmentCartBinding
-    private val cartViewModel:CartViewModel by inject()
-    private val imageLoader:ImageLoaderI by inject()
-    private lateinit var cartAdapter:CartItemAdapter
+    private val cartViewModel: CartViewModel by inject()
+    private val imageLoader: ImageLoaderI by inject()
+    private lateinit var cartAdapter: CartItemAdapter
+    val compositeDisposable = CompositeDisposable()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentCartBinding.inflate(inflater,container,false)
+        binding = FragmentCartBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.cartItemRecyclerView.layoutManager = LinearLayoutManager(context,RecyclerView.VERTICAL,false)
+        binding.cartItemRecyclerView.layoutManager = getVerticalLinearLayoutManager(requireContext())
         setProgressBarVisibility()
 
-        cartViewModel.cartResponse.observe(viewLifecycleOwner){ itemList->
-            cartAdapter = CartItemAdapter(itemList as MutableList<CartItem>,imageLoader,this)
+        cartViewModel.cartResponse.observe(viewLifecycleOwner) { itemList ->
+            cartAdapter = CartItemAdapter(itemList as MutableList<CartItem>, imageLoader, this)
             binding.cartItemRecyclerView.adapter = cartAdapter
         }
 
-        cartViewModel.purchaseDetailOfCart.observe(viewLifecycleOwner){ purchaseDetail->
-            cartAdapter?.let{
-                it.purchaseDetail = purchaseDetail
-                it.notifyItemChanged(cartAdapter.cartItemList.size)
-            }
+        cartViewModel.purchaseDetailOfCart.observe(viewLifecycleOwner) { purchaseDetail ->
+            binding.totalPriceTV.text = "${purchaseDetail.totalPrice} تومان "
+            binding.shippingCostTV.text = "${purchaseDetail.deliveryCost} تومان "
+            binding.payablePriceTV.text = "${purchaseDetail.payAblePrice} تومان "
         }
 
-        cartViewModel.emptyCartState.observe(viewLifecycleOwner){ emptyState->
-            if(emptyState.mustShow){
+        cartViewModel.emptyCartState.observe(viewLifecycleOwner) { emptyState ->
+            if (emptyState.mustShow) {
                 val emptyView = getEmptyState(R.layout.view_emty_state_cart)
-                emptyView?.let { emptyStateView->
+                emptyView?.let { emptyStateView ->
                     emptyStateView.visibility = View.VISIBLE
 
                     val message = emptyStateView.findViewById<TextView>(R.id.emptyStateMessageTv)
-                    val emptyStateCtaBtn = emptyStateView.findViewById<MaterialButton>(R.id.emptyStateCtaBtn)
+                    val emptyStateCtaBtn =
+                        emptyStateView.findViewById<MaterialButton>(R.id.emptyStateCtaBtn)
 
-                    emptyStateCtaBtn.visibility = if(emptyState.mustShowActionButton) View.VISIBLE else View.GONE
+                    emptyStateCtaBtn.visibility =
+                        if (emptyState.mustShowActionButton) View.VISIBLE else View.GONE
                     emptyStateCtaBtn.setOnClickListener {
-                        val intent = Intent(context,AuthActivity::class.java)
+                        val intent = Intent(context, AuthActivity::class.java)
                         startActivity(intent)
                     }
                     message.text = getString(emptyState.messageResId)
                 }
-            }
-            else{
+            } else {
                 view.findViewById<FrameLayout>(R.id.rootOfEmptyState)?.visibility = View.GONE
             }
         }
-
-
     }
 
-    private fun setProgressBarVisibility(){
-        cartViewModel.progressBarIndicatorLiveData.observe(viewLifecycleOwner){ mustShow->
+    private fun setProgressBarVisibility() {
+        cartViewModel.progressBarIndicatorLiveData.observe(viewLifecycleOwner) { mustShow ->
             setProgressBarIndicator(mustShow)
         }
     }
@@ -98,15 +100,9 @@ class CartFragment:NikeFragment(), CartItemCallBack {
     override fun onDeleteCartItemClicked(cartItem: CartItem) {
         cartViewModel.removeItemFromCart(cartItem)
             .asyncIoNetworkCall()
-            .subscribe(object : CompletableObserver{
-                override fun onSubscribe(d: Disposable) {
-                    TODO("Not yet implemented")
-                }
+            .subscribe(object : NikeCompletable(compositeDisposable) {
                 override fun onComplete() {
                     cartAdapter.removeItem(cartItem)
-                }
-                override fun onError(e: Throwable) {
-                    TODO("Not yet implemented")
                 }
             })
     }
@@ -114,15 +110,9 @@ class CartFragment:NikeFragment(), CartItemCallBack {
     override fun onIncreaseItemCountClicked(cartItem: CartItem) {
         cartViewModel.increaseCartItemCount(cartItem)
             .asyncIoNetworkCall()
-            .subscribe(object : CompletableObserver{
-                override fun onSubscribe(d: Disposable) {
-                    TODO("Not yet implemented")
-                }
+            .subscribe(object : NikeCompletable(compositeDisposable) {
                 override fun onComplete() {
                     cartAdapter.changesCount(cartItem)
-                }
-                override fun onError(e: Throwable) {
-                    TODO("Not yet implemented")
                 }
             })
     }
@@ -130,22 +120,16 @@ class CartFragment:NikeFragment(), CartItemCallBack {
     override fun onDecreaseItemCountClicked(cartItem: CartItem) {
         cartViewModel.decreaseCartItemCount(cartItem)
             .asyncIoNetworkCall()
-            .subscribe(object : CompletableObserver{
-                override fun onSubscribe(d: Disposable) {
-                    TODO("Not yet implemented")
-                }
+            .subscribe(object : NikeCompletable(compositeDisposable) {
                 override fun onComplete() {
                     cartAdapter.changesCount(cartItem)
-                }
-                override fun onError(e: Throwable) {
-                    TODO("Not yet implemented")
                 }
             })
     }
 
     override fun onProductImageClicked(cartItem: CartItem) {
         val bundle = Bundle()
-        bundle.putParcelable(EXTRA_PRODUCT_FROM_HOME_TO_DETAIL,cartItem.product)
+        bundle.putParcelable(EXTRA_PRODUCT_FROM_HOME_TO_DETAIL, cartItem.product)
         findNavController().navigate(R.id.action_navigation_cart_to_productDetailFragment, bundle)
     }
 }

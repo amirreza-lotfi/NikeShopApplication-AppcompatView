@@ -7,5 +7,4 @@ import io.reactivex.Single
 interface AuthRemoteDataSourceI {
     fun login(username:String, password:String): Single<TokenResponse>
     fun signUp(username:String, password:String): Single<MessageResponse>
-
 }

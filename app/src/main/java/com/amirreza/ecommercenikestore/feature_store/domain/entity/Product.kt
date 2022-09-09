@@ -9,12 +9,17 @@ data class Product(
     val discount: Int,
     val id: Int,
     val image: String,
-    val previous_price: Int,
+    var previous_price: Int,
     val price: Int,
     val status: Int,
     val title: String
 ): Parcelable {
-
+    fun getRealPrice():Int{
+        return price+discount
+    }
+    fun getPayablePrice():Int{
+        return price
+    }
     companion object {
         fun getPriceWithSeparator(price:String): String {
             var counter = 0
