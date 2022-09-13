@@ -6,7 +6,7 @@ import com.amirreza.ecommercenikestore.feature_store.common.base.NikeSingleObser
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeViewModel
 import com.amirreza.ecommercenikestore.feature_store.domain.entity.Comment
 import com.amirreza.ecommercenikestore.feature_store.domain.useCases.CommentUseCase
-import com.sevenlearn.nikestore.common.asyncIoNetworkCall
+import com.amirreza.ecommercenikestore.feature_store.common.util.asyncIoNetworkCall
 
 class AllCommentViewModel(private val productId:Int, private val commentUseCase: CommentUseCase) :NikeViewModel(){
     private val _commentsLiveData = MutableLiveData<List<Comment>>()

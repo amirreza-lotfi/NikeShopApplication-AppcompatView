@@ -3,6 +3,8 @@ package com.amirreza.ecommercenikestore.http
 
 import com.amirreza.ecommercenikestore.feature_auth.domain.model.Tokens
 import com.amirreza.ecommercenikestore.feature_auth.domain.model.TokenResponse
+import com.amirreza.ecommercenikestore.feature_cart.domain.entity.OrderDetail
+import com.amirreza.ecommercenikestore.feature_cart.domain.entity.OrderResult
 import com.amirreza.ecommercenikestore.feature_store.domain.entity.Comment
 import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.AddToCartResponse
 import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.ProductCountInShoppingCart
@@ -55,6 +57,7 @@ interface ApiService {
 
     @GET("cart/count")
     fun getCountOfProductsInShoppingCart():Single<ProductCountInShoppingCart>
+
     /**
      * Auth feature requests
      */
@@ -66,6 +69,15 @@ interface ApiService {
 
     @POST("auth/token")
     fun refreshToken(@Body jsonObject: JsonObject):Call<TokenResponse>
+
+    /**
+     * Order
+     */
+    @POST("order/submit")
+    fun registerOrder(@Body jsonObject: JsonObject): Single<OrderResult>
+
+    @GET("order/checkout")
+    fun getOrderDetail(@Query("order_id") orderId: Int): Single<OrderDetail>
 
 }
 

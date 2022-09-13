@@ -9,7 +9,7 @@ import com.amirreza.ecommercenikestore.feature_store.common.base.NikeFragment
 import com.amirreza.ecommercenikestore.databinding.FragmentAllCommentBinding
 import com.amirreza.ecommercenikestore.feature_store.domain.entity.Comment
 import com.amirreza.ecommercenikestore.feature_store.presentation.product_detail_fragment.comment_recyclerView.CommentAdapter
-import com.sevenlearn.nikestore.common.getVerticalLinearLayoutManager
+import com.amirreza.ecommercenikestore.feature_store.common.util.getVerticalLinearLayoutManager
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 

@@ -18,6 +18,16 @@
         <item name="fontFamily">@font/primary_bold</item>
     </style>
 
+    <style name="CheckoutTextInputEditTextStyle" parent="Theme.ECommerceNikeStore">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="CheckoutTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+
     <style name="ECommerceNikeStore.AuthActivity.EditText" parent="ECommerceNikeStore.AuthActivity">
         <item name="android:background">@drawable/background_edit_text_auth</item>
         <item name="android:textColor">?colorOnBackground</item>

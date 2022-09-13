@@ -37,8 +37,11 @@
         <entry key="..\:/Users/TGr.h/AndroidStudioProjects/ECommerceNikeStore/app/src/main/res/layout/view_loading.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/TGr.h/AndroidStudioProjects/ECommerceNikeStore/app/src/main/res/layout/view_toolbar.xml" value="0.1574074074074074" />
         <entry key="..\:/Users/TGr.h/AndroidStudioProjects/ECommerceNikeStore/app/src/main/res/menu/main_navigation.xml" value="0.126171875" />
+        <entry key="..\:/Users/TGr.h/AndroidStudioProjects/NikeShop_appcompat/NikeShopApplication-AppcompatView/app/src/main/res/drawable/ic_gps_24.xml" value="0.1325" />
         <entry key="..\:/Users/TGr.h/AndroidStudioProjects/NikeShop_appcompat/NikeShopApplication-AppcompatView/app/src/main/res/layout/activity_main.xml" value="0.17083333333333334" />
         <entry key="..\:/Users/TGr.h/AndroidStudioProjects/NikeShop_appcompat/NikeShopApplication-AppcompatView/app/src/main/res/layout/fragment_cart.xml" value="0.22" />
+        <entry key="..\:/Users/TGr.h/AndroidStudioProjects/NikeShop_appcompat/NikeShopApplication-AppcompatView/app/src/main/res/layout/fragment_checkout.xml" value="0.22" />
+        <entry key="..\:/Users/TGr.h/AndroidStudioProjects/NikeShop_appcompat/NikeShopApplication-AppcompatView/app/src/main/res/layout/fragment_receipt.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/TGr.h/AndroidStudioProjects/NikeShop_appcompat/NikeShopApplication-AppcompatView/app/src/main/res/layout/item_cart.xml" value="0.22" />
         <entry key="..\:/Users/TGr.h/AndroidStudioProjects/NikeShop_appcompat/NikeShopApplication-AppcompatView/app/src/main/res/layout/item_purches_detail.xml" value="0.17083333333333334" />
         <entry key="..\:/Users/TGr.h/AndroidStudioProjects/NikeShop_appcompat/NikeShopApplication-AppcompatView/app/src/main/res/layout/view_emty_state_cart.xml" value="0.1" />

@@ -12,14 +12,14 @@ import com.amirreza.ecommercenikestore.R
 import com.amirreza.ecommercenikestore.databinding.FragmentCartBinding
 import com.amirreza.ecommercenikestore.feature_auth.presentation.AuthActivity
 import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.CartItem
-import com.amirreza.ecommercenikestore.feature_cart.presentation.CartUiEvent
 import com.amirreza.ecommercenikestore.feature_cart.presentation.card_fragment.cartItemAdapter.CartItemAdapter
 import com.amirreza.ecommercenikestore.feature_cart.presentation.card_fragment.cartItemAdapter.CartItemCallBack
 import com.amirreza.ecommercenikestore.feature_store.common.base.EXTRA_PRODUCT_FROM_HOME_TO_DETAIL
+import com.amirreza.ecommercenikestore.feature_store.common.base.EXTRA_PURCHASE_DETAIL
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeFragment
 import com.amirreza.ecommercenikestore.feature_store.domain.repository.ImageLoaderI
 import com.google.android.material.button.MaterialButton
-import com.sevenlearn.nikestore.common.getVerticalLinearLayoutManager
+import com.amirreza.ecommercenikestore.feature_store.common.util.getVerticalLinearLayoutManager
 import io.reactivex.disposables.CompositeDisposable
 import org.koin.android.ext.android.inject
 
@@ -87,6 +87,12 @@ class CartFragment : NikeFragment(), CartItemCallBack {
             } else {
                 view.findViewById<FrameLayout>(R.id.rootOfEmptyState)?.visibility = View.GONE
             }
+        }
+
+        binding.paymentButton.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putParcelable(EXTRA_PURCHASE_DETAIL,cartViewModel.purchaseDetailOfCart.value)
+            findNavController().navigate(R.id.action_navigation_cart_to_checkoutFragment, bundle)
         }
     }
 

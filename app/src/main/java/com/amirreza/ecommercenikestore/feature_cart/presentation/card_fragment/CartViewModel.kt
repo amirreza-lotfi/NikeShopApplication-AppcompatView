@@ -9,14 +9,10 @@ import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.PurchaseD
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeSingleObserver
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeViewModel
 import com.amirreza.ecommercenikestore.feature_cart.domain.useCases.CartUseCase
-import com.sevenlearn.nikestore.common.asyncIoNetworkCall
 import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.CartResponse
-import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.ProductCountInShoppingCart
-import com.amirreza.ecommercenikestore.feature_cart.presentation.CartUiEvent
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeCompletable
-import com.sevenlearn.nikestore.common.hasUserLoggedInAccount
+import com.amirreza.ecommercenikestore.feature_store.common.util.*
 import io.reactivex.Completable
-import org.greenrobot.eventbus.EventBus
 
 class CartViewModel(private val cartUseCase: CartUseCase) : NikeViewModel() {
     private val _cartItems = MutableLiveData<MutableList<CartItem>>()
@@ -122,13 +118,7 @@ class CartViewModel(private val cartUseCase: CartUseCase) : NikeViewModel() {
             .doOnSuccess {
                 calculatePurchaseDetail()
                 getProductInCart()
-
-                val countOfCartItem =
-                    EventBus.getDefault().getStickyEvent(ProductCountInShoppingCart::class.java)
-                countOfCartItem?.let {
-                    it.count -= cartItem.count
-                    EventBus.getDefault().postSticky(it)
-                }
+                decreaseCartBadgeCount(cartItem.count)
             }
             .asyncIoNetworkCall()
             .ignoreElement()
@@ -140,12 +130,7 @@ class CartViewModel(private val cartUseCase: CartUseCase) : NikeViewModel() {
                 val indexOfCartItem = _cartItems.value?.indexOf(cartItem) ?: 0
                 _cartItems.value?.get(indexOfCartItem)?.count = cartItem.count + 1
                 calculatePurchaseDetail()
-                val countOfCartItem =
-                    EventBus.getDefault().getStickyEvent(ProductCountInShoppingCart::class.java)
-                countOfCartItem?.let {
-                    it.count += 1
-                    EventBus.getDefault().postSticky(it)
-                }
+                increaseCartBadgeCount(1)
                 _emptyCartState.postValue(EmptyCartStateFactory.cartIsNotEmpty())
             }
             .ignoreElement()
@@ -157,12 +142,7 @@ class CartViewModel(private val cartUseCase: CartUseCase) : NikeViewModel() {
                 val indexOfCartItem = _cartItems.value?.indexOf(cartItem) ?: 0
                 _cartItems.value?.get(indexOfCartItem)?.count = cartItem.count - 1
 
-                val countOfCartItem =
-                    EventBus.getDefault().getStickyEvent(ProductCountInShoppingCart::class.java)
-                countOfCartItem?.let {
-                    it.count -= 1
-                    EventBus.getDefault().postSticky(it)
-                }
+                decreaseCartBadgeCount(1)
 
                 calculatePurchaseDetail()
             }

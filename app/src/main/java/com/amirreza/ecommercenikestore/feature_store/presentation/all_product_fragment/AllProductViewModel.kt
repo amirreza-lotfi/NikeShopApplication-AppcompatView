@@ -6,7 +6,7 @@ import com.amirreza.ecommercenikestore.feature_store.common.base.NikeSingleObser
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeViewModel
 import com.amirreza.ecommercenikestore.feature_store.domain.useCases.ProductUseCases
 import com.example.nikeshop.feature_shop.domain.entity.Product
-import com.sevenlearn.nikestore.common.asyncIoNetworkCall
+import com.amirreza.ecommercenikestore.feature_store.common.util.asyncIoNetworkCall
 
 class AllProductViewModel(var sortType:Int, private val productUseCases: ProductUseCases):NikeViewModel() {
     private val _productList = MutableLiveData<List<Product>>()

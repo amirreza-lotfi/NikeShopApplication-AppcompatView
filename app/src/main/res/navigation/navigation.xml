@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_navigation_cart_to_productDetailFragment"
             app:destination="@id/productDetailFragment" />
+        <action
+            android:id="@+id/action_navigation_cart_to_checkoutFragment"
+            app:destination="@id/checkoutFragment" />
     </fragment>
     <fragment
         android:id="@+id/navigation_profile"
@@ -49,4 +52,8 @@
         android:name="com.amirreza.ecommercenikestore.feature_store.presentation.all_product_fragment.AllProductFragment"
         android:label="fragment_all_product"
         tools:layout="@layout/fragment_all_product" />
+    <fragment
+        android:id="@+id/checkoutFragment"
+        android:name="com.amirreza.ecommercenikestore.feature_cart.presentation.checkout_fragment.CheckoutFragment"
+        android:label="CheckoutFragment" />
 </navigation>

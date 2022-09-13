@@ -14,8 +14,8 @@ import com.amirreza.ecommercenikestore.databinding.FragmentAllProductBinding
 import com.amirreza.ecommercenikestore.feature_store.presentation.all_product_fragment.product_recycler_view.AllProductListAdaper
 import com.example.nikeshop.feature_shop.domain.entity.Product
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.sevenlearn.nikestore.common.getGridLayoutManager
-import com.sevenlearn.nikestore.common.getVerticalLinearLayoutManager
+import com.amirreza.ecommercenikestore.feature_store.common.util.getGridLayoutManager
+import com.amirreza.ecommercenikestore.feature_store.common.util.getVerticalLinearLayoutManager
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 

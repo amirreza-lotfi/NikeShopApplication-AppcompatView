@@ -20,8 +20,8 @@ import com.amirreza.ecommercenikestore.feature_store.presentation.product_detail
 import com.amirreza.ecommercenikestore.feature_store.presentation.product_detail_fragment.scroll.ObservableScrollViewCallbacks
 import com.amirreza.ecommercenikestore.feature_store.presentation.product_detail_fragment.scroll.ScrollState
 import com.google.android.material.snackbar.Snackbar
-import com.sevenlearn.nikestore.common.asyncIoNetworkCall
-import com.sevenlearn.nikestore.common.formatPrice
+import com.amirreza.ecommercenikestore.feature_store.common.util.asyncIoNetworkCall
+import com.amirreza.ecommercenikestore.feature_store.common.util.formatPrice
 import io.reactivex.disposables.CompositeDisposable
 import org.greenrobot.eventbus.EventBus
 import org.koin.android.ext.android.inject

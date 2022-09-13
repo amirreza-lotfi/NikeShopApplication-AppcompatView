@@ -1,13 +1,11 @@
 package com.amirreza.ecommercenikestore.feature_store.presentation
 
 import android.util.Log
-import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.CartItem
 import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.ProductCountInShoppingCart
 import com.amirreza.ecommercenikestore.feature_cart.domain.useCases.CartUseCase
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeSingleObserver
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeViewModel
-import com.sevenlearn.nikestore.common.hasUserLoggedInAccount
-import io.reactivex.SingleObserver
+import com.amirreza.ecommercenikestore.feature_store.common.util.hasUserLoggedInAccount
 import io.reactivex.schedulers.Schedulers
 import org.greenrobot.eventbus.EventBus
 

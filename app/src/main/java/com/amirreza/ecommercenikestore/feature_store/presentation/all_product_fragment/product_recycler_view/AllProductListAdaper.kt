@@ -11,8 +11,8 @@ import com.amirreza.ecommercenikestore.feature_store.domain.repository.ImageLoad
 import com.amirreza.ecommercenikestore.feature_store.presentation.home_fragment.product_list_util.ItemClickListener
 import com.example.nikeshop.feature_shop.domain.entity.Product
 import com.facebook.drawee.view.SimpleDraweeView
-import com.sevenlearn.nikestore.common.formatPrice
-import com.sevenlearn.nikestore.common.implementSpringAnimationTrait
+import com.amirreza.ecommercenikestore.feature_store.common.util.formatPrice
+import com.amirreza.ecommercenikestore.feature_store.common.util.implementSpringAnimationTrait
 
 const val VIEW_TYPE_GRID = 1
 const val VIEW_TYPE_LARG_VERTICAL = 0

@@ -35,4 +35,17 @@
     <string name="pleaseLogInAccount">لطفا وارد حساب کاربری شوید</string>
     <string name="enterToAccount">ورود به حساب کاربری</string>
     <string name="cartIsEmpty">سبد خرید خالی است</string>
+    <string name="onlinePayment">پرداخت اینترنتی</string>
+    <string name="cashOnDelivery">پرداخت در محل</string>
+    <string name="address">آدرس</string>
+    <string name="phoneNumber">تلفن همراه</string>
+    <string name="zipCode">کد پستی</string>
+    <string name="lastName">نام خانوادگی</string>
+    <string name="shippingToolbarTitle">پرداخت</string>
+    <string name="firstName">نام</string>
+    <string name="orderHistory">سوابق سفارش</string>
+    <string name="returnToHome">برگشت به صفحه اصلی</string>
+    <string name="price">قیمت</string>
+    <string name="purchaseStatus">وضعیت خرید</string>
+    <string name="successfulPurchase">خرید موفق</string>
 </resources>

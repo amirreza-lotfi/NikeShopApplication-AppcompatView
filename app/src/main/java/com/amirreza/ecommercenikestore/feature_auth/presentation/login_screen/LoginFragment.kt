@@ -9,14 +9,11 @@ import com.amirreza.ecommercenikestore.R
 import com.amirreza.ecommercenikestore.databinding.FragmentLoginBinding
 import com.amirreza.ecommercenikestore.feature_auth.presentation.AuthViewModel
 import com.amirreza.ecommercenikestore.feature_auth.presentation.signup_screen.SignUpFragment
-import com.amirreza.ecommercenikestore.feature_store.common.base.NikeCompletable
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeFragment
-import com.sevenlearn.nikestore.common.asyncIoNetworkCall
-import io.reactivex.Completable
+import com.amirreza.ecommercenikestore.feature_store.common.util.asyncIoNetworkCall
 import io.reactivex.CompletableObserver
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
-import kotlinx.android.synthetic.main.fragment_login.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 

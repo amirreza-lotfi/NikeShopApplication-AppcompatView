@@ -5,15 +5,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import com.amirreza.ecommercenikestore.R
-import com.amirreza.ecommercenikestore.databinding.FragmentLoginBinding
 import com.amirreza.ecommercenikestore.databinding.FragmentSignupBinding
 import com.amirreza.ecommercenikestore.feature_auth.presentation.AuthViewModel
 import com.amirreza.ecommercenikestore.feature_auth.presentation.login_screen.LoginFragment
-import com.amirreza.ecommercenikestore.feature_store.common.base.NikeCompletable
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeFragment
-import com.sevenlearn.nikestore.common.asyncIoNetworkCall
+import com.amirreza.ecommercenikestore.feature_store.common.util.asyncIoNetworkCall
 import io.reactivex.CompletableObserver
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable

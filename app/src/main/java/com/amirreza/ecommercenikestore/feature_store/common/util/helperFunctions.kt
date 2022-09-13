@@ -1,6 +1,5 @@
-package com.sevenlearn.nikestore.common
+package com.amirreza.ecommercenikestore.feature_store.common.util
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.Resources
 import android.text.SpannableString
@@ -15,10 +14,12 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.amirreza.ecommercenikestore.feature_auth.domain.model.Tokens
+import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.ProductCountInShoppingCart
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import org.greenrobot.eventbus.EventBus
 import timber.log.Timber
 
 fun convertDpToPixel(dp: Float, context: Context?): Float {
@@ -29,6 +30,21 @@ fun convertDpToPixel(dp: Float, context: Context?): Float {
     } else {
         val metrics = Resources.getSystem().displayMetrics
         dp * (metrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
+    }
+}
+
+fun increaseCartBadgeCount(count:Int){
+    val countOfCartItem = EventBus.getDefault().getStickyEvent(ProductCountInShoppingCart::class.java)
+    countOfCartItem?.let {
+        it.count += count
+        EventBus.getDefault().postSticky(it)
+    }
+}
+fun decreaseCartBadgeCount(count:Int){
+    val countOfCartItem = EventBus.getDefault().getStickyEvent(ProductCountInShoppingCart::class.java)
+    countOfCartItem?.let {
+        it.count -= count
+        EventBus.getDefault().postSticky(it)
     }
 }
 

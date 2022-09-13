@@ -10,8 +10,8 @@ import com.amirreza.ecommercenikestore.R
 import com.amirreza.ecommercenikestore.feature_store.domain.repository.ImageLoaderI
 import com.example.nikeshop.feature_shop.domain.entity.Product
 import com.facebook.drawee.view.SimpleDraweeView
-import com.sevenlearn.nikestore.common.formatPrice
-import com.sevenlearn.nikestore.common.implementSpringAnimationTrait
+import com.amirreza.ecommercenikestore.feature_store.common.util.formatPrice
+import com.amirreza.ecommercenikestore.feature_store.common.util.implementSpringAnimationTrait
 
 class ProductListAdapter(val imageLoaderI: ImageLoaderI): RecyclerView.Adapter<ProductListAdapter.ItemHolder>() {
     var itemClickListener: ItemClickListener? = null

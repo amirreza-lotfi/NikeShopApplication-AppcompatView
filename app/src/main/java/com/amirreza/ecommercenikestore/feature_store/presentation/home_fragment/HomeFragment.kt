@@ -1,7 +1,6 @@
 package com.amirreza.ecommercenikestore.feature_store.presentation.home_fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,10 +21,9 @@ import com.amirreza.ecommercenikestore.feature_store.presentation.home_fragment.
 import com.example.nikeshop.feature_shop.domain.entity.Product
 import com.example.nikeshop.feature_shop.domain.entity.SORT_NEWEST
 import com.example.nikeshop.feature_shop.domain.entity.SORT_POPULAR
-import com.sevenlearn.nikestore.common.convertDpToPixel
+import com.amirreza.ecommercenikestore.feature_store.common.util.convertDpToPixel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 class HomeFragment:NikeFragment(), ItemClickListener {
 

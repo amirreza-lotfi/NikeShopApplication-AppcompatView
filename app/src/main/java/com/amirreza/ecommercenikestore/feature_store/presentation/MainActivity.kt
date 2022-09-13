@@ -1,8 +1,5 @@
 package com.amirreza.ecommercenikestore.feature_store.presentation
 
-import android.content.Context
-import android.os.Binder
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.navigation.NavController
@@ -17,8 +14,7 @@ import com.amirreza.ecommercenikestore.feature_store.common.base.NikeActivity
 import com.google.android.material.badge.BadgeDrawable
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.color.MaterialColors
-import com.sevenlearn.nikestore.common.convertDpToPixel
-import org.greenrobot.eventbus.EventBus
+import com.amirreza.ecommercenikestore.feature_store.common.util.convertDpToPixel
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import org.koin.androidx.viewmodel.ext.android.viewModel
