@@ -1,7 +1,6 @@
 package com.amirreza.ecommercenikestore.feature_cart.presentation.card_fragment
 
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,24 +8,19 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.amirreza.ecommercenikestore.R
 import com.amirreza.ecommercenikestore.databinding.FragmentCartBinding
 import com.amirreza.ecommercenikestore.feature_auth.presentation.AuthActivity
 import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.CartItem
+import com.amirreza.ecommercenikestore.feature_cart.presentation.CartUiEvent
 import com.amirreza.ecommercenikestore.feature_cart.presentation.card_fragment.cartItemAdapter.CartItemAdapter
 import com.amirreza.ecommercenikestore.feature_cart.presentation.card_fragment.cartItemAdapter.CartItemCallBack
 import com.amirreza.ecommercenikestore.feature_store.common.base.EXTRA_PRODUCT_FROM_HOME_TO_DETAIL
-import com.amirreza.ecommercenikestore.feature_store.common.base.NikeCompletable
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeFragment
 import com.amirreza.ecommercenikestore.feature_store.domain.repository.ImageLoaderI
 import com.google.android.material.button.MaterialButton
-import com.sevenlearn.nikestore.common.asyncIoNetworkCall
 import com.sevenlearn.nikestore.common.getVerticalLinearLayoutManager
-import io.reactivex.CompletableObserver
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
 import org.koin.android.ext.android.inject
 
 class CartFragment : NikeFragment(), CartItemCallBack {
@@ -51,7 +45,17 @@ class CartFragment : NikeFragment(), CartItemCallBack {
         binding.cartItemRecyclerView.layoutManager = getVerticalLinearLayoutManager(requireContext())
         setProgressBarVisibility()
 
-        cartViewModel.cartResponse.observe(viewLifecycleOwner) { itemList ->
+        cartViewModel.purchaseDetailAndPurchaseButtonMustShow.observe(viewLifecycleOwner){ mustShow->
+            if(mustShow){
+                binding.paymentButton.visibility = View.VISIBLE
+                binding.purchaseDetailLayout.visibility = View.VISIBLE
+            }else{
+                binding.paymentButton.visibility = View.GONE
+                binding.purchaseDetailLayout.visibility = View.GONE
+            }
+        }
+
+        cartViewModel.cartItems.observe(viewLifecycleOwner) { itemList ->
             cartAdapter = CartItemAdapter(itemList as MutableList<CartItem>, imageLoader, this)
             binding.cartItemRecyclerView.adapter = cartAdapter
         }
@@ -98,33 +102,36 @@ class CartFragment : NikeFragment(), CartItemCallBack {
     }
 
     override fun onDeleteCartItemClicked(cartItem: CartItem) {
-        cartViewModel.removeItemFromCart(cartItem)
-            .asyncIoNetworkCall()
-            .subscribe(object : NikeCompletable(compositeDisposable) {
-                override fun onComplete() {
+        cartViewModel.uiEvent(
+            CartUiEvent.OnDeleteCartItemClicked(
+                cartItem = cartItem,
+                onCompleteEvent = {
                     cartAdapter.removeItem(cartItem)
                 }
-            })
+            )
+        )
     }
 
     override fun onIncreaseItemCountClicked(cartItem: CartItem) {
-        cartViewModel.increaseCartItemCount(cartItem)
-            .asyncIoNetworkCall()
-            .subscribe(object : NikeCompletable(compositeDisposable) {
-                override fun onComplete() {
+        cartViewModel.uiEvent(
+            CartUiEvent.OnIncreaseItemCountClicked(
+                cartItem = cartItem,
+                onCompleteEvent = {
                     cartAdapter.changesCount(cartItem)
                 }
-            })
+            )
+        )
     }
 
     override fun onDecreaseItemCountClicked(cartItem: CartItem) {
-        cartViewModel.decreaseCartItemCount(cartItem)
-            .asyncIoNetworkCall()
-            .subscribe(object : NikeCompletable(compositeDisposable) {
-                override fun onComplete() {
+        cartViewModel.uiEvent(
+            CartUiEvent.OnDecreaseItemCountClicked(
+                cartItem = cartItem,
+                onCompleteEvent = {
                     cartAdapter.changesCount(cartItem)
                 }
-            })
+            )
+        )
     }
 
     override fun onProductImageClicked(cartItem: CartItem) {

@@ -1,23 +1,38 @@
 package com.amirreza.ecommercenikestore.feature_store.presentation
 
+import android.content.Context
+import android.os.Binder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import com.amirreza.ecommercenikestore.R
+import com.amirreza.ecommercenikestore.databinding.ActivityMainBinding
+import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.ProductCountInShoppingCart
+import com.amirreza.ecommercenikestore.feature_store.common.base.NikeActivity
+import com.google.android.material.badge.BadgeDrawable
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.color.MaterialColors
+import com.sevenlearn.nikestore.common.convertDpToPixel
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : NikeActivity() {
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var binding:ActivityMainBinding
+    private val viewModel:MainActivityViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
         navController = navHostFragment.navController
 
@@ -31,7 +46,26 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+    override fun onResume() {
+        super.onRestart()
+        viewModel.getCartItemsCount()
+    }
+
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration)
+    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun cartItemChanged(cartItemCount: ProductCountInShoppingCart){
+        Log.i("mainActivity","eventBusss")
+        val badge = binding.bottomNavigation.getOrCreateBadge(R.id.navigation_cart)
+        badge.apply {
+            badgeGravity = BadgeDrawable.TOP_END
+            isVisible = cartItemCount.count>0
+            number = cartItemCount.count
+            verticalOffset = convertDpToPixel(10f, this@MainActivity).toInt()
+            backgroundColor = MaterialColors.getColor(binding.bottomNavigation, androidx.appcompat.R.attr.colorPrimary)
+        }
     }
 }

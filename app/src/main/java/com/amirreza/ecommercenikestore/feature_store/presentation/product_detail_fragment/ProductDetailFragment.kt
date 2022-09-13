@@ -13,6 +13,7 @@ import com.amirreza.ecommercenikestore.feature_store.common.base.EXTRA_ALL_COMME
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeCompletable
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeFragment
 import com.amirreza.ecommercenikestore.databinding.FragmentProductDetailBinding
+import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.ProductCountInShoppingCart
 import com.amirreza.ecommercenikestore.feature_store.domain.entity.Comment
 import com.amirreza.ecommercenikestore.feature_store.domain.repository.ImageLoaderI
 import com.amirreza.ecommercenikestore.feature_store.presentation.product_detail_fragment.comment_recyclerView.CommentAdapter
@@ -108,6 +109,11 @@ class ProductDetailFragment : NikeFragment() {
                         Snackbar
                             .make(rootView as CoordinatorLayout,"به سبد خرید اضافه شد",Snackbar.LENGTH_SHORT)
                             .show()
+                        val countOfCartItem = EventBus.getDefault().getStickyEvent(ProductCountInShoppingCart::class.java)
+                        countOfCartItem?.let {
+                            it.count += 1
+                            EventBus.getDefault().postSticky(it)
+                        }
                     }
                 })
         }

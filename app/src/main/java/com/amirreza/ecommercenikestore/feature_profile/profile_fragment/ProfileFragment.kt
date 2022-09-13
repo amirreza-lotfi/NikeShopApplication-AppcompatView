@@ -1,4 +1,4 @@
-package com.amirreza.ecommercenikestore.feature_store.presentation.profile_fragment
+package com.amirreza.ecommercenikestore.feature_profile.profile_fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

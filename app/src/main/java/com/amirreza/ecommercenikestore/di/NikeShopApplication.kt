@@ -37,6 +37,7 @@ import com.amirreza.ecommercenikestore.feature_store.domain.useCases.product_use
 import com.amirreza.ecommercenikestore.feature_store.domain.useCases.product_usecases.DeleteProductFromFavoritesUC
 import com.amirreza.ecommercenikestore.feature_store.domain.useCases.product_usecases.GetFavoriteProductsUC
 import com.amirreza.ecommercenikestore.feature_store.domain.useCases.product_usecases.GetProductsUC
+import com.amirreza.ecommercenikestore.feature_store.presentation.MainActivityViewModel
 import com.amirreza.ecommercenikestore.feature_store.presentation.all_comments_fragment.AllCommentViewModel
 import com.amirreza.ecommercenikestore.feature_store.presentation.all_product_fragment.AllProductViewModel
 import com.amirreza.ecommercenikestore.feature_store.presentation.all_product_fragment.product_recycler_view.AllProductListAdaper
@@ -149,6 +150,9 @@ class NikeShopApplication : Application() {
             }
             viewModel {
                 CartViewModel(get())
+            }
+            viewModel{
+                MainActivityViewModel(get())
             }
         }
         startKoin {

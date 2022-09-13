@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.amirreza.ecommercenikestore.feature_store.presentation.profile_fragment.ProfileFragment"
+        android:name="com.amirreza.ecommercenikestore.feature_profile.profile_fragment.ProfileFragment"
         android:label="ProfileFragment" />
     <fragment
         android:id="@+id/productDetailFragment"

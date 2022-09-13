@@ -1,5 +1,6 @@
 package com.amirreza.ecommercenikestore.feature_store.common.base
 
+import android.content.Context
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.ViewGroup
@@ -9,6 +10,8 @@ import androidx.core.view.children
 import org.greenrobot.eventbus.EventBus
 
 abstract class NikeActivity: AppCompatActivity(),NikeView{
+    override val viewContext: Context?
+        get() = this
     override val rootView: CoordinatorLayout?
         get()  {
             val rootView = window.decorView.findViewById(android.R.id.content) as ViewGroup
@@ -23,8 +26,8 @@ abstract class NikeActivity: AppCompatActivity(),NikeView{
             }
         }
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onStart() {
+        super.onStart()
         EventBus.getDefault().register(this)
     }
 

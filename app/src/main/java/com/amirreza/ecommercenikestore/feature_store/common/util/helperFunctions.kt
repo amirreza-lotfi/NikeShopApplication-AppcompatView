@@ -14,6 +14,7 @@ import androidx.dynamicanimation.animation.SpringForce
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.amirreza.ecommercenikestore.feature_auth.domain.model.Tokens
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -44,6 +45,10 @@ fun formatPrice(
         SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
     )
     return spannableString
+}
+
+fun hasUserLoggedInAccount(): Boolean {
+    return !Tokens.token.isNullOrBlank()
 }
 
 
@@ -96,9 +101,6 @@ fun Completable.asyncIoNetworkCall():Completable{
 }
 fun getVerticalLinearLayoutManager(context: Context?): RecyclerView.LayoutManager {
     return LinearLayoutManager(context,RecyclerView.VERTICAL,false)
-}
-fun geHorizontalLinearLayoutManager(context: Context?): RecyclerView.LayoutManager {
-    return LinearLayoutManager(context,RecyclerView.HORIZONTAL,false)
 }
 fun getGridLayoutManager(context: Context?): GridLayoutManager {
     return GridLayoutManager(context, 2 )

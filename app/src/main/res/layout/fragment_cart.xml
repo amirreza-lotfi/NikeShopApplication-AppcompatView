@@ -24,7 +24,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/payCartItems"
+        android:id="@+id/paymentButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
@@ -50,6 +50,7 @@
                 android:clipToPadding="false"
                 app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
             <LinearLayout
+                android:id="@+id/purchaseDetailLayout"
                 android:orientation="vertical"
                 android:layoutDirection="rtl"
                 android:layout_marginTop="16dp"
