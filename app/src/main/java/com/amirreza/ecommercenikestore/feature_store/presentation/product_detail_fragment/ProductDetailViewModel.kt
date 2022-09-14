@@ -3,7 +3,7 @@ package com.amirreza.ecommercenikestore.feature_store.presentation.product_detai
 import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.amirreza.ecommercenikestore.feature_store.common.base.EXTRA_PRODUCT_FROM_HOME_TO_DETAIL
+import com.amirreza.ecommercenikestore.feature_store.common.util.EXTRA_PRODUCT_FROM_HOME_TO_DETAIL
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeSingleObserver
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeViewModel
 import com.amirreza.ecommercenikestore.feature_store.domain.entity.Comment

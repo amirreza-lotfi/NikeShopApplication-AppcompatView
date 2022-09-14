@@ -5,6 +5,14 @@ import com.amirreza.ecommercenikestore.feature_cart.domain.entity.OrderResult
 import io.reactivex.Single
 
 interface OrderRepository {
-    fun registerOrder():Single<OrderResult>
-    fun getOrderDetail(orderId:Int):Single<OrderDetail>
+    fun registerOrder(
+        firstName: String,
+        lastname: String,
+        postalCode: String,
+        phoneNumber: String,
+        address: String,
+        paymentMethod: String
+    ): Single<OrderResult>
+
+    fun getOrderDetail(orderId: Int): Single<OrderDetail>
 }

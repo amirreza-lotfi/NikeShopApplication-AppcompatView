@@ -8,9 +8,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.amirreza.ecommercenikestore.R
-import com.amirreza.ecommercenikestore.feature_store.common.base.EXTRA_PRODUCT_FROM_HOME_TO_DETAIL
-import com.amirreza.ecommercenikestore.feature_store.common.base.EXTRA_SORT_TYPE
-import com.amirreza.ecommercenikestore.feature_store.common.base.EXTRA_VIEW_TYPE
+import com.amirreza.ecommercenikestore.feature_store.common.util.EXTRA_PRODUCT_FROM_HOME_TO_DETAIL
+import com.amirreza.ecommercenikestore.feature_store.common.util.EXTRA_SORT_TYPE
+import com.amirreza.ecommercenikestore.feature_store.common.util.EXTRA_VIEW_TYPE
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeFragment
 import com.amirreza.ecommercenikestore.databinding.FragmentHomeBinding
 import com.amirreza.ecommercenikestore.feature_store.presentation.all_product_fragment.product_recycler_view.VIEW_TYPE_GRID

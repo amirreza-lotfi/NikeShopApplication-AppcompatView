@@ -1,10 +1,9 @@
 package com.amirreza.ecommercenikestore.http
 
-import com.amirreza.ecommercenikestore.feature_auth.domain.model.TokenResponse
 import com.amirreza.ecommercenikestore.feature_auth.domain.model.Tokens
 import com.amirreza.ecommercenikestore.feature_auth.domain.repository.AuthRepository
-import com.amirreza.ecommercenikestore.feature_store.common.base.CLIENT_ID
-import com.amirreza.ecommercenikestore.feature_store.common.base.CLIENT_SECRET
+import com.amirreza.ecommercenikestore.feature_store.common.util.CLIENT_ID
+import com.amirreza.ecommercenikestore.feature_store.common.util.CLIENT_SECRET
 import com.google.gson.JsonObject
 import okhttp3.Authenticator
 import okhttp3.Request

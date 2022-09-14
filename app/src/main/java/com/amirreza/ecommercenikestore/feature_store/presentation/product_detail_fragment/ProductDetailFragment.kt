@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.amirreza.ecommercenikestore.R
-import com.amirreza.ecommercenikestore.feature_store.common.base.EXTRA_ALL_COMMENTS
+import com.amirreza.ecommercenikestore.feature_store.common.util.EXTRA_ALL_COMMENTS
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeCompletable
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeFragment
 import com.amirreza.ecommercenikestore.databinding.FragmentProductDetailBinding

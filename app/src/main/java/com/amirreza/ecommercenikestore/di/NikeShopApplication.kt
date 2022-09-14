@@ -17,7 +17,9 @@ import com.amirreza.ecommercenikestore.feature_store.data.source.banner_data_sou
 import com.amirreza.ecommercenikestore.feature_cart.data.data_source.cart_data_source.CartDataSourceI
 import com.amirreza.ecommercenikestore.feature_cart.data.data_source.cart_data_source.CartRemoteDataSource
 import com.amirreza.ecommercenikestore.feature_cart.data.repository.CartRepositoryImpl
+import com.amirreza.ecommercenikestore.feature_cart.data.repository.OrderRepositoryImpl
 import com.amirreza.ecommercenikestore.feature_cart.domain.repository.CartShoppingRepository
+import com.amirreza.ecommercenikestore.feature_cart.domain.repository.OrderRepository
 import com.amirreza.ecommercenikestore.feature_store.data.source.comment_data_source.RemoteCommentDataSource
 import com.amirreza.ecommercenikestore.feature_store.data.source.product_data_spurce.ProductLocalDataSource
 import com.amirreza.ecommercenikestore.feature_store.domain.repository.CommentRepositoryI
@@ -33,6 +35,7 @@ import com.amirreza.ecommercenikestore.feature_store.domain.useCases.banner_usec
 import com.amirreza.ecommercenikestore.feature_cart.domain.useCases.cart_usecases.*
 import com.amirreza.ecommercenikestore.feature_cart.presentation.card_fragment.CartViewModel
 import com.amirreza.ecommercenikestore.feature_cart.presentation.checkout_fragment.CheckoutViewModel
+import com.amirreza.ecommercenikestore.feature_cart.presentation.receipt_fragment.OrderResultViewModel
 import com.amirreza.ecommercenikestore.feature_store.domain.useCases.comment_usecases.GetComments
 import com.amirreza.ecommercenikestore.feature_store.domain.useCases.product_usecases.AddProductToFavoritesUC
 import com.amirreza.ecommercenikestore.feature_store.domain.useCases.product_usecases.DeleteProductFromFavoritesUC
@@ -69,6 +72,9 @@ class NikeShopApplication : Application() {
                 CommentRepositoryImpl(
                     RemoteCommentDataSource(get())
                 )
+            }
+            factory<OrderRepository> {
+                OrderRepositoryImpl(get())
             }
             factory<BannerRepositoryI> {
                 BannerRepositoryImpl(
@@ -155,8 +161,11 @@ class NikeShopApplication : Application() {
             viewModel{
                 MainActivityViewModel(get())
             }
+            viewModel { (orderId:Int) ->
+                OrderResultViewModel(get(),orderId)
+            }
             viewModel{ (bundle:Bundle)->
-                CheckoutViewModel(bundle)
+                CheckoutViewModel(bundle,get())
             }
         }
         startKoin {

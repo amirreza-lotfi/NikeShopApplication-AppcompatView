@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.amirreza.ecommercenikestore.R
-import com.amirreza.ecommercenikestore.feature_store.common.base.EXTRA_SORT_TYPE
-import com.amirreza.ecommercenikestore.feature_store.common.base.EXTRA_VIEW_TYPE
+import com.amirreza.ecommercenikestore.feature_store.common.util.EXTRA_SORT_TYPE
+import com.amirreza.ecommercenikestore.feature_store.common.util.EXTRA_VIEW_TYPE
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeFragment
 import com.amirreza.ecommercenikestore.databinding.FragmentAllProductBinding
 import com.amirreza.ecommercenikestore.feature_store.presentation.all_product_fragment.product_recycler_view.AllProductListAdaper

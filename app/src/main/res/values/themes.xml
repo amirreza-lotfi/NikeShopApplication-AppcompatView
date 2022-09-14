@@ -10,17 +10,23 @@
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/gray</item>
-        <item name="android:forceDarkAllowed" tools:targetApi="q"> false </item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
 
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
         <!-- Customize your theme here. -->
         <item name="fontFamily">@font/primary_regular</item>
-        <item name="textAppearanceHeadline1">@style/TextAppearance.ECommerceNikeStore.Headline1</item>
-        <item name="textAppearanceHeadline2">@style/TextAppearance.ECommerceNikeStore.Headline2</item>
-        <item name="textAppearanceHeadline3">@style/TextAppearance.ECommerceNikeStore.Headline3</item>
-        <item name="textAppearanceHeadline4">@style/TextAppearance.ECommerceNikeStore.Headline4</item>
-        <item name="textAppearanceHeadline5">@style/TextAppearance.ECommerceNikeStore.Headline5</item>
-        <item name="textAppearanceHeadline6">@style/TextAppearance.ECommerceNikeStore.Headline6</item>
+        <item name="textAppearanceHeadline1">@style/TextAppearance.ECommerceNikeStore.Headline1
+        </item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.ECommerceNikeStore.Headline2
+        </item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.ECommerceNikeStore.Headline3
+        </item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.ECommerceNikeStore.Headline4
+        </item>
+        <item name="textAppearanceHeadline5">@style/TextAppearance.ECommerceNikeStore.Headline5
+        </item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.ECommerceNikeStore.Headline6
+        </item>
         <item name="textAppearanceBody1">@style/TextAppearance.ECommerceNikeStore.Body1</item>
         <item name="textAppearanceBody2">@style/TextAppearance.ECommerceNikeStore.Body2</item>
         <item name="textAppearanceButton">@style/TextAppearance.ECommerceNikeStore.Button</item>
@@ -40,4 +46,13 @@
         <item name="colorOnSurface">@color/white</item>
         <item name="materialButtonStyle">@style/ECommerceNikeStore.AuthActivity.ButtonTheme</item>
     </style>
+
+    <style name="Theme.ECommerceNikeStore.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.ECommerceNikeStore.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.ECommerceNikeStore.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

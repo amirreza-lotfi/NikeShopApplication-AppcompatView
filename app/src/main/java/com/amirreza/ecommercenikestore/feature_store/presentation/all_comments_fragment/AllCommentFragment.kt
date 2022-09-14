@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.amirreza.ecommercenikestore.feature_store.common.base.EXTRA_ALL_COMMENTS
+import com.amirreza.ecommercenikestore.feature_store.common.util.EXTRA_ALL_COMMENTS
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeFragment
 import com.amirreza.ecommercenikestore.databinding.FragmentAllCommentBinding
 import com.amirreza.ecommercenikestore.feature_store.domain.entity.Comment

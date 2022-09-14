@@ -14,8 +14,8 @@ import com.amirreza.ecommercenikestore.feature_auth.presentation.AuthActivity
 import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.CartItem
 import com.amirreza.ecommercenikestore.feature_cart.presentation.card_fragment.cartItemAdapter.CartItemAdapter
 import com.amirreza.ecommercenikestore.feature_cart.presentation.card_fragment.cartItemAdapter.CartItemCallBack
-import com.amirreza.ecommercenikestore.feature_store.common.base.EXTRA_PRODUCT_FROM_HOME_TO_DETAIL
-import com.amirreza.ecommercenikestore.feature_store.common.base.EXTRA_PURCHASE_DETAIL
+import com.amirreza.ecommercenikestore.feature_store.common.util.EXTRA_PRODUCT_FROM_HOME_TO_DETAIL
+import com.amirreza.ecommercenikestore.feature_store.common.util.EXTRA_PURCHASE_DETAIL
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeFragment
 import com.amirreza.ecommercenikestore.feature_store.domain.repository.ImageLoaderI
 import com.google.android.material.button.MaterialButton
