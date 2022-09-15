@@ -1,6 +1,6 @@
 package com.amirreza.ecommercenikestore.features.feature_store.domain.useCases.product_usecases
 
-import com.example.nikeshop.feature_shop.domain.entity.Product
+import com.amirreza.ecommercenikestore.features.feature_store.domain.entity.Product
 import com.amirreza.ecommercenikestore.features.feature_store.domain.repository.ProductRepositoryI
 import io.reactivex.Single
 

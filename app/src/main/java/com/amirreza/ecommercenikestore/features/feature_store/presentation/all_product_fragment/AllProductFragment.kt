@@ -12,7 +12,7 @@ import com.amirreza.ecommercenikestore.features.feature_store.common.util.EXTRA_
 import com.amirreza.ecommercenikestore.features.feature_store.common.base.NikeFragment
 import com.amirreza.ecommercenikestore.databinding.FragmentAllProductBinding
 import com.amirreza.ecommercenikestore.features.feature_store.presentation.all_product_fragment.product_recycler_view.AllProductListAdaper
-import com.example.nikeshop.feature_shop.domain.entity.Product
+import com.amirreza.ecommercenikestore.features.feature_store.domain.entity.Product
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.amirreza.ecommercenikestore.features.feature_store.common.util.getGridLayoutManager
 import com.amirreza.ecommercenikestore.features.feature_store.common.util.getVerticalLinearLayoutManager
@@ -56,7 +56,7 @@ class AllProductFragment : NikeFragment() {
         recyclerView.adapter = productListAdapter
 
         allProductViewModel.productList.observe(viewLifecycleOwner){
-            productListAdapter.products = it as ArrayList<Product> /* = java.util.ArrayList<com.example.nikeshop.feature_shop.domain.entity.Product> */
+            productListAdapter.products = it as ArrayList<Product> /* = java.util.ArrayList<com.amirreza.ecommercenikestore.features.feature_store.domain.entity.Product> */
         }
     }
     private fun setChangeViewTypeButtonClick(){

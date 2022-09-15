@@ -3,6 +3,9 @@ package com.amirreza.ecommercenikestore.di
 import android.app.Application
 import android.content.SharedPreferences
 import android.os.Bundle
+import androidx.room.Room
+import com.amirreza.ecommercenikestore.database.AppDataBase
+import com.amirreza.ecommercenikestore.database.FavoriteDao
 import com.amirreza.ecommercenikestore.features.feature_auth.data.repository.AuthRepositoryImpl
 import com.amirreza.ecommercenikestore.features.feature_auth.data.source.local.AuthLocalDataSourceImp
 import com.amirreza.ecommercenikestore.features.feature_auth.data.source.remote.AuthRemoteDataSourceImpl
@@ -12,7 +15,7 @@ import com.amirreza.ecommercenikestore.http.createInstanceOfApiService
 import com.amirreza.ecommercenikestore.features.feature_store.data.repository.CommentRepositoryImpl
 import com.amirreza.ecommercenikestore.features.feature_store.data.repository.FrescoImageLoadingService
 import com.example.nikeshop.feature_shop.data.repository.BannerRepositoryImpl
-import com.example.nikeshop.feature_shop.data.repository.ProductRepositoryImpl
+import com.amirreza.ecommercenikestore.features.feature_store.data.repository.ProductRepositoryImpl
 import com.amirreza.ecommercenikestore.features.feature_store.data.source.banner_data_source.BannerRemoteDataSource
 import com.amirreza.ecommercenikestore.features.feature_cart.data.data_source.cart_data_source.CartDataSourceI
 import com.amirreza.ecommercenikestore.features.feature_cart.data.data_source.cart_data_source.CartRemoteDataSource
@@ -24,7 +27,7 @@ import com.amirreza.ecommercenikestore.features.feature_store.data.source.commen
 import com.amirreza.ecommercenikestore.features.feature_store.data.source.product_data_spurce.ProductLocalDataSource
 import com.amirreza.ecommercenikestore.features.feature_store.domain.repository.CommentRepositoryI
 import com.amirreza.ecommercenikestore.features.feature_store.domain.repository.ImageLoaderI
-import com.example.nikeshop.feature_shop.data.source.product_data_spurce.ProductRemoteDataSource
+import com.amirreza.ecommercenikestore.features.feature_store.data.source.product_data_spurce.ProductRemoteDataSource
 import com.example.nikeshop.feature_shop.domain.repository.BannerRepositoryI
 import com.amirreza.ecommercenikestore.features.feature_store.domain.repository.ProductRepositoryI
 import com.amirreza.ecommercenikestore.features.feature_store.domain.useCases.BannerUseCases
@@ -36,13 +39,13 @@ import com.amirreza.ecommercenikestore.features.feature_cart.domain.useCases.car
 import com.amirreza.ecommercenikestore.features.feature_cart.presentation.card_fragment.CartViewModel
 import com.amirreza.ecommercenikestore.features.feature_cart.presentation.checkout_fragment.CheckoutViewModel
 import com.amirreza.ecommercenikestore.features.feature_cart.presentation.receipt_fragment.OrderResultViewModel
+import com.amirreza.ecommercenikestore.features.feature_profile.data.FavoriteRepositoryImpl
 import com.amirreza.ecommercenikestore.features.feature_profile.data.ProfileRepositoryImpl
+import com.amirreza.ecommercenikestore.features.feature_profile.domain.FavoriteRepository
 import com.amirreza.ecommercenikestore.features.feature_profile.domain.ProfileRepository
+import com.amirreza.ecommercenikestore.features.feature_profile.presentation.favorites_fragment.FavoriteViewModel
 import com.amirreza.ecommercenikestore.features.feature_profile.presentation.profile_fragment.ProfileViewModel
 import com.amirreza.ecommercenikestore.features.feature_store.domain.useCases.comment_usecases.GetComments
-import com.amirreza.ecommercenikestore.features.feature_store.domain.useCases.product_usecases.AddProductToFavoritesUC
-import com.amirreza.ecommercenikestore.features.feature_store.domain.useCases.product_usecases.DeleteProductFromFavoritesUC
-import com.amirreza.ecommercenikestore.features.feature_store.domain.useCases.product_usecases.GetFavoriteProductsUC
 import com.amirreza.ecommercenikestore.features.feature_store.domain.useCases.product_usecases.GetProductsUC
 import com.amirreza.ecommercenikestore.features.feature_store.presentation.MainActivityViewModel
 import com.amirreza.ecommercenikestore.features.feature_store.presentation.all_comments_fragment.AllCommentViewModel
@@ -65,6 +68,16 @@ class NikeShopApplication : Application() {
 
         val module = module {
             single { createInstanceOfApiService() }
+            single {
+                Room.databaseBuilder(
+                    this@NikeShopApplication,
+                    AppDataBase::class.java,
+                    "nike_database"
+                ).build()
+            }
+            single<FavoriteDao> {
+                get<AppDataBase>().favoriteDao()
+            }
             factory<ProductRepositoryI> {
                 ProductRepositoryImpl(
                     ProductRemoteDataSource(get()),
@@ -93,15 +106,16 @@ class NikeShopApplication : Application() {
             factory { (viewType:Int)->
                 AllProductListAdaper(viewType,get())
             }
-
             factory<CartDataSourceI>{
                 CartRemoteDataSource(get())
             }
-
             single<ProfileRepository> {
                 ProfileRepositoryImpl(get())
             }
 
+            single<FavoriteRepository> {
+                FavoriteRepositoryImpl(get())
+            }
             single<CartShoppingRepository>{
                 CartRepositoryImpl(get())
             }
@@ -138,10 +152,7 @@ class NikeShopApplication : Application() {
             }
             single {
                 ProductUseCases(
-                    GetProductsUC(get()),
-                    GetFavoriteProductsUC(get()),
-                    AddProductToFavoritesUC(get()),
-                    DeleteProductFromFavoritesUC(get()),
+                    GetProductsUC(get())
                 )
             }
 
@@ -177,8 +188,8 @@ class NikeShopApplication : Application() {
             viewModel {
                 ProfileViewModel(get())
             }
-            viewModel {
-                ProfileViewModel(get())
+            viewModel{
+                FavoriteViewModel(get())
             }
         }
         startKoin {

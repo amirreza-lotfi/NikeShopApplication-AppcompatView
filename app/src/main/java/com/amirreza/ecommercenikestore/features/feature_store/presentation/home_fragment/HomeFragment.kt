@@ -18,9 +18,9 @@ import com.amirreza.ecommercenikestore.features.feature_store.presentation.all_p
 import com.amirreza.ecommercenikestore.features.feature_store.presentation.home_fragment.banner_util.BannerSliderHomeFragmentAdapter
 import com.amirreza.ecommercenikestore.features.feature_store.presentation.home_fragment.product_list_util.ItemClickListener
 import com.amirreza.ecommercenikestore.features.feature_store.presentation.home_fragment.product_list_util.ProductListAdapter
-import com.example.nikeshop.feature_shop.domain.entity.Product
-import com.example.nikeshop.feature_shop.domain.entity.SORT_NEWEST
-import com.example.nikeshop.feature_shop.domain.entity.SORT_POPULAR
+import com.amirreza.ecommercenikestore.features.feature_store.domain.entity.Product
+import com.amirreza.ecommercenikestore.features.feature_store.domain.entity.SORT_NEWEST
+import com.amirreza.ecommercenikestore.features.feature_store.domain.entity.SORT_POPULAR
 import com.amirreza.ecommercenikestore.features.feature_store.common.util.convertDpToPixel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -90,7 +90,7 @@ class HomeFragment:NikeFragment(), ItemClickListener {
         latestRecyclerView.layoutManager = layoutManager
 
         homeFragmentViewModel.latestProductsLiveData.observe(viewLifecycleOwner){
-            latestProductAdapter.products = it as ArrayList<Product> /* = java.util.ArrayList<com.example.nikeshop.feature_shop.domain.entity.Product> */
+            latestProductAdapter.products = it as ArrayList<Product> /* = java.util.ArrayList<com.amirreza.ecommercenikestore.features.feature_store.domain.entity.Product> */
             latestRecyclerView.adapter = latestProductAdapter
         }
     }
@@ -102,7 +102,7 @@ class HomeFragment:NikeFragment(), ItemClickListener {
         popularRecyclerView.layoutManager = layoutManager
 
         homeFragmentViewModel.popularProductsLiveData.observe(viewLifecycleOwner){
-            popularListAdapter.products = it as ArrayList<Product> /* = java.util.ArrayList<com.example.nikeshop.feature_shop.domain.entity.Product> */
+            popularListAdapter.products = it as ArrayList<Product> /* = java.util.ArrayList<com.amirreza.ecommercenikestore.features.feature_store.domain.entity.Product> */
             popularRecyclerView.adapter = popularListAdapter
         }
     }

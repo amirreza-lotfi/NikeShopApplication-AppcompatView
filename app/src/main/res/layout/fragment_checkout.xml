@@ -16,7 +16,7 @@
             android:id="@+id/shippingToolbarTitle"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            NikeToolbarTitle="@string/shippingToolbarTitle" />
+            app:NikeToolbarTitle="@string/shippingToolbarTitle" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView

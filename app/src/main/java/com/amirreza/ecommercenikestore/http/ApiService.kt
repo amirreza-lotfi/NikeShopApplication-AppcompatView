@@ -10,7 +10,7 @@ import com.amirreza.ecommercenikestore.features.feature_cart.domain.entity.cart.
 import com.amirreza.ecommercenikestore.features.feature_cart.domain.entity.cart.ProductCountInShoppingCart
 import com.amirreza.ecommercenikestore.features.feature_cart.domain.entity.cart.MessageResponse
 import com.example.nikeshop.feature_shop.domain.entity.Banner
-import com.example.nikeshop.feature_shop.domain.entity.Product
+import com.amirreza.ecommercenikestore.features.feature_store.domain.entity.Product
 import com.google.gson.JsonObject
 import com.amirreza.ecommercenikestore.features.feature_cart.domain.entity.cart.CartResponse
 import io.reactivex.Single

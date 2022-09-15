@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.amirreza.ecommercenikestore.R
 import com.amirreza.ecommercenikestore.features.feature_store.domain.repository.ImageLoaderI
 import com.amirreza.ecommercenikestore.features.feature_store.presentation.home_fragment.product_list_util.ItemClickListener
-import com.example.nikeshop.feature_shop.domain.entity.Product
+import com.amirreza.ecommercenikestore.features.feature_store.domain.entity.Product
 import com.facebook.drawee.view.SimpleDraweeView
 import com.amirreza.ecommercenikestore.features.feature_store.common.util.formatPrice
 import com.amirreza.ecommercenikestore.features.feature_store.common.util.implementSpringAnimationTrait

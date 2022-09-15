@@ -34,7 +34,7 @@ class ProfileFragment:NikeFragment() {
     private fun checkUserAuthentication(){
         if(profileViewModel.isSignUpped){
             binding.userEmail.text = profileViewModel.username
-            binding.loginLogOutTextView.text = "خروج به حساب کاربری"
+            binding.loginLogOutTextView.text = "خروج از حساب کاربری"
             binding.loginLogOutTextView.setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
             binding.loginLogOutTextView.setOnClickListener {
                 profileViewModel.logOut()

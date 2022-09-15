@@ -8,11 +8,12 @@ import org.greenrobot.eventbus.EventBus
 class ProfileViewModel(
     private val profileRepository: ProfileRepository
 ):NikeViewModel() {
-    val isSignUpped = Tokens.isTokenAvailable()
+    var isSignUpped = Tokens.isTokenAvailable()
     var username:String = profileRepository.getUserName()
 
     fun logOut(){
         profileRepository.logOut()
+        isSignUpped = Tokens.isTokenAvailable()
         EventBus.getDefault().postSticky("")
     }
 }

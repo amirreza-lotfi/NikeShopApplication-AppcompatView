@@ -1,9 +1,10 @@
-package com.example.nikeshop.feature_shop.domain.entity
+package com.amirreza.ecommercenikestore.features.feature_store.domain.entity
 
 import android.os.Parcelable
+import androidx.room.Entity
 import kotlinx.android.parcel.Parcelize
 
-
+@Entity(tableName = "favorite")
 @Parcelize
 data class Product(
     val discount: Int,

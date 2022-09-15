@@ -7,9 +7,9 @@ import com.amirreza.ecommercenikestore.features.feature_store.common.base.NikeVi
 import com.amirreza.ecommercenikestore.features.feature_store.domain.useCases.BannerUseCases
 import com.amirreza.ecommercenikestore.features.feature_store.domain.useCases.ProductUseCases
 import com.example.nikeshop.feature_shop.domain.entity.Banner
-import com.example.nikeshop.feature_shop.domain.entity.Product
-import com.example.nikeshop.feature_shop.domain.entity.SORT_NEWEST
-import com.example.nikeshop.feature_shop.domain.entity.SORT_POPULAR
+import com.amirreza.ecommercenikestore.features.feature_store.domain.entity.Product
+import com.amirreza.ecommercenikestore.features.feature_store.domain.entity.SORT_NEWEST
+import com.amirreza.ecommercenikestore.features.feature_store.domain.entity.SORT_POPULAR
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 

@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.amirreza.ecommercenikestore.features.feature_store.common.base.NikeSingleObserver
 import com.amirreza.ecommercenikestore.features.feature_store.common.base.NikeViewModel
 import com.amirreza.ecommercenikestore.features.feature_store.domain.useCases.ProductUseCases
-import com.example.nikeshop.feature_shop.domain.entity.Product
+import com.amirreza.ecommercenikestore.features.feature_store.domain.entity.Product
 import com.amirreza.ecommercenikestore.features.feature_store.common.util.asyncIoNetworkCall
 
 class AllProductViewModel(var sortType:Int, private val productUseCases: ProductUseCases):NikeViewModel() {

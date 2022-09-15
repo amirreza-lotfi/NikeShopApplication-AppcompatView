@@ -9,7 +9,7 @@ import com.amirreza.ecommercenikestore.features.feature_store.common.base.NikeVi
 import com.amirreza.ecommercenikestore.features.feature_store.domain.entity.Comment
 import com.amirreza.ecommercenikestore.features.feature_cart.domain.useCases.CartUseCase
 import com.amirreza.ecommercenikestore.features.feature_store.domain.useCases.CommentUseCase
-import com.example.nikeshop.feature_shop.domain.entity.Product
+import com.amirreza.ecommercenikestore.features.feature_store.domain.entity.Product
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

@@ -62,4 +62,13 @@
             app:destination="@id/navigation_home"
             app:popUpTo="@id/navigation_home" />
     </fragment>
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.amirreza.ecommercenikestore.features.feature_profile.presentation.favorites_fragment.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_favoritesFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+    </fragment>
 </navigation>
