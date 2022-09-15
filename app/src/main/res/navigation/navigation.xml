@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.amirreza.ecommercenikestore.feature_store.presentation.home_fragment.HomeFragment"
+        android:name="com.amirreza.ecommercenikestore.features.feature_store.presentation.home_fragment.HomeFragment"
         android:label="HomeFragment"
         app:route="homeFragment"
         tools:layout="@layout/fragment_home">
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_cart"
-        android:name="com.amirreza.ecommercenikestore.feature_cart.presentation.card_fragment.CartFragment"
+        android:name="com.amirreza.ecommercenikestore.features.feature_cart.presentation.card_fragment.CartFragment"
         android:label="CardFragment"
         tools:layout="@layout/fragment_cart">
         <action
@@ -32,11 +32,11 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.amirreza.ecommercenikestore.feature_profile.profile_fragment.ProfileFragment"
+        android:name="com.amirreza.ecommercenikestore.features.feature_profile.presentation.profile_fragment.ProfileFragment"
         android:label="ProfileFragment" />
     <fragment
         android:id="@+id/productDetailFragment"
-        android:name="com.amirreza.ecommercenikestore.feature_store.presentation.product_detail_fragment.ProductDetailFragment"
+        android:name="com.amirreza.ecommercenikestore.features.feature_store.presentation.product_detail_fragment.ProductDetailFragment"
         android:label="fragment_product_detail"
         tools:layout="@layout/fragment_product_detail" >
         <action
@@ -45,17 +45,17 @@
     </fragment>
     <fragment
         android:id="@+id/allCommentFragment3"
-        android:name="com.amirreza.ecommercenikestore.feature_store.presentation.all_comments_fragment.AllCommentFragment"
+        android:name="com.amirreza.ecommercenikestore.features.feature_store.presentation.all_comments_fragment.AllCommentFragment"
         android:label="fragment_all_comment"
         tools:layout="@layout/fragment_all_comment" />
     <fragment
         android:id="@+id/allProductFragment"
-        android:name="com.amirreza.ecommercenikestore.feature_store.presentation.all_product_fragment.AllProductFragment"
+        android:name="com.amirreza.ecommercenikestore.features.feature_store.presentation.all_product_fragment.AllProductFragment"
         android:label="fragment_all_product"
         tools:layout="@layout/fragment_all_product" />
     <fragment
         android:id="@+id/checkoutFragment"
-        android:name="com.amirreza.ecommercenikestore.feature_cart.presentation.checkout_fragment.CheckoutFragment"
+        android:name="com.amirreza.ecommercenikestore.features.feature_cart.presentation.checkout_fragment.CheckoutFragment"
         android:label="CheckoutFragment" >
         <action
             android:id="@+id/action_checkoutFragment_to_navigation_home"

@@ -1,18 +1,18 @@
 
 package com.amirreza.ecommercenikestore.http
 
-import com.amirreza.ecommercenikestore.feature_auth.domain.model.Tokens
-import com.amirreza.ecommercenikestore.feature_auth.domain.model.TokenResponse
-import com.amirreza.ecommercenikestore.feature_cart.domain.entity.OrderDetail
-import com.amirreza.ecommercenikestore.feature_cart.domain.entity.OrderResult
-import com.amirreza.ecommercenikestore.feature_store.domain.entity.Comment
-import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.AddToCartResponse
-import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.ProductCountInShoppingCart
-import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.MessageResponse
+import com.amirreza.ecommercenikestore.features.feature_auth.domain.model.Tokens
+import com.amirreza.ecommercenikestore.features.feature_auth.domain.model.TokenResponse
+import com.amirreza.ecommercenikestore.features.feature_cart.domain.entity.OrderDetail
+import com.amirreza.ecommercenikestore.features.feature_cart.domain.entity.OrderResult
+import com.amirreza.ecommercenikestore.features.feature_store.domain.entity.Comment
+import com.amirreza.ecommercenikestore.features.feature_cart.domain.entity.cart.AddToCartResponse
+import com.amirreza.ecommercenikestore.features.feature_cart.domain.entity.cart.ProductCountInShoppingCart
+import com.amirreza.ecommercenikestore.features.feature_cart.domain.entity.cart.MessageResponse
 import com.example.nikeshop.feature_shop.domain.entity.Banner
 import com.example.nikeshop.feature_shop.domain.entity.Product
 import com.google.gson.JsonObject
-import com.amirreza.ecommercenikestore.feature_cart.domain.entity.cart.CartResponse
+import com.amirreza.ecommercenikestore.features.feature_cart.domain.entity.cart.CartResponse
 import io.reactivex.Single
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

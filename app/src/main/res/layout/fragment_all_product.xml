@@ -5,13 +5,13 @@
     android:layout_height="match_parent"
     android:layoutDirection="rtl"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".feature_store.presentation.all_product_fragment.AllProductFragment">
+    tools:context=".features.feature_store.presentation.all_product_fragment.AllProductFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <com.amirreza.ecommercenikestore.feature_store.common.custom_view.NikeToolbar
+        <com.amirreza.ecommercenikestore.features.feature_store.common.custom_view.NikeToolbar
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:background="?colorOnPrimary"

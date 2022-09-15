@@ -28,11 +28,11 @@
             android:label="@string/title_activity_receipt"
             android:theme="@style/Theme.ECommerceNikeStore.NoActionBar" />
         <activity
-            android:name=".feature_auth.presentation.AuthActivity"
+            android:name="com.amirreza.ecommercenikestore.features.feature_auth.presentation.AuthActivity"
             android:exported="false"
             android:theme="@style/ECommerceNikeStore.AuthActivity" />
         <activity
-            android:name="com.amirreza.ecommercenikestore.feature_store.presentation.MainActivity"
+            android:name="com.amirreza.ecommercenikestore.features.feature_store.presentation.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,7 +41,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".feature_cart.presentation.receipt_fragment.OrderResultActivity"
+            android:name="com.amirreza.ecommercenikestore.features.feature_cart.presentation.receipt_fragment.OrderResultActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

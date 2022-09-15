@@ -12,7 +12,7 @@
         android:background="?colorOnPrimary">
 
 
-        <com.amirreza.ecommercenikestore.feature_store.common.custom_view.NikeToolbar
+        <com.amirreza.ecommercenikestore.features.feature_store.common.custom_view.NikeToolbar
             android:id="@+id/shippingToolbarTitle"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
