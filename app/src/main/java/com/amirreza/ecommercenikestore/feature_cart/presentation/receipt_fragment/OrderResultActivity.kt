@@ -3,6 +3,7 @@ package com.amirreza.ecommercenikestore.feature_cart.presentation.receipt_fragme
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.amirreza.ecommercenikestore.R
 import com.amirreza.ecommercenikestore.databinding.ActivityOrderResultBinding
 import com.amirreza.ecommercenikestore.feature_store.common.base.NikeActivity
@@ -30,5 +31,14 @@ class OrderResultActivity : NikeActivity() {
             binding.purchaseStatusTv.text = it.paymentStatus
             binding.DetailPayingTitleTv.text = if(it.purchaseSuccess) "خرید با موفقیت انجام شد" else "خرید ناموفق"
         }
+        binding.orderHistoryBtn.setOnClickListener {
+            ///todo implement orderHistory
+        }
+        binding.toolbar.onBackButtonClickListener = onClickHomeOrBack
+        binding.returnToHomeBtn.setOnClickListener(onClickHomeOrBack)
+
+    }
+    private val onClickHomeOrBack = View.OnClickListener {
+        finish()
     }
 }

@@ -11,6 +11,8 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.navigation.fragment.findNavController
 import com.amirreza.ecommercenikestore.R
 import com.amirreza.ecommercenikestore.databinding.FragmentCheckoutBinding
+import com.amirreza.ecommercenikestore.feature_cart.presentation.receipt_fragment.OrderResultActivity
+import com.amirreza.ecommercenikestore.feature_store.common.util.EXTRA_KEY_ORDER_ID
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import java.lang.Exception
@@ -58,12 +60,18 @@ class CheckoutFragment : Fragment() {
             onSuccess = { orderResult->
 
                 if(orderResult.bankGatewayUrl.isEmpty()){
-                    val bundle = Bundle()
-
-                    findNavController().navigate(R.id.action_checkoutFragment_to_receiptFragment)
+                    requireActivity().startActivity(
+                        Intent(
+                            requireContext(),
+                            OrderResultActivity::class.java
+                        ).apply {
+                            this.putExtra(EXTRA_KEY_ORDER_ID,orderResult.orderId)
+                        }
+                    )
                 }else{
                     openUrlInBrowser(orderResult.bankGatewayUrl)
                 }
+                findNavController().navigate(R.id.action_checkoutFragment_to_navigation_home)
             }
         )
     }

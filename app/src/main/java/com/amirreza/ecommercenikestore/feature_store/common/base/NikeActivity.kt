@@ -3,6 +3,7 @@ package com.amirreza.ecommercenikestore.feature_store.common.base
 import android.content.Context
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.util.Log
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -31,8 +32,13 @@ abstract class NikeActivity: AppCompatActivity(),NikeView{
         EventBus.getDefault().register(this)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onResume() {
+        super.onResume()
+        Log.i("","")
+    }
+
+    override fun onStop() {
+        super.onStop()
         EventBus.getDefault().unregister(this)
     }
 }

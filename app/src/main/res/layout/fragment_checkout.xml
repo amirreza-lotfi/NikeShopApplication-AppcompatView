@@ -41,6 +41,7 @@
                     android:id="@+id/shippingListFirstNameEt"
                     style="@style/ShippingTextInputEditTextStyle"
                     android:maxLines="1"
+                    android:text="amirreza"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/firstName"
@@ -51,6 +52,7 @@
                 android:id="@+id/ShippingListLastNameEtl"
                 style="@style/CheckoutTextInputLayoutStyle"
                 android:layout_width="match_parent"
+
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -59,6 +61,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
+                    android:text="lotfi"
                     android:hint="@string/lastName"
                     android:imeOptions="actionNext" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -73,6 +76,7 @@
                     android:id="@+id/shippingZipCodeNameEt"
                     style="@style/ShippingTextInputEditTextStyle"
                     android:layout_width="match_parent"
+                    android:text="0987654321"
                     android:layout_height="wrap_content"
                     android:hint="@string/zipCode"
                     android:maxLines="1"
@@ -91,6 +95,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
+                    android:text="09876543219"
                     android:hint="@string/phoneNumber"
                     android:imeOptions="actionNext" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -107,6 +112,7 @@
                     android:drawableEnd="@drawable/ic_gps_24"
                     android:layout_width="match_parent"
                     android:maxLines="1"
+                    android:text="qwertqwertyuiopqwertyuiowertyuiopoooooo"
                     android:layout_height="wrap_content"
                     android:hint="@string/address"
                     android:imeOptions="actionDone" />

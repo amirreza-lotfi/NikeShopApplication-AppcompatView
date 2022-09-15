@@ -41,7 +41,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".feature_cart.presentation.checkout_fragment.CheckoutFragment"
+            android:name=".feature_cart.presentation.receipt_fragment.OrderResultActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
