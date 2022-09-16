@@ -33,7 +33,14 @@
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.amirreza.ecommercenikestore.features.feature_profile.presentation.profile_fragment.ProfileFragment"
-        android:label="ProfileFragment" />
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_navigation_profile_to_orderHistoryFragment"
+            app:destination="@id/orderHistoryFragment" />
+        <action
+            android:id="@+id/action_navigation_profile_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/productDetailFragment"
         android:name="com.amirreza.ecommercenikestore.features.feature_store.presentation.product_detail_fragment.ProductDetailFragment"
@@ -71,4 +78,8 @@
             android:id="@+id/action_favoritesFragment_to_productDetailFragment"
             app:destination="@id/productDetailFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/orderHistoryFragment"
+        android:name="com.amirreza.ecommercenikestore.features.feature_profile.presentation.order_history_fragment.OrderHistoryFragment"
+        android:label="OrderHistoryFragment" />
 </navigation>

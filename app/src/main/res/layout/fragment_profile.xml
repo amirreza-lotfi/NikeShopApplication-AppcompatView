@@ -49,6 +49,7 @@
                 app:drawableStartCompat="@drawable/ic_favorites"/>
 
             <TextView
+                android:id="@+id/orderHistoryBtn"
                 style="@style/profileItemStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

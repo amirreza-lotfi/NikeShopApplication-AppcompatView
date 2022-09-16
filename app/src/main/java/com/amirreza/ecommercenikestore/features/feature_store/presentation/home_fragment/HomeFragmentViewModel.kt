@@ -2,7 +2,7 @@ package com.amirreza.ecommercenikestore.features.feature_store.presentation.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.amirreza.ecommercenikestore.features.feature_profile.domain.FavoriteRepository
+import com.amirreza.ecommercenikestore.features.feature_profile.domain.repo.FavoriteRepository
 import com.amirreza.ecommercenikestore.features.feature_store.common.base.NikeCompletable
 import com.amirreza.ecommercenikestore.features.feature_store.common.base.NikeSingleObserver
 import com.amirreza.ecommercenikestore.features.feature_store.common.base.NikeViewModel

@@ -26,6 +26,15 @@ class ProfileFragment:NikeFragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.orderHistoryBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_profile_to_orderHistoryFragment)
+        }
+        binding.favoriteProductBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_profile_to_favoritesFragment)
+        }
+    }
     override fun onStart() {
         super.onStart()
         checkUserAuthentication()

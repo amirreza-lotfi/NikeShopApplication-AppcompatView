@@ -13,6 +13,7 @@ import com.example.nikeshop.feature_shop.domain.entity.Banner
 import com.amirreza.ecommercenikestore.features.feature_store.domain.entity.Product
 import com.google.gson.JsonObject
 import com.amirreza.ecommercenikestore.features.feature_cart.domain.entity.cart.CartResponse
+import com.amirreza.ecommercenikestore.features.feature_profile.domain.entities.OrderHistoryItem
 import io.reactivex.Single
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -79,6 +80,8 @@ interface ApiService {
     @GET("order/checkout")
     fun getOrderDetail(@Query("order_id") orderId: Int): Single<OrderDetail>
 
+    @GET("order/list")
+    fun orders():Single<List<OrderHistoryItem>>
 }
 
 fun createInstanceOfApiService(): ApiService {

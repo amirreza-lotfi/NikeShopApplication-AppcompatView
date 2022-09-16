@@ -1,4 +1,4 @@
-package com.amirreza.ecommercenikestore.features.feature_profile.domain
+package com.amirreza.ecommercenikestore.features.feature_profile.domain.repo
 
 import com.amirreza.ecommercenikestore.features.feature_store.domain.entity.Product
 import io.reactivex.Completable

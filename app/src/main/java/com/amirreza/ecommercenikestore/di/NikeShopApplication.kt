@@ -5,7 +5,6 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.room.Room
 import com.amirreza.ecommercenikestore.database.AppDataBase
-import com.amirreza.ecommercenikestore.database.FavoriteDao
 import com.amirreza.ecommercenikestore.features.feature_auth.data.repository.AuthRepositoryImpl
 import com.amirreza.ecommercenikestore.features.feature_auth.data.source.local.AuthLocalDataSourceImp
 import com.amirreza.ecommercenikestore.features.feature_auth.data.source.remote.AuthRemoteDataSourceImpl
@@ -41,8 +40,8 @@ import com.amirreza.ecommercenikestore.features.feature_cart.presentation.checko
 import com.amirreza.ecommercenikestore.features.feature_cart.presentation.receipt_fragment.OrderResultViewModel
 import com.amirreza.ecommercenikestore.features.feature_profile.data.FavoriteRepositoryImpl
 import com.amirreza.ecommercenikestore.features.feature_profile.data.ProfileRepositoryImpl
-import com.amirreza.ecommercenikestore.features.feature_profile.domain.FavoriteRepository
-import com.amirreza.ecommercenikestore.features.feature_profile.domain.ProfileRepository
+import com.amirreza.ecommercenikestore.features.feature_profile.domain.repo.FavoriteRepository
+import com.amirreza.ecommercenikestore.features.feature_profile.domain.repo.ProfileRepository
 import com.amirreza.ecommercenikestore.features.feature_profile.presentation.favorites_fragment.FavoriteViewModel
 import com.amirreza.ecommercenikestore.features.feature_profile.presentation.profile_fragment.ProfileViewModel
 import com.amirreza.ecommercenikestore.features.feature_store.domain.useCases.comment_usecases.GetComments
@@ -81,6 +80,10 @@ class NikeShopApplication : Application() {
                     ProductRemoteDataSource(get()),
                     ProductLocalDataSource()
                 )
+            }
+
+            factory<OrderRepository> {
+                OrderRepositoryImpl(get())
             }
             factory<CommentRepositoryI>{
                 CommentRepositoryImpl(
@@ -186,6 +189,9 @@ class NikeShopApplication : Application() {
             }
             viewModel{
                 FavoriteViewModel(get())
+            }
+            viewModel {
+                ProfileViewModel(get())
             }
         }
         startKoin {

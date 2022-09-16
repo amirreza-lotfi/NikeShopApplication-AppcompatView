@@ -1,12 +1,12 @@
 package com.amirreza.ecommercenikestore.features.feature_profile.data
 
 import com.amirreza.ecommercenikestore.database.FavoriteDao
-import com.amirreza.ecommercenikestore.features.feature_profile.domain.FavoriteRepository
+import com.amirreza.ecommercenikestore.features.feature_profile.domain.repo.FavoriteRepository
 import com.amirreza.ecommercenikestore.features.feature_store.domain.entity.Product
 import io.reactivex.Completable
 import io.reactivex.Single
 
-class FavoriteRepositoryImpl(private val favoriteDao: FavoriteDao):FavoriteRepository {
+class FavoriteRepositoryImpl(private val favoriteDao: FavoriteDao): FavoriteRepository {
     override fun getFavoriteProducts(): Single<List<Product>> {
         return favoriteDao.getFavoriteProducts()
     }

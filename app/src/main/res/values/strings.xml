@@ -61,4 +61,6 @@
     <string name="information">information</string>
     <string name="image">image</string>
     <string name="es_favorite_title">لیست علاقه مندی ها خالی است</string>
+    <string name="orderHistory_orderId">شناسه سفارش</string>
+    <string name="payable_price">مبلغ</string>
 </resources>
