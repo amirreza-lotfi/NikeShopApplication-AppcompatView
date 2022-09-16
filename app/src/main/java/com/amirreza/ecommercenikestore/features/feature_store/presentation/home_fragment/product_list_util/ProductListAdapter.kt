@@ -4,6 +4,7 @@ import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.amirreza.ecommercenikestore.R
@@ -14,7 +15,7 @@ import com.amirreza.ecommercenikestore.features.feature_store.common.util.format
 import com.amirreza.ecommercenikestore.features.feature_store.common.util.implementSpringAnimationTrait
 
 class ProductListAdapter(val imageLoaderI: ImageLoaderI): RecyclerView.Adapter<ProductListAdapter.ItemHolder>() {
-    var itemClickListener: ItemClickListener? = null
+    var itemClickListener: ProductItemEvents? = null
         set(value) {
             field = value
         }
@@ -39,6 +40,7 @@ class ProductListAdapter(val imageLoaderI: ImageLoaderI): RecyclerView.Adapter<P
         private val titleTv: TextView = item.findViewById(R.id.productTitleTv)
         private val currentPriceTv: TextView = item.findViewById(R.id.currentPriceTv)
         private val previousPriceTv: TextView = item.findViewById(R.id.previousPriceTv)
+        private val favoriteBtn:ImageView = item.findViewById(R.id.favoriteBtn)
 
         fun onBind(product: Product){
             imageLoaderI.load(productIv,product.image)
@@ -46,9 +48,19 @@ class ProductListAdapter(val imageLoaderI: ImageLoaderI): RecyclerView.Adapter<P
             currentPriceTv.text = formatPrice(product.price)
             previousPriceTv.text = formatPrice(product.previous_price)
             previousPriceTv.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+
             item.implementSpringAnimationTrait()
+
             itemView.setOnClickListener {
                 itemClickListener?.onClick(product)
+            }
+
+            favoriteBtn.setOnClickListener {
+                favoriteBtn.setImageResource(
+                    if (product.isFavorite) R.drawable.ic_favorite_fill else R.drawable.ic_favorites
+                )
+                itemClickListener?.onFavoriteButtonClick(product)
+                notifyItemChanged(adapterPosition)
             }
         }
     }

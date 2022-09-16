@@ -16,7 +16,7 @@ import com.amirreza.ecommercenikestore.databinding.FragmentHomeBinding
 import com.amirreza.ecommercenikestore.features.feature_store.presentation.all_product_fragment.product_recycler_view.VIEW_TYPE_GRID
 import com.amirreza.ecommercenikestore.features.feature_store.presentation.all_product_fragment.product_recycler_view.VIEW_TYPE_LARG_VERTICAL
 import com.amirreza.ecommercenikestore.features.feature_store.presentation.home_fragment.banner_util.BannerSliderHomeFragmentAdapter
-import com.amirreza.ecommercenikestore.features.feature_store.presentation.home_fragment.product_list_util.ItemClickListener
+import com.amirreza.ecommercenikestore.features.feature_store.presentation.home_fragment.product_list_util.ProductItemEvents
 import com.amirreza.ecommercenikestore.features.feature_store.presentation.home_fragment.product_list_util.ProductListAdapter
 import com.amirreza.ecommercenikestore.features.feature_store.domain.entity.Product
 import com.amirreza.ecommercenikestore.features.feature_store.domain.entity.SORT_NEWEST
@@ -25,7 +25,7 @@ import com.amirreza.ecommercenikestore.features.feature_store.common.util.conver
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomeFragment:NikeFragment(), ItemClickListener {
+class HomeFragment:NikeFragment(), ProductItemEvents {
 
     lateinit var binding: FragmentHomeBinding
 
@@ -123,9 +123,14 @@ class HomeFragment:NikeFragment(), ItemClickListener {
             findNavController().navigate(R.id.action_navigation_home_to_allProductFragment,bundle)
         }
     }
+
     override fun onClick(product: Product) {
         val bundle = Bundle()
         bundle.putParcelable(EXTRA_PRODUCT_FROM_HOME_TO_DETAIL,product)
         findNavController().navigate(R.id.action_navigation_home_to_productDetailFragment,bundle)
+    }
+
+    override fun onFavoriteButtonClick(product: Product) {
+        homeFragmentViewModel.addOrDeleteProductFromFavorite(product)
     }
 }

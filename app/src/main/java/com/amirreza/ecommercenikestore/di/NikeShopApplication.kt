@@ -68,16 +68,14 @@ class NikeShopApplication : Application() {
 
         val module = module {
             single { createInstanceOfApiService() }
-            single {
+            single<AppDataBase> {
                 Room.databaseBuilder(
                     this@NikeShopApplication,
                     AppDataBase::class.java,
                     "nike_database"
                 ).build()
             }
-            single<FavoriteDao> {
-                get<AppDataBase>().favoriteDao()
-            }
+
             factory<ProductRepositoryI> {
                 ProductRepositoryImpl(
                     ProductRemoteDataSource(get()),
@@ -112,9 +110,8 @@ class NikeShopApplication : Application() {
             single<ProfileRepository> {
                 ProfileRepositoryImpl(get())
             }
-
             single<FavoriteRepository> {
-                FavoriteRepositoryImpl(get())
+                FavoriteRepositoryImpl(get<AppDataBase>().favoriteDao())
             }
             single<CartShoppingRepository>{
                 CartRepositoryImpl(get())
@@ -122,7 +119,6 @@ class NikeShopApplication : Application() {
             single<SharedPreferences>{
                 this@NikeShopApplication.getSharedPreferences("appAuth", MODE_PRIVATE)
             }
-
             single<AuthRepository>{
                 AuthRepositoryImpl(
                     AuthLocalDataSourceImp(get()),
@@ -159,7 +155,7 @@ class NikeShopApplication : Application() {
         }
         val viewModelsModule = module {
             viewModel {
-                HomeFragmentViewModel(get(), get())
+                HomeFragmentViewModel(get(), get(), get())
             }
             viewModel { (bundle: Bundle)->
                 ProductDetailViewModel(bundle,get(),get())
@@ -199,5 +195,6 @@ class NikeShopApplication : Application() {
 
         val authRepository:AuthRepository = get()
         authRepository.loadToken()
+        get<AppDataBase>()
     }
 }

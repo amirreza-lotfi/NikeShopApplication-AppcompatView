@@ -2,6 +2,7 @@ package com.amirreza.ecommercenikestore.features.feature_store.presentation.home
 
 import com.amirreza.ecommercenikestore.features.feature_store.domain.entity.Product
 
-interface ItemClickListener {
+interface ProductItemEvents {
     fun onClick(product: Product)
+    fun onFavoriteButtonClick(product: Product)
 }

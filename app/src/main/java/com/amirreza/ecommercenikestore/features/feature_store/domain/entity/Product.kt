@@ -2,12 +2,14 @@ package com.amirreza.ecommercenikestore.features.feature_store.domain.entity
 
 import android.os.Parcelable
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
 @Entity(tableName = "favorite")
 @Parcelize
 data class Product(
     val discount: Int,
+    @PrimaryKey(autoGenerate = false)
     val id: Int,
     val image: String,
     var previous_price: Int,
@@ -15,6 +17,7 @@ data class Product(
     val status: Int,
     val title: String
 ): Parcelable {
+    var isFavorite = false
     fun getRealPrice():Int{
         return price+discount
     }

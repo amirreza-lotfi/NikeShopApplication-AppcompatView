@@ -2,8 +2,11 @@ package com.amirreza.ecommercenikestore.features.feature_store.presentation.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.amirreza.ecommercenikestore.features.feature_profile.domain.FavoriteRepository
+import com.amirreza.ecommercenikestore.features.feature_store.common.base.NikeCompletable
 import com.amirreza.ecommercenikestore.features.feature_store.common.base.NikeSingleObserver
 import com.amirreza.ecommercenikestore.features.feature_store.common.base.NikeViewModel
+import com.amirreza.ecommercenikestore.features.feature_store.common.util.asyncIoNetworkCall
 import com.amirreza.ecommercenikestore.features.feature_store.domain.useCases.BannerUseCases
 import com.amirreza.ecommercenikestore.features.feature_store.domain.useCases.ProductUseCases
 import com.example.nikeshop.feature_shop.domain.entity.Banner
@@ -15,7 +18,8 @@ import io.reactivex.schedulers.Schedulers
 
 class HomeFragmentViewModel(
     private val bannerUseCases: BannerUseCases,
-    private val productUseCases: ProductUseCases
+    private val productUseCases: ProductUseCases,
+    private val favoriteRepository: FavoriteRepository,
 ):NikeViewModel(){
 
     private val _latestProductsLiveData = MutableLiveData<List<Product>>()
@@ -35,14 +39,24 @@ class HomeFragmentViewModel(
     }
 
     private fun getProductFromServer(){
-        productUseCases.getProductsUC(SORT_NEWEST)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+        favoriteRepository.getFavoriteProducts()
+            .asyncIoNetworkCall()
             .subscribe(object : NikeSingleObserver<List<Product>>(compositeDisposable){
-                override fun onSuccess(t: List<Product>) {
-                    _latestProductsLiveData.value = t
+                override fun onSuccess(favoriteList: List<Product>) {
+                    productUseCases.getProductsUC(SORT_NEWEST)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(object : NikeSingleObserver<List<Product>>(compositeDisposable){
+                            override fun onSuccess(t: List<Product>) {
+                                for (product:Product in t){
+                                    product.isFavorite = favoriteList.contains(product)
+                                }
+                                _latestProductsLiveData.value = t
+                            }
+                        })
                 }
             })
+
     }
     private fun getPopularProductsFromServer(){
         productUseCases.getProductsUC(SORT_POPULAR)
@@ -64,5 +78,26 @@ class HomeFragmentViewModel(
                     _bannerLiveData.value = t
                 }
             })
+    }
+
+    fun addOrDeleteProductFromFavorite(product: Product){
+        product.isFavorite = !product.isFavorite
+        if(product.isFavorite){
+            favoriteRepository.deleteProductToFavorites(product)
+                .asyncIoNetworkCall()
+                .subscribe(object : NikeCompletable(compositeDisposable){
+                    override fun onComplete() {
+
+                    }
+                })
+        }else{
+            favoriteRepository.addProductToFavorites(product)
+                .asyncIoNetworkCall()
+                .subscribe(object : NikeCompletable(compositeDisposable){
+                    override fun onComplete() {
+
+                    }
+                })
+        }
     }
 }

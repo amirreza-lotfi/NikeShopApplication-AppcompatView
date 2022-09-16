@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.amirreza.ecommercenikestore.R
 import com.amirreza.ecommercenikestore.features.feature_store.domain.repository.ImageLoaderI
-import com.amirreza.ecommercenikestore.features.feature_store.presentation.home_fragment.product_list_util.ItemClickListener
+import com.amirreza.ecommercenikestore.features.feature_store.presentation.home_fragment.product_list_util.ProductItemEvents
 import com.amirreza.ecommercenikestore.features.feature_store.domain.entity.Product
 import com.facebook.drawee.view.SimpleDraweeView
 import com.amirreza.ecommercenikestore.features.feature_store.common.util.formatPrice
@@ -18,7 +18,7 @@ const val VIEW_TYPE_GRID = 1
 const val VIEW_TYPE_LARG_VERTICAL = 0
 
 class AllProductListAdaper(private val itemType:Int, private val imageLoaderI: ImageLoaderI):RecyclerView.Adapter<AllProductListAdaper.ItemHolder>() {
-    var itemClickListener: ItemClickListener? = null
+    var itemClickListener: ProductItemEvents? = null
         set(value) {
             field = value
         }
