@@ -45,8 +45,8 @@ class ProductListAdapter(val imageLoaderI: ImageLoaderI): RecyclerView.Adapter<P
         fun onBind(product: Product){
             imageLoaderI.load(productIv,product.image)
             titleTv.text = product.title
-            currentPriceTv.text = formatPrice(product.price)
-            previousPriceTv.text = formatPrice(product.previous_price)
+            currentPriceTv.text = formatPrice(product.price, " تومان ")
+            previousPriceTv.text = formatPrice(product.previous_price, " تومان ")
             previousPriceTv.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
 
             item.implementSpringAnimationTrait()

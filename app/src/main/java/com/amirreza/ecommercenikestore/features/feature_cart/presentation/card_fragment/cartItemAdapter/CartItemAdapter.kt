@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.amirreza.ecommercenikestore.databinding.ItemCartBinding
 import com.amirreza.ecommercenikestore.features.feature_cart.domain.entity.cart.CartItem
 import com.amirreza.ecommercenikestore.features.feature_home.domain.repository.ImageLoaderI
+import com.amirreza.ecommercenikestore.utils.util.formatPrice
 
 class CartItemAdapter(
     private val cartItemList:MutableList<CartItem> = mutableListOf(),
@@ -20,8 +21,8 @@ class CartItemAdapter(
             binding.productTitleTv.text = cartItem.product.title
             imageLoadingService.load(binding.productIV,cartItem.product.image)
             binding.cartItemCountTv.text = cartItem.count.toString()
-            binding.previousPriceProductTv.text = "${cartItem.product.getRealPrice()} تومان "
-            binding.priceProductTv.text = "${cartItem.product.getPayablePrice()} تومان "
+            binding.previousPriceProductTv.text = formatPrice(cartItem.product.getRealPrice()," تومان ")
+            binding.priceProductTv.text = formatPrice(cartItem.product.getPayablePrice()," تومان ")
             binding.previousPriceProductTv.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
 
             binding.progressBarChangeCount.visibility = if (cartItem.progressBarVisibility) View.VISIBLE else View.GONE

@@ -24,27 +24,6 @@ data class Product(
     fun getPayablePrice():Int{
         return price
     }
-    companion object {
-        fun getPriceWithSeparator(price:String): String {
-            var counter = 0
-            val priceToString = price
-            var price = ""
-            var index = priceToString.length - 1
-
-            while (index >= 0) {
-                if (counter == 3) {
-                    price += ","
-                    price += priceToString[index]
-                    counter = 1
-                } else {
-                    price += priceToString[index]
-                    counter++
-                }
-                index--
-            }
-            return price.reversed()
-        }
-    }
 }
 
 const val SORT_NEWEST = 0
