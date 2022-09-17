@@ -52,6 +52,10 @@ class HomeFragment: NikeFragment(), ProductItemEvents {
         onSeeAllPopularProductsClick()
     }
 
+    override fun onStart() {
+        super.onStart()
+        homeFragmentViewModel.getProductFromServer()
+    }
     private fun progressBarSetUp(){
         homeFragmentViewModel.progressBarIndicatorLiveData.observe(viewLifecycleOwner){ mustShow->
            setProgressBarIndicator(mustShow)

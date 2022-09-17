@@ -17,7 +17,7 @@ import org.koin.android.ext.android.inject
 
 class FavoritesFragment : NikeFragment(), FavoriteEvents {
     private lateinit var binding:FragmentFavoritesBinding
-    private val viewModel:FavoriteViewModel by viewModels()
+    private val viewModel:FavoriteViewModel by inject()
     private val imageLoaderI:ImageLoaderI by inject()
 
     override fun onCreateView(

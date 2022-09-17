@@ -6,6 +6,7 @@ import android.view.View
 import com.amirreza.ecommercenikestore.databinding.ActivityOrderResultBinding
 import com.amirreza.ecommercenikestore.utils.base.NikeActivity
 import com.amirreza.ecommercenikestore.utils.util.EXTRA_KEY_ORDER_ID
+import com.amirreza.ecommercenikestore.utils.util.formatPrice
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
@@ -24,7 +25,7 @@ class OrderResultActivity : NikeActivity() {
         setContentView(binding.root)
 
         viewModel.orderDetail.observe(this){
-            binding.priceTv.text = it.payablePrice.toString()
+            binding.priceTv.text = formatPrice(it.payablePrice," تومان ")
             binding.purchaseStatusTv.text = it.paymentStatus
             binding.DetailPayingTitleTv.text = if(it.purchaseSuccess) "خرید با موفقیت انجام شد" else "خرید ناموفق"
         }

@@ -33,12 +33,11 @@ class HomeFragmentViewModel(
 
     init {
         progressBarIndicatorLiveData.value = true
-        getProductFromServer()
         getPopularProductsFromServer()
         getBannerFromServer()
     }
 
-    private fun getProductFromServer(){
+    fun getProductFromServer(){
         favoriteRepository.getFavoriteProducts()
             .asyncIoNetworkCall()
             .subscribe(object : NikeSingleObserver<List<Product>>(compositeDisposable){
