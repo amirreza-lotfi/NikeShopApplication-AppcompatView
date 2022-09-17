@@ -13,6 +13,7 @@ import com.amirreza.ecommercenikestore.R
 import com.amirreza.ecommercenikestore.databinding.FragmentCheckoutBinding
 import com.amirreza.ecommercenikestore.features.feature_cart.presentation.receipt_fragment.OrderResultActivity
 import com.amirreza.ecommercenikestore.utils.util.EXTRA_KEY_ORDER_ID
+import com.amirreza.ecommercenikestore.utils.util.formatPrice
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import java.lang.Exception
@@ -37,9 +38,9 @@ class CheckoutFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         viewModel.purchaseDetailOfCart.observe(viewLifecycleOwner){
-            binding.totalPriceTV.text = "${it.totalPrice} تومان "
-            binding.shippingCostTV.text = "${it.deliveryCost} تومان "
-            binding.payablePriceTV.text = "${it.payAblePrice} تومان "
+            binding.totalPriceTV.text = formatPrice(it.totalPrice, " تومان ")
+            binding.shippingCostTV.text = formatPrice(it.deliveryCost, " تومان ")
+            binding.payablePriceTV.text = formatPrice(it.payAblePrice, " تومان ")
         }
 
         binding.codBtn.setOnClickListener(clickOnPurchaseButton)

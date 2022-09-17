@@ -7,6 +7,7 @@ import com.amirreza.ecommercenikestore.databinding.ActivityOrderResultBinding
 import com.amirreza.ecommercenikestore.utils.base.NikeActivity
 import com.amirreza.ecommercenikestore.utils.util.EXTRA_KEY_ORDER_ID
 import com.amirreza.ecommercenikestore.utils.util.formatPrice
+import org.greenrobot.eventbus.EventBus
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
@@ -30,7 +31,8 @@ class OrderResultActivity : NikeActivity() {
             binding.DetailPayingTitleTv.text = if(it.purchaseSuccess) "خرید با موفقیت انجام شد" else "خرید ناموفق"
         }
         binding.orderHistoryBtn.setOnClickListener {
-            ///todo implement orderHistory
+            EventBus.getDefault().post("go_to_orderHistoryFragment")
+            finish()
         }
         binding.toolbar.onBackButtonClickListener = onClickHomeOrBack
         binding.returnToHomeBtn.setOnClickListener(onClickHomeOrBack)

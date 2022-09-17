@@ -190,7 +190,7 @@ class NikeShopApplication : Application() {
                 CheckoutViewModel(bundle,get())
             }
             viewModel {
-                ProfileViewModel(get())
+                ProfileViewModel(get(),get())
             }
             viewModel{
                 FavoriteViewModel(get())

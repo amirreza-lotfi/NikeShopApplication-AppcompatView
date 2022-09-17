@@ -54,7 +54,6 @@ class MainActivity : NikeActivity() {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun cartItemChanged(cartItemCount: ProductCountInShoppingCart){
-        Log.i("mainActivity","eventBusss")
         val badge = binding.bottomNavigation.getOrCreateBadge(R.id.navigation_cart)
         badge.apply {
             badgeGravity = BadgeDrawable.TOP_END

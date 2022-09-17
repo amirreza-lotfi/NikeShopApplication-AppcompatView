@@ -8,6 +8,6 @@ class GetItemsInTheShoppingCart (
     private val repo: CartShoppingRepository
 ) {
     operator fun invoke(): Single<ProductCountInShoppingCart> {
-        return repo.getItemsInTheShoppingCart()
+        return repo.getCountsOfItemsInCart()
     }
 }

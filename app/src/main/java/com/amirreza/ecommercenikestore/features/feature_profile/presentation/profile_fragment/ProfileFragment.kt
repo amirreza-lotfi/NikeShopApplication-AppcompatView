@@ -10,7 +10,9 @@ import androidx.navigation.fragment.findNavController
 import com.amirreza.ecommercenikestore.R
 import com.amirreza.ecommercenikestore.databinding.FragmentProfileBinding
 import com.amirreza.ecommercenikestore.features.feature_auth.presentation.AuthActivity
+import com.amirreza.ecommercenikestore.features.feature_cart.domain.entity.cart.ProductCountInShoppingCart
 import com.amirreza.ecommercenikestore.utils.base.NikeFragment
+import org.greenrobot.eventbus.EventBus
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProfileFragment: NikeFragment() {
@@ -47,6 +49,7 @@ class ProfileFragment: NikeFragment() {
             binding.loginLogOutTextView.setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
             binding.loginLogOutTextView.setOnClickListener {
                 profileViewModel.logOut()
+                EventBus.getDefault().postSticky(ProductCountInShoppingCart(0))
                 checkUserAuthentication()
             }
 
@@ -61,6 +64,9 @@ class ProfileFragment: NikeFragment() {
                         AuthActivity::class.java
                     )
                 )
+                profileViewModel.getCartItemsNumber {
+                    EventBus.getDefault().postSticky(ProductCountInShoppingCart(it))
+                }
             }
         }
     }

@@ -11,5 +11,5 @@ interface CartShoppingRepository {
     fun getProductsInShoppingCart():Single<CartResponse>
     fun remove(cartItemId:Int): Single<MessageResponse>
     fun changeCount(cartItemId: Int, count:Int):Single<AddToCartResponse>
-    fun getItemsInTheShoppingCart():Single<ProductCountInShoppingCart>
+    fun getCountsOfItemsInCart():Single<ProductCountInShoppingCart>
 }

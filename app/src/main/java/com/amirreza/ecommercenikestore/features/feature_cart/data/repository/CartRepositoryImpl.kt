@@ -25,7 +25,7 @@ class CartRepositoryImpl(private val cartDataSourceI: CartDataSourceI):CartShopp
         return cartDataSourceI.changeCount(cartItemId,count)
     }
 
-    override fun getItemsInTheShoppingCart(): Single<ProductCountInShoppingCart> {
+    override fun getCountsOfItemsInCart(): Single<ProductCountInShoppingCart> {
         return cartDataSourceI.getCountOfProductsInShoppingCart()
     }
 
