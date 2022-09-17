@@ -45,6 +45,7 @@ class CartViewModel(private val cartUseCase: CartUseCase) : NikeViewModel() {
                                 t.totalPrice, t.payablePrice, t.shippingCost
                             )
                             setPurchaseDetailAndPurchaseButtonMustShow(true)
+                            _emptyCartState.value = EmptyCartStateFactory.cartIsNotEmpty()
                         } else {
                             _emptyCartState.value = EmptyCartStateFactory.cartIsEmpty()
                         }

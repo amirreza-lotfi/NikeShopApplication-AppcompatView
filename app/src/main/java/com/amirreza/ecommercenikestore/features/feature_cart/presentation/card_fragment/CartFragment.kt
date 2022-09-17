@@ -18,6 +18,7 @@ import com.amirreza.ecommercenikestore.utils.util.EXTRA_PRODUCT_FROM_HOME_TO_DET
 import com.amirreza.ecommercenikestore.utils.util.EXTRA_PURCHASE_DETAIL
 import com.amirreza.ecommercenikestore.utils.base.NikeFragment
 import com.amirreza.ecommercenikestore.features.feature_home.domain.repository.ImageLoaderI
+import com.amirreza.ecommercenikestore.utils.util.formatPrice
 import com.google.android.material.button.MaterialButton
 import com.amirreza.ecommercenikestore.utils.util.getVerticalLinearLayoutManager
 import io.reactivex.disposables.CompositeDisposable
@@ -61,9 +62,9 @@ class CartFragment : NikeFragment(), CartItemCallBack {
         }
 
         cartViewModel.purchaseDetailOfCart.observe(viewLifecycleOwner) { purchaseDetail ->
-            binding.totalPriceTV.text = "${purchaseDetail.totalPrice} تومان "
-            binding.shippingCostTV.text = "${purchaseDetail.deliveryCost} تومان "
-            binding.payablePriceTV.text = "${purchaseDetail.payAblePrice} تومان "
+            binding.totalPriceTV.text = formatPrice(purchaseDetail.totalPrice," تومان ")
+            binding.shippingCostTV.text = formatPrice(purchaseDetail.deliveryCost," تومان ")
+            binding.payablePriceTV.text = formatPrice(purchaseDetail.payAblePrice," تومان ")
         }
 
         cartViewModel.emptyCartState.observe(viewLifecycleOwner) { emptyState ->

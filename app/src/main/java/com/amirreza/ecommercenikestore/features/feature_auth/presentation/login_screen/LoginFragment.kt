@@ -9,6 +9,7 @@ import com.amirreza.ecommercenikestore.R
 import com.amirreza.ecommercenikestore.databinding.FragmentLoginBinding
 import com.amirreza.ecommercenikestore.features.feature_auth.presentation.AuthViewModel
 import com.amirreza.ecommercenikestore.features.feature_auth.presentation.signup_screen.SignUpFragment
+import com.amirreza.ecommercenikestore.utils.base.NikeCompletable
 import com.amirreza.ecommercenikestore.utils.base.NikeFragment
 import com.amirreza.ecommercenikestore.utils.util.asyncIoNetworkCall
 import io.reactivex.CompletableObserver
@@ -40,11 +41,7 @@ class LoginFragment: NikeFragment() {
 
             authViewModel.login(username,password)
                 .asyncIoNetworkCall()
-                .subscribe(object : CompletableObserver{
-                    override fun onSubscribe(d: Disposable) {
-                        Log.i("","")
-                    }
-
+                .subscribe(object : NikeCompletable(compositeDisposable){
                     override fun onComplete() {
                         requireActivity().finish()
                         showToast("ورود با موفقیت انجام شد.")
