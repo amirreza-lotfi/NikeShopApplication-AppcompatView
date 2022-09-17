@@ -67,6 +67,7 @@ class ProfileFragment: NikeFragment() {
                 profileViewModel.getCartItemsNumber {
                     EventBus.getDefault().postSticky(ProductCountInShoppingCart(it))
                 }
+                checkUserAuthentication()
             }
         }
     }

@@ -17,13 +17,16 @@ class ProfileViewModel(
     var username:String = profileRepository.getUserName()
 
     fun getCartItemsNumber(numberOfItems:(Int)->Unit){
-        cartRepository.getCountsOfItemsInCart()
-            .asyncIoNetworkCall()
-            .subscribe(object : NikeSingleObserver<ProductCountInShoppingCart>(compositeDisposable){
-                override fun onSuccess(t: ProductCountInShoppingCart) {
-                    numberOfItems(t.count)
-                }
-            })
+        if(Tokens.isTokenAvailable()) {
+            cartRepository.getCountsOfItemsInCart()
+                .asyncIoNetworkCall()
+                .subscribe(object :
+                    NikeSingleObserver<ProductCountInShoppingCart>(compositeDisposable) {
+                    override fun onSuccess(t: ProductCountInShoppingCart) {
+                        numberOfItems(t.count)
+                    }
+                })
+        }
     }
     fun logOut(){
         profileRepository.logOut()
