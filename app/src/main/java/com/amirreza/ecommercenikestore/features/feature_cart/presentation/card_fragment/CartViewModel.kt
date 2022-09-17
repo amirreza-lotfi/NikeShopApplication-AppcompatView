@@ -6,12 +6,16 @@ import com.amirreza.ecommercenikestore.features.feature_cart.domain.entity.Empty
 import com.amirreza.ecommercenikestore.features.feature_cart.domain.entity.EmptyCartStateFactory
 import com.amirreza.ecommercenikestore.features.feature_cart.domain.entity.cart.CartItem
 import com.amirreza.ecommercenikestore.features.feature_cart.domain.entity.cart.PurchaseDetail
-import com.amirreza.ecommercenikestore.features.feature_store.common.base.NikeSingleObserver
-import com.amirreza.ecommercenikestore.features.feature_store.common.base.NikeViewModel
+import com.amirreza.ecommercenikestore.utils.base.NikeSingleObserver
+import com.amirreza.ecommercenikestore.utils.base.NikeViewModel
 import com.amirreza.ecommercenikestore.features.feature_cart.domain.useCases.CartUseCase
 import com.amirreza.ecommercenikestore.features.feature_cart.domain.entity.cart.CartResponse
-import com.amirreza.ecommercenikestore.features.feature_store.common.base.NikeCompletable
-import com.amirreza.ecommercenikestore.features.feature_store.common.util.*
+import com.amirreza.ecommercenikestore.utils.base.NikeCompletable
+import com.amirreza.ecommercenikestore.features.feature_home.common.util.*
+import com.amirreza.ecommercenikestore.utils.util.asyncIoNetworkCall
+import com.amirreza.ecommercenikestore.utils.util.decreaseCartBadgeCount
+import com.amirreza.ecommercenikestore.utils.util.hasUserLoggedInAccount
+import com.amirreza.ecommercenikestore.utils.util.increaseCartBadgeCount
 import io.reactivex.Completable
 
 class CartViewModel(private val cartUseCase: CartUseCase) : NikeViewModel() {

@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.amirreza.ecommercenikestore.R
 import com.amirreza.ecommercenikestore.databinding.FragmentCheckoutBinding
 import com.amirreza.ecommercenikestore.features.feature_cart.presentation.receipt_fragment.OrderResultActivity
-import com.amirreza.ecommercenikestore.features.feature_store.common.util.EXTRA_KEY_ORDER_ID
+import com.amirreza.ecommercenikestore.utils.util.EXTRA_KEY_ORDER_ID
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import java.lang.Exception

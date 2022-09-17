@@ -3,9 +3,9 @@ package com.amirreza.ecommercenikestore.features.feature_profile.presentation.or
 import androidx.lifecycle.MutableLiveData
 import com.amirreza.ecommercenikestore.features.feature_profile.domain.entities.OrderHistoryItem
 import com.amirreza.ecommercenikestore.features.feature_profile.domain.repo.OrderHistoryRepository
-import com.amirreza.ecommercenikestore.features.feature_store.common.base.NikeSingleObserver
-import com.amirreza.ecommercenikestore.features.feature_store.common.base.NikeViewModel
-import com.amirreza.ecommercenikestore.features.feature_store.common.util.asyncIoNetworkCall
+import com.amirreza.ecommercenikestore.utils.base.NikeSingleObserver
+import com.amirreza.ecommercenikestore.utils.base.NikeViewModel
+import com.amirreza.ecommercenikestore.utils.util.asyncIoNetworkCall
 
 class OrderHistoryViewModel(
     private val orderHistoryRepository: OrderHistoryRepository

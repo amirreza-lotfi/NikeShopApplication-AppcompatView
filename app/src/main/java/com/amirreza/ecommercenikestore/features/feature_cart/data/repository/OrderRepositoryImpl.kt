@@ -3,7 +3,7 @@ package com.amirreza.ecommercenikestore.features.feature_cart.data.repository
 import com.amirreza.ecommercenikestore.features.feature_cart.domain.entity.OrderDetail
 import com.amirreza.ecommercenikestore.features.feature_cart.domain.entity.OrderResult
 import com.amirreza.ecommercenikestore.features.feature_cart.domain.repository.OrderRepository
-import com.amirreza.ecommercenikestore.http.ApiService
+import com.amirreza.ecommercenikestore.utils.http.ApiService
 import com.google.gson.JsonObject
 import io.reactivex.Single
 

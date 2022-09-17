@@ -1,7 +1,7 @@
 package com.amirreza.ecommercenikestore.features.feature_auth.presentation
 
 import com.amirreza.ecommercenikestore.features.feature_auth.domain.repository.AuthRepository
-import com.amirreza.ecommercenikestore.features.feature_store.common.base.NikeViewModel
+import com.amirreza.ecommercenikestore.utils.base.NikeViewModel
 import io.reactivex.Completable
 
 class AuthViewModel(private val authRepository: AuthRepository): NikeViewModel() {

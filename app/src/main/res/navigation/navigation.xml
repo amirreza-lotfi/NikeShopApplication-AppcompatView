@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.amirreza.ecommercenikestore.features.feature_store.presentation.home_fragment.HomeFragment"
+        android:name="com.amirreza.ecommercenikestore.features.feature_home.presentation.home_fragment.HomeFragment"
         android:label="HomeFragment"
         app:route="homeFragment"
         tools:layout="@layout/fragment_home">
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/productDetailFragment"
-        android:name="com.amirreza.ecommercenikestore.features.feature_store.presentation.product_detail_fragment.ProductDetailFragment"
+        android:name="com.amirreza.ecommercenikestore.features.feature_home.presentation.product_detail_fragment.ProductDetailFragment"
         android:label="fragment_product_detail"
         tools:layout="@layout/fragment_product_detail" >
         <action
@@ -52,12 +52,12 @@
     </fragment>
     <fragment
         android:id="@+id/allCommentFragment3"
-        android:name="com.amirreza.ecommercenikestore.features.feature_store.presentation.all_comments_fragment.AllCommentFragment"
+        android:name="com.amirreza.ecommercenikestore.features.feature_home.presentation.all_comments_fragment.AllCommentFragment"
         android:label="fragment_all_comment"
         tools:layout="@layout/fragment_all_comment" />
     <fragment
         android:id="@+id/allProductFragment"
-        android:name="com.amirreza.ecommercenikestore.features.feature_store.presentation.all_product_fragment.AllProductFragment"
+        android:name="com.amirreza.ecommercenikestore.features.feature_home.presentation.all_product_fragment.AllProductFragment"
         android:label="fragment_all_product"
         tools:layout="@layout/fragment_all_product" />
     <fragment

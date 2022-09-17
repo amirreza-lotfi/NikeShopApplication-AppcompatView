@@ -1,6 +1,6 @@
 package com.amirreza.ecommercenikestore.features.feature_cart.domain.entity.cart
 
-import com.amirreza.ecommercenikestore.features.feature_store.domain.entity.Product
+import com.amirreza.ecommercenikestore.features.feature_home.domain.entity.Product
 import com.google.gson.annotations.SerializedName
 
 data class CartItem(

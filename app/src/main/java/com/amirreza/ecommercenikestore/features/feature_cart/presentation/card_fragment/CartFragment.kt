@@ -14,12 +14,12 @@ import com.amirreza.ecommercenikestore.features.feature_auth.presentation.AuthAc
 import com.amirreza.ecommercenikestore.features.feature_cart.domain.entity.cart.CartItem
 import com.amirreza.ecommercenikestore.features.feature_cart.presentation.card_fragment.cartItemAdapter.CartItemAdapter
 import com.amirreza.ecommercenikestore.features.feature_cart.presentation.card_fragment.cartItemAdapter.CartItemCallBack
-import com.amirreza.ecommercenikestore.features.feature_store.common.util.EXTRA_PRODUCT_FROM_HOME_TO_DETAIL
-import com.amirreza.ecommercenikestore.features.feature_store.common.util.EXTRA_PURCHASE_DETAIL
-import com.amirreza.ecommercenikestore.features.feature_store.common.base.NikeFragment
-import com.amirreza.ecommercenikestore.features.feature_store.domain.repository.ImageLoaderI
+import com.amirreza.ecommercenikestore.utils.util.EXTRA_PRODUCT_FROM_HOME_TO_DETAIL
+import com.amirreza.ecommercenikestore.utils.util.EXTRA_PURCHASE_DETAIL
+import com.amirreza.ecommercenikestore.utils.base.NikeFragment
+import com.amirreza.ecommercenikestore.features.feature_home.domain.repository.ImageLoaderI
 import com.google.android.material.button.MaterialButton
-import com.amirreza.ecommercenikestore.features.feature_store.common.util.getVerticalLinearLayoutManager
+import com.amirreza.ecommercenikestore.utils.util.getVerticalLinearLayoutManager
 import io.reactivex.disposables.CompositeDisposable
 import org.koin.android.ext.android.inject
 

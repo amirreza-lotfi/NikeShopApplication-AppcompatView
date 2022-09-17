@@ -9,15 +9,15 @@ import com.amirreza.ecommercenikestore.R
 import com.amirreza.ecommercenikestore.databinding.FragmentSignupBinding
 import com.amirreza.ecommercenikestore.features.feature_auth.presentation.AuthViewModel
 import com.amirreza.ecommercenikestore.features.feature_auth.presentation.login_screen.LoginFragment
-import com.amirreza.ecommercenikestore.features.feature_store.common.base.NikeFragment
-import com.amirreza.ecommercenikestore.features.feature_store.common.util.asyncIoNetworkCall
+import com.amirreza.ecommercenikestore.utils.base.NikeFragment
+import com.amirreza.ecommercenikestore.utils.util.asyncIoNetworkCall
 import io.reactivex.CompletableObserver
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
-class SignUpFragment:NikeFragment() {
+class SignUpFragment: NikeFragment() {
     lateinit var binding: FragmentSignupBinding
     private val authViewModel by viewModel<AuthViewModel>()
     private val compositeDisposable = CompositeDisposable()

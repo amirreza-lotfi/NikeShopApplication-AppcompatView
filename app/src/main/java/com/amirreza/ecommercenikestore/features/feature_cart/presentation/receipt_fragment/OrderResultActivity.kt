@@ -4,8 +4,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import com.amirreza.ecommercenikestore.databinding.ActivityOrderResultBinding
-import com.amirreza.ecommercenikestore.features.feature_store.common.base.NikeActivity
-import com.amirreza.ecommercenikestore.features.feature_store.common.util.EXTRA_KEY_ORDER_ID
+import com.amirreza.ecommercenikestore.utils.base.NikeActivity
+import com.amirreza.ecommercenikestore.utils.util.EXTRA_KEY_ORDER_ID
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 

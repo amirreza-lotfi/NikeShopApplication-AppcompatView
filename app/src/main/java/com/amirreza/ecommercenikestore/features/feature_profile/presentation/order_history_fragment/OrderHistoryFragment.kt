@@ -1,20 +1,14 @@
 package com.amirreza.ecommercenikestore.features.feature_profile.presentation.order_history_fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.amirreza.ecommercenikestore.R
 import com.amirreza.ecommercenikestore.databinding.FragmentOrderHistoryBinding
-import com.amirreza.ecommercenikestore.features.feature_store.common.base.NikeFragment
-import com.amirreza.ecommercenikestore.features.feature_store.common.util.getVerticalLinearLayoutManager
+import com.amirreza.ecommercenikestore.utils.base.NikeFragment
+import com.amirreza.ecommercenikestore.utils.util.getVerticalLinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_order_history.*
-import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OrderHistoryFragment : NikeFragment() {

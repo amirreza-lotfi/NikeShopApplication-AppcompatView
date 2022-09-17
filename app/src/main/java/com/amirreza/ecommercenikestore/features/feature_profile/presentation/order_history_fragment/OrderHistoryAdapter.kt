@@ -3,17 +3,13 @@ package com.amirreza.ecommercenikestore.features.feature_profile.presentation.or
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.amirreza.ecommercenikestore.R
 import com.amirreza.ecommercenikestore.databinding.ItemOrderHistoryBinding
 import com.amirreza.ecommercenikestore.features.feature_profile.domain.entities.OrderHistoryItem
-import com.amirreza.ecommercenikestore.features.feature_store.common.util.convertDpToPixel
-import com.amirreza.ecommercenikestore.features.feature_store.domain.repository.ImageLoaderI
+import com.amirreza.ecommercenikestore.utils.util.convertDpToPixel
 import com.facebook.drawee.view.SimpleDraweeView
-import kotlinx.android.synthetic.main.item_order_history.view.*
 
 class OrderHistoryAdapter(
     private val orders:List<OrderHistoryItem>,

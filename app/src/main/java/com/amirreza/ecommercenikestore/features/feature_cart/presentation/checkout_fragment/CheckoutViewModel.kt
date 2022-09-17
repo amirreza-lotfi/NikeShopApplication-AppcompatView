@@ -6,13 +6,14 @@ import androidx.lifecycle.MutableLiveData
 import com.amirreza.ecommercenikestore.features.feature_cart.domain.entity.OrderResult
 import com.amirreza.ecommercenikestore.features.feature_cart.domain.entity.cart.PurchaseDetail
 import com.amirreza.ecommercenikestore.features.feature_cart.domain.repository.OrderRepository
-import com.amirreza.ecommercenikestore.features.feature_store.common.util.EXTRA_PURCHASE_DETAIL
-import com.amirreza.ecommercenikestore.features.feature_store.common.base.NikeSingleObserver
-import com.amirreza.ecommercenikestore.features.feature_store.common.base.NikeViewModel
-import com.amirreza.ecommercenikestore.features.feature_store.common.util.asyncIoNetworkCall
+import com.amirreza.ecommercenikestore.utils.util.EXTRA_PURCHASE_DETAIL
+import com.amirreza.ecommercenikestore.utils.base.NikeSingleObserver
+import com.amirreza.ecommercenikestore.utils.base.NikeViewModel
+import com.amirreza.ecommercenikestore.utils.util.asyncIoNetworkCall
 
 
-class CheckoutViewModel(bundle: Bundle, private val orderRepository: OrderRepository):NikeViewModel() {
+class CheckoutViewModel(bundle: Bundle, private val orderRepository: OrderRepository):
+    NikeViewModel() {
 
     private val _purchaseDetailOfCart = MutableLiveData<PurchaseDetail>()
     val purchaseDetailOfCart: LiveData<PurchaseDetail> = _purchaseDetailOfCart

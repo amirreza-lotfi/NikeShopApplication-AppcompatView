@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.amirreza.ecommercenikestore.databinding.ItemFavoriteBinding
-import com.amirreza.ecommercenikestore.features.feature_store.domain.entity.Product
-import com.amirreza.ecommercenikestore.features.feature_store.domain.repository.ImageLoaderI
+import com.amirreza.ecommercenikestore.features.feature_home.domain.entity.Product
+import com.amirreza.ecommercenikestore.features.feature_home.domain.repository.ImageLoaderI
 
 class FavoriteListAdapter(
     private val products: MutableList<Product>,

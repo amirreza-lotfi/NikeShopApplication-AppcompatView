@@ -1,7 +1,6 @@
 package com.amirreza.ecommercenikestore.features.feature_profile.presentation.favorites_fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,11 +8,11 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.amirreza.ecommercenikestore.R
 import com.amirreza.ecommercenikestore.databinding.FragmentFavoritesBinding
-import com.amirreza.ecommercenikestore.features.feature_store.common.base.NikeFragment
-import com.amirreza.ecommercenikestore.features.feature_store.common.util.EXTRA_KEY_DATA
-import com.amirreza.ecommercenikestore.features.feature_store.common.util.getVerticalLinearLayoutManager
-import com.amirreza.ecommercenikestore.features.feature_store.domain.entity.Product
-import com.amirreza.ecommercenikestore.features.feature_store.domain.repository.ImageLoaderI
+import com.amirreza.ecommercenikestore.utils.base.NikeFragment
+import com.amirreza.ecommercenikestore.utils.util.EXTRA_KEY_DATA
+import com.amirreza.ecommercenikestore.utils.util.getVerticalLinearLayoutManager
+import com.amirreza.ecommercenikestore.features.feature_home.domain.entity.Product
+import com.amirreza.ecommercenikestore.features.feature_home.domain.repository.ImageLoaderI
 import org.koin.android.ext.android.inject
 
 class FavoritesFragment : NikeFragment(), FavoriteEvents {

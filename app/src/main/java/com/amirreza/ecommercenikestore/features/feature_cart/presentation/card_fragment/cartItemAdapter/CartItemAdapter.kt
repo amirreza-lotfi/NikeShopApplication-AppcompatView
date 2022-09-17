@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.amirreza.ecommercenikestore.databinding.ItemCartBinding
 import com.amirreza.ecommercenikestore.features.feature_cart.domain.entity.cart.CartItem
-import com.amirreza.ecommercenikestore.features.feature_store.domain.repository.ImageLoaderI
+import com.amirreza.ecommercenikestore.features.feature_home.domain.repository.ImageLoaderI
 
 class CartItemAdapter(
     private val cartItemList:MutableList<CartItem> = mutableListOf(),

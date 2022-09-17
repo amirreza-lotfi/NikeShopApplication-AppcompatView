@@ -10,10 +10,10 @@ import androidx.navigation.fragment.findNavController
 import com.amirreza.ecommercenikestore.R
 import com.amirreza.ecommercenikestore.databinding.FragmentProfileBinding
 import com.amirreza.ecommercenikestore.features.feature_auth.presentation.AuthActivity
-import com.amirreza.ecommercenikestore.features.feature_store.common.base.NikeFragment
+import com.amirreza.ecommercenikestore.utils.base.NikeFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ProfileFragment:NikeFragment() {
+class ProfileFragment: NikeFragment() {
     private lateinit var binding:FragmentProfileBinding
     private val profileViewModel:ProfileViewModel by viewModel()
 

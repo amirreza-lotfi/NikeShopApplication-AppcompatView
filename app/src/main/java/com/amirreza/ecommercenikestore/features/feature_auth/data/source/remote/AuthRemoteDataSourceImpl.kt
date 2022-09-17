@@ -1,9 +1,9 @@
 package com.amirreza.ecommercenikestore.features.feature_auth.data.source.remote
 
 import com.amirreza.ecommercenikestore.features.feature_auth.domain.model.TokenResponse
-import com.amirreza.ecommercenikestore.features.feature_store.common.util.CLIENT_ID
-import com.amirreza.ecommercenikestore.features.feature_store.common.util.CLIENT_SECRET
-import com.amirreza.ecommercenikestore.http.ApiService
+import com.amirreza.ecommercenikestore.utils.util.CLIENT_ID
+import com.amirreza.ecommercenikestore.utils.util.CLIENT_SECRET
+import com.amirreza.ecommercenikestore.utils.http.ApiService
 import com.amirreza.ecommercenikestore.features.feature_cart.domain.entity.cart.MessageResponse
 import com.google.gson.JsonObject
 import io.reactivex.Single
