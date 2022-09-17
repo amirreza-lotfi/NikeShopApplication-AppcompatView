@@ -2,8 +2,6 @@ package com.amirreza.ecommercenikestore.utils.util
 
 import android.content.Context
 import android.content.res.Resources
-import android.text.SpannableString
-import android.text.style.RelativeSizeSpan
 import android.util.DisplayMetrics
 import android.view.MotionEvent
 import android.view.View
@@ -50,17 +48,25 @@ fun decreaseCartBadgeCount(count:Int){
 
 fun formatPrice(
     price: Number,
-    unitRelativeSizeFactor: Float = 0.7f
-): SpannableString {
-    val currencyLabel="تومان"
-    val spannableString = SpannableString("$price $currencyLabel")
-    spannableString.setSpan(
-        RelativeSizeSpan(unitRelativeSizeFactor),
-        spannableString.indexOf(currencyLabel),
-        spannableString.length,
-        SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
-    )
-    return spannableString
+    label:String = ""
+): String {
+    var counter = 0
+    val priceToString = price.toString()
+    var price = ""
+    var index = priceToString.length - 1
+
+    while (index >= 0) {
+        if (counter == 3) {
+            price += ","
+            price += priceToString[index]
+            counter = 1
+        } else {
+            price += priceToString[index]
+            counter++
+        }
+        index--
+    }
+    return price.reversed() + label
 }
 
 fun hasUserLoggedInAccount(): Boolean {
