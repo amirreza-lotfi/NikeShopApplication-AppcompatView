@@ -47,11 +47,17 @@ class HomeFragmentViewModel(
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(object : NikeSingleObserver<List<Product>>(compositeDisposable){
-                            override fun onSuccess(t: List<Product>) {
-                                for (product:Product in t){
-                                    product.isFavorite = favoriteList.contains(product)
+                            override fun onSuccess(productList: List<Product>) {
+                                for (favorite:Product in favoriteList){
+                                    val id = favorite.id
+                                    val findProduct = productList.find {
+                                        it.id == id
+                                    }
+                                    findProduct?.let {
+                                        it.isFavorite = true
+                                    }
                                 }
-                                _latestProductsLiveData.value = t
+                                _latestProductsLiveData.value = productList
                             }
                         })
                 }

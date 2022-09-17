@@ -53,8 +53,8 @@ class ProductDetailFragment : NikeFragment() {
         productDetailViewModel.productLiveData.observe(viewLifecycleOwner){
             imageLoaderI.load(binding.productImage,it.image)
             binding.productTitle.text = it.title
-            binding.previousPriceTv.text = formatPrice(it.previous_price)
-            binding.currentPriceTv.text = formatPrice(it.price)
+            binding.previousPriceTv.text = formatPrice(it.previous_price, " تومان ")
+            binding.currentPriceTv.text = formatPrice(it.price, " تومان ")
             binding.toolbarTitleTv.text = it.title
         }
 
@@ -72,6 +72,17 @@ class ProductDetailFragment : NikeFragment() {
 
         binding.backBtn.setOnClickListener {
             findNavController().popBackStack()
+        }
+
+        binding.favoriteBtn.setOnClickListener {
+            productDetailViewModel.addOrDeleteProductFromFavorite()
+        }
+
+        productDetailViewModel.isFavorite.observe(viewLifecycleOwner){
+            if(it)
+                binding.favoriteBtn.setImageResource(R.drawable.ic_favorite_fill)
+            else
+                binding.favoriteBtn.setImageResource(R.drawable.ic_favorite_24)
         }
     }
 

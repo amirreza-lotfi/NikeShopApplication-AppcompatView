@@ -166,7 +166,7 @@ class NikeShopApplication : Application() {
                 HomeFragmentViewModel(get(), get(), get())
             }
             viewModel { (bundle: Bundle)->
-                ProductDetailViewModel(bundle,get(),get())
+                ProductDetailViewModel(bundle,get(),get(),get())
             }
             viewModel { (int:Int)->
                 AllCommentViewModel(int,get())

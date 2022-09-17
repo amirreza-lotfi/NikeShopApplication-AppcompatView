@@ -55,9 +55,13 @@ class ProductListAdapter(val imageLoaderI: ImageLoaderI): RecyclerView.Adapter<P
                 itemClickListener?.onClick(product)
             }
 
+            favoriteBtn.setImageResource(
+                if (product.isFavorite) R.drawable.ic_favorite_fill else R.drawable.ic_favorites
+            )
+
             favoriteBtn.setOnClickListener {
                 favoriteBtn.setImageResource(
-                    if (product.isFavorite) R.drawable.ic_favorite_fill else R.drawable.ic_favorites
+                    if (!product.isFavorite) R.drawable.ic_favorite_fill else R.drawable.ic_favorites
                 )
                 itemClickListener?.onFavoriteButtonClick(product)
                 notifyItemChanged(adapterPosition)
