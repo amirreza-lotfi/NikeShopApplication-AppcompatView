@@ -39,10 +39,13 @@ import com.amirreza.ecommercenikestore.features.feature_cart.presentation.card_f
 import com.amirreza.ecommercenikestore.features.feature_cart.presentation.checkout_fragment.CheckoutViewModel
 import com.amirreza.ecommercenikestore.features.feature_cart.presentation.receipt_fragment.OrderResultViewModel
 import com.amirreza.ecommercenikestore.features.feature_profile.data.FavoriteRepositoryImpl
+import com.amirreza.ecommercenikestore.features.feature_profile.data.OrderHistoryRepositoryImpl
 import com.amirreza.ecommercenikestore.features.feature_profile.data.ProfileRepositoryImpl
 import com.amirreza.ecommercenikestore.features.feature_profile.domain.repo.FavoriteRepository
+import com.amirreza.ecommercenikestore.features.feature_profile.domain.repo.OrderHistoryRepository
 import com.amirreza.ecommercenikestore.features.feature_profile.domain.repo.ProfileRepository
 import com.amirreza.ecommercenikestore.features.feature_profile.presentation.favorites_fragment.FavoriteViewModel
+import com.amirreza.ecommercenikestore.features.feature_profile.presentation.order_history_fragment.OrderHistoryViewModel
 import com.amirreza.ecommercenikestore.features.feature_profile.presentation.profile_fragment.ProfileViewModel
 import com.amirreza.ecommercenikestore.features.feature_store.domain.useCases.comment_usecases.GetComments
 import com.amirreza.ecommercenikestore.features.feature_store.domain.useCases.product_usecases.GetProductsUC
@@ -90,9 +93,11 @@ class NikeShopApplication : Application() {
                     RemoteCommentDataSource(get())
                 )
             }
-            factory<OrderRepository> {
-                OrderRepositoryImpl(get())
+
+            factory<OrderHistoryRepository> {
+                OrderHistoryRepositoryImpl(get())
             }
+
             factory<BannerRepositoryI> {
                 BannerRepositoryImpl(
                     BannerRemoteDataSource(get())
@@ -191,7 +196,7 @@ class NikeShopApplication : Application() {
                 FavoriteViewModel(get())
             }
             viewModel {
-                ProfileViewModel(get())
+                OrderHistoryViewModel(get())
             }
         }
         startKoin {
@@ -201,6 +206,5 @@ class NikeShopApplication : Application() {
 
         val authRepository:AuthRepository = get()
         authRepository.loadToken()
-        get<AppDataBase>()
     }
 }

@@ -15,10 +15,11 @@ import com.amirreza.ecommercenikestore.features.feature_store.common.base.NikeFr
 import com.amirreza.ecommercenikestore.features.feature_store.common.util.getVerticalLinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_order_history.*
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OrderHistoryFragment : NikeFragment() {
     private lateinit var binding: FragmentOrderHistoryBinding
-    private val orderHistoryViewModel:OrderHistoryViewModel by inject()
+    private val orderHistoryViewModel:OrderHistoryViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
